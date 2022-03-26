@@ -7,14 +7,19 @@
 </head>
 
 <body>
-    <div id="app">
-        @include('partials.layouts.header')
 
 
-        <main class="container-fluid">
-            @yield('content')
-        </main>
-    </div>
+    <x-loading />
+
+    @include('partials.layouts.header')
+
+
+    <main class="container-fluid" id="app">
+        @yield('content')
+    </main>
+
+
+
 
     @include('partials.layouts.scripts')
 </body>

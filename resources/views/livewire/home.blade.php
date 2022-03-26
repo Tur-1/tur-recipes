@@ -9,7 +9,7 @@
 
          <div class="recipes-container">
 
-             <div class="recipe-card shadow-sm">
+             <div class="recipe-card  active-recipe-card shadow-sm">
                  <div class="recipe-image-container">
                      <img src="{{ asset('assets/images/pizza-clip-art-15.png') }}" alt="">
                  </div>
@@ -91,29 +91,32 @@
                          <div class="col-6">
                              <a class="card" data-bs-toggle="offcanvas"
                                  data-bs-target="#offcanvas-{{ Str::slug($recipe['recipe']['label']) }}">
-                                 <div class="recipe-imge">
-                                     <img src="{{ $recipe['recipe']['image'] }}">
-                                 </div>
+
                                  <div class="card-body">
+                                     <div class="recipe-imge">
+                                         <img src="{{ $recipe['recipe']['image'] }}">
+                                     </div>
                                      <div class="recipe-title">
                                          <span> {{ $recipe['recipe']['label'] }} </span>
                                      </div>
 
+
                                      <div class="recipe-kcal-Time">
-                                         <div class="me-4">
+                                         <div>
                                              <i
                                                  class="bi
-                                               bi-stopwatch"></i>
+                                                  bi-stopwatch"></i>
                                              <span>{{ $recipe['recipe']['totalTime'] }} </span>
                                          </div>
-
+                                         <span class="border"></span>
                                          <div>
                                              <i
                                                  class="fa-solid
-                                               fa-fire"></i>
+                                                  fa-fire"></i>
                                              <span>{{ intval($recipe['recipe']['calories']) }} </span>
                                          </div>
                                      </div>
+
                                  </div>
 
                              </a>
@@ -146,18 +149,28 @@
 
 
                          <div class="header">
+                             <span class="header-border"></span>
                              <span class="recipe-label">
                                  {{ $recipe['recipe']['label'] }}
                              </span>
-                             <div>
-                                 <div class="recipe-time">
-                                     <i class="bi bi-stopwatch"></i>
-                                     <span>{{ $recipe['recipe']['totalTime'] }} min</span>
+
+                             <div class="recipe-time-kcal">
+                                 <div class="time">
+                                     <i class="bi bi-clock-fill"></i>
+                                     <span>{{ $recipe['recipe']['totalTime'] }} Minute</span>
                                  </div>
+                                 <span class="recipe-time-kcal-border"></span>
+                                 <div class="rating">
+                                     <i class="fa-solid fa-star"></i>
+                                     <span>3,6</span>
+                                 </div>
+                                 <span class="recipe-time-kcal-border"></span>
                                  <div class="kcal">
-                                     <i class="fas fa-fire-alt"></i>
-                                     <span>{{ intval($recipe['recipe']['calories']) }} </span>
+                                     <i class="fa-solid fa-fire-flame-curved"></i>
+                                     <span>{{ intval($recipe['recipe']['calories']) }} Kcal</span>
                                  </div>
+
+
                              </div>
                          </div>
 
@@ -216,18 +229,15 @@
                              <div class="tab-content">
                                  <div class="tab-pane active" id="ingredients" role="tabpanel"
                                      aria-labelledby="ingredients-tab">
-                                     <table class="table ingredients-table">
-
-                                         <tbody>
-
-                                             @foreach ($recipe['recipe']['ingredientLines'] as $ingredient)
-                                                 <tr>
-
-                                                     <td>{{ $ingredient }}</td>
-                                                 </tr>
-                                             @endforeach
-                                         </tbody>
-                                     </table>
+                                     @foreach ($recipe['recipe']['ingredientLines'] as $ingredient)
+                                         <div class="card ingredients-card">
+                                             <div class="card-body">
+                                                 <p class="card-text">
+                                                     {{ $ingredient }}
+                                                 </p>
+                                             </div>
+                                         </div>
+                                     @endforeach
                                  </div>
                                  <div class="tab-pane" id="instructions" role="tabpanel"
                                      aria-labelledby="instructions-tab">
@@ -241,6 +251,10 @@
              @endforeach
          </div>
      </div>
+
+
+     <x-livewire-loading targetMethod='getRecipes' />
+
  </div>
 
  @push('script')
