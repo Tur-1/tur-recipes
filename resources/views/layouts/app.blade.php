@@ -9,13 +9,15 @@
 <body>
 
 
-    <x-loading />
+
 
     @include('partials.layouts.header')
 
+    <main class="container-fluid " id="app">
 
-    <main class="container-fluid" id="app">
+
         @yield('content')
+
     </main>
 
 

@@ -3,61 +3,38 @@
         <span class="input-group-text" id="basic-addon1">
             <i class="bi bi-search"></i>
         </span>
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-            aria-describedby="basic-addon1">
+        <input type="text" class="form-control" wire:model.lazy='SearchValue' placeholder="recipes"
+            aria-label="recipes" aria-describedby="basic-addon1">
     </div>
 
     <div class="recommend-recipes">
         <strong>Recommend recipes</strong>
         <div wire:ignore class="recommend-recipes-row">
-            <div class="card">
-                <img src="{{ asset('assets/images/bur.jpg') }}" class="card-img" alt="...">
-                <div class="card-img-overlay">
-                    <div class="card-title">
-                        <span>
-                            card-recipe card-recipe card-recipe
-                            card-recipe
-                            card-recipe card-recipe
-                        </span>
-                    </div>
-
-                    <div class="recipe-kcal-Time">
-                        <div class="me-3">
-                            <i class="bi bi-stopwatch"></i>
-                            <span>23 min</span>
+            @foreach ($recommendRecipes as $recipe)
+                <a class="card" data-bs-toggle="offcanvas"
+                    data-bs-target="#top-recipe-offcanvas-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}">
+                    <img src="{{ $recipe['recipe']['image'] }}" class="card-img" alt="...">
+                    <div class="card-img-overlay">
+                        <div class="card-title">
+                            <span>
+                                {{ $recipe['recipe']['label'] }}
+                            </span>
                         </div>
 
-                        <div>
-                            <i class="fa-solid fa-fire"></i>
-                            <span>177 </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="{{ asset('assets/images/bur.jpg') }}" class="card-img" alt="...">
-                <div class="card-img-overlay">
-                    <div class="card-title">
-                        <span>
-                            card-recipe card-recipe card-recipe
-                            card-recipe
-                            card-recipe card-recipe
-                        </span>
-                    </div>
+                        <div class="recipe-kcal-Time">
+                            <div class="me-3">
+                                <i class="bi bi-stopwatch"></i>
+                                <span>{{ $recipe['recipe']['totalTime'] }} min</span>
+                            </div>
 
-                    <div class="recipe-kcal-Time">
-                        <div class="me-3">
-                            <i class="bi bi-stopwatch"></i>
-                            <span>23 min</span>
-                        </div>
-
-                        <div>
-                            <i class="fa-solid fa-fire"></i>
-                            <span>177 </span>
+                            <div>
+                                <i class="fa-solid fa-fire"></i>
+                                <span>{{ intval($recipe['recipe']['calories']) }} </span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </a>
+            @endforeach
         </div>
     </div>
 
@@ -89,7 +66,7 @@
         <div class="top-recipes-row">
             @foreach ($recipes as $recipe)
                 <a class="top-recipe-item" data-bs-toggle="offcanvas"
-                    data-bs-target="#top-recipe-offcanvas-{{ Str::slug($recipe['recipe']['label']) }}">
+                    data-bs-target="#top-recipe-offcanvas-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}">
                     <div class="image-container">
                         <img src="{{ $recipe['recipe']['image'] }}">
                     </div>
@@ -119,7 +96,7 @@
 
         @foreach ($recipes as $recipe)
             <div class="offcanvas offcanvas-bottom top-recipe-offcanvas" tabindex="-1"
-                id="top-recipe-offcanvas-{{ Str::slug($recipe['recipe']['label']) }}"
+                id="top-recipe-offcanvas-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
                 aria-labelledby="offcanvasBottomLabel">
                 <div class="offcanvas-header">
 
@@ -200,14 +177,20 @@
                         <div class="ingredients">
                             <ul class="nav nav-tabs|pills" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="ingredients-tab" data-bs-toggle="tab"
-                                        data-bs-target="#ingredients" type="button" role="tab"
-                                        aria-controls="ingredients" aria-selected="true">ingredients</button>
+                                    <button class="nav-link active"
+                                        id="ingredients-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#ingredients-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
+                                        type="button" role="tab"
+                                        aria-controls="ingredients-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
+                                        aria-selected="true">ingredients</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="instr-q-tab" data-bs-toggle="tab"
-                                        data-bs-target="#instr-q" type="button" role="tab"
-                                        aria-controls="instr-q">instructions
+                                    <button class="nav-link"
+                                        id="instructions-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#instructions-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
+                                        type="button" role="tab">instructions
                                     </button>
                                 </li>
 
@@ -215,8 +198,10 @@
 
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <div class="tab-pane active" id="ingredients" role="tabpanel"
-                                    aria-labelledby="ingredients-tab">
+                                <div class="tab-pane active"
+                                    id="ingredients-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
+                                    role="tabpanel"
+                                    aria-labelledby="ingredients-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}-tab">
                                     @foreach ($recipe['recipe']['ingredientLines'] as $ingredient)
                                         <div class="card ingredients-card">
                                             <div class="card-body">
@@ -228,8 +213,143 @@
                                     @endforeach
 
                                 </div>
-                                <div class="tab-pane" id="instr-q" role="tabpanel"
-                                    aria-labelledby="instructions-tab">
+                                <div class="tab-pane"
+                                    id="instructions-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
+                                    role="tabpanel"
+                                    aria-labelledby="instructions-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}-tab">
+                                    ......... instructions
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        @endforeach
+        @foreach ($recommendRecipes as $recipe)
+            <div class="offcanvas offcanvas-bottom top-recipe-offcanvas" tabindex="-1"
+                id="top-recipe-offcanvas-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
+                aria-labelledby="offcanvasBottomLabel">
+                <div class="offcanvas-header">
+
+                    <button type="button" class="close-btn" data-bs-dismiss="offcanvas" aria-label="Close">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                    <button type="button" class="btn-fav">
+                        <i class="bi bi-heart"></i>
+                    </button>
+
+                </div>
+                <div class="offcanvas-body small">
+                    <div class="offcanvas-image-container">
+                        <div class="image">
+                            <img src="{{ $recipe['recipe']['image'] }}">
+                        </div>
+                    </div>
+                    <div class="offcanvas-recipe-details">
+                        <div class="offcanvas-recipe-details-header">
+                            <span class="header-border"></span>
+                            <span class="recipe-label">
+                                {{ $recipe['recipe']['label'] }}
+
+                            </span>
+
+                        </div>
+                        <div class="recipe-time-kcal">
+                            <div class="time">
+                                <i class="bi bi-clock-fill"></i>
+                                <span>{{ $recipe['recipe']['totalTime'] }} Minute</span>
+                            </div>
+                            <span class="recipe-time-kcal-border"></span>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i>
+                                <span>3,6</span>
+                            </div>
+                            <span class="recipe-time-kcal-border"></span>
+                            <div class="kcal">
+                                <i class="fa-solid fa-fire-flame-curved"></i>
+                                <span>{{ intval($recipe['recipe']['calories']) }} Kcal</span>
+                            </div>
+
+
+                        </div>
+                        <div class="nutrients">
+                            <div class="nutrition-row">
+                                <div class="nutrition-element">
+                                    <div class="image-container">
+                                        <img src="{{ asset('assets/icons/wheat.png') }}">
+                                    </div>
+                                    <span>{{ intval($recipe['recipe']['totalNutrients']['CHOCDF']['quantity']) .' ' .$recipe['recipe']['totalNutrients']['CHOCDF']['unit'] }}
+                                        carbs</span>
+                                </div>
+                                <div class="nutrition-element">
+                                    <div class="image-container">
+                                        <img src="{{ asset('assets/icons/pizza-slice.png') }}">
+                                    </div>
+                                    <span>
+                                        {{ intval($recipe['recipe']['totalNutrients']['FAT']['quantity']) .' ' .$recipe['recipe']['totalNutrients']['FAT']['unit'] }}
+
+                                        Fat</span>
+                                </div>
+                            </div>
+                            <div class="nutrition-row">
+                                <div class="nutrition-element">
+                                    <div class="image-container">
+                                        <img src="{{ asset('assets/icons/avocado.png') }}">
+                                    </div>
+                                    <span>
+                                        {{ intval($recipe['recipe']['totalNutrients']['PROCNT']['quantity']) .' ' .$recipe['recipe']['totalNutrients']['PROCNT']['unit'] }}
+
+                                        protin</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="ingredients">
+                            <ul class="nav nav-tabs|pills" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active"
+                                        id="ingredients-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#ingredients-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
+                                        type="button" role="tab"
+                                        aria-controls="ingredients-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
+                                        aria-selected="true">ingredients</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link"
+                                        id="instructions-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#instructions-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
+                                        type="button" role="tab">instructions
+                                    </button>
+                                </li>
+
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane active"
+                                    id="ingredients-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
+                                    role="tabpanel"
+                                    aria-labelledby="ingredients-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}-tab">
+                                    @foreach ($recipe['recipe']['ingredientLines'] as $ingredient)
+                                        <div class="card ingredients-card">
+                                            <div class="card-body">
+                                                <p class="card-text">
+                                                    {{ $ingredient }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    @endforeach
+
+                                </div>
+                                <div class="tab-pane"
+                                    id="instructions-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
+                                    role="tabpanel"
+                                    aria-labelledby="instructions-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}-tab">
                                     ......... instructions
                                 </div>
                             </div>
@@ -241,7 +361,7 @@
             </div>
         @endforeach
     </div>
-    <x-livewire-loading targetMethod='getRecipes' />
+    <x-livewire-loading />
 </div>
 
 

@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\services\EdamamService;
 use Illuminate\Support\Facades\Http;
 use App\Exceptions\RecipeResponseException;
+use Carbon\Carbon;
 
 class Home extends Component
 {
@@ -16,17 +17,20 @@ class Home extends Component
     public $recipeIngredients = [];
     public $baseUri = '';
     public $recipeName = null;
-
+    public $recommendMeal;
+    public $recommendRecipes = [];
     public function updated()
     {
 
         if ($this->SearchValue != "") {
-            $this->categories = $this->categories->filter(fn ($item) =>  str_contains($item['name'],  $this->SearchValue));
-            $this->recipeName = $this->SearchValue;
+            // $this->categories = $this->categories->filter(fn ($item) =>  str_contains($item['name'],  $this->SearchValue));
 
-            $this->getRecipes();
-        } else {
-            $this->categories = $this->getCategories();
+
+            try {
+                $this->recipes =  (new EdamamService())->getRecipes($this->SearchValue);
+            } catch (RecipeResponseException $ex) {
+                dd($ex->getMessage());
+            }
         }
     }
     public function getRecipes($categoryId = null)
@@ -43,48 +47,7 @@ class Home extends Component
         }
     }
 
-    public function getRecipeIngredients($recipeId)
-    {
-    }
-    // public function getRecipes($categoryId)
-    // {
 
-
-    //     $this->recipeName =   $this->categories->where("id", $categoryId)->first()['name'];
-    //     $url = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search';
-    //     $query = [
-    //         'query' =>   $this->recipeName,
-    //         'number' => '30',
-    //         'offset' => '0',
-    //     ];
-    //     $headers = [
-    //         'X-RapidAPI-Host' => 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-    //         'X-RapidAPI-Key' => 'aa7845b4bdmshbebc21dcf2b07afp15d676jsnfa4dc2612468'
-    //     ];
-
-    //     $res = Http::withHeaders($headers)->get($url, $query);
-
-    //     if ($res->successful()) {
-    //         $this->recipes =  $res->json('results');
-    //         $this->baseUri =  $res['baseUri'];
-    //     }
-    // }
-    // public function getRecipeIngredients($recipeId)
-    // {
-    //     $url = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/' . $recipeId . '/ingredientWidget.json';
-
-    //     $headers = [
-    //         'X-RapidAPI-Host' => 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-    //         'X-RapidAPI-Key' => 'aa7845b4bdmshbebc21dcf2b07afp15d676jsnfa4dc2612468'
-    //     ];
-
-    //     $res = Http::withHeaders($headers)->get($url);
-
-    //     if ($res->successful()) {
-    //         $this->recipeIngredients =  $res->json('ingredients');
-    //         $this->dispatchBrowserEvent('show-recipe-ingredients', ['recipeId' => $recipeId]);
-    //     }
-    // }
     public function getCategories()
     {
         return collect([
@@ -100,7 +63,44 @@ class Home extends Component
 
     public function mount()
     {
+
+
+        $this->recommendRecipes = $this->getRecommendMeal();
+
         $this->categories =  $this->getCategories();
+    }
+    public function getRecommendMeal()
+    {
+        $startMorning = Carbon::createFromTime(0, 0, 0, 'GMT+3');
+        $endMorning = Carbon::createFromTime(12, 0, 0, 'GMT+3');
+
+        $startAfterNoon = Carbon::createFromTime(12, 1, 0, 'GMT+3');
+        $endAfterNoon = Carbon::createFromTime(18, 30, 0, 'GMT+3');
+
+        $startEvning = Carbon::createFromTime(18, 31, 0, 'GMT+3');
+        $endEvning = Carbon::createFromTime(23, 59, 0, 'GMT+3');
+
+
+
+        $timeNow = Carbon::now('GMT+3');
+        if ($timeNow->between($startMorning, $endMorning, true)) {
+            $this->recommendMeal = 'breakfast';
+        }
+
+        if ($timeNow->between($startAfterNoon, $endAfterNoon, true)) {
+            $this->recommendMeal = 'lunch';
+        }
+        if ($timeNow->between($startEvning, $endEvning, true)) {
+            $this->recommendMeal = 'dinner';
+        }
+
+        try {
+            $recommendRecipes =  (new EdamamService())->getRecipes($this->recommendMeal);
+        } catch (RecipeResponseException $ex) {
+            dd($ex->getMessage());
+        }
+
+        return $recommendRecipes;
     }
     public function render()
     {
