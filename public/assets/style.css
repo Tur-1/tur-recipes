@@ -330,6 +330,7 @@ a {
 .top-recipe-offcanvas .offcanvas-header {
     background-color: rgb(33, 33, 33);
     color: white !important;
+    padding: 1rem 1rem 0px 1rem !important;
 }
 
 
@@ -356,17 +357,18 @@ a {
 
 .top-recipe-offcanvas .offcanvas-image-container {
 
-    height: 32%;
     background-color: rgb(33, 33, 33);
     display: flex;
     justify-content: center;
+
 }
 
 .top-recipe-offcanvas .offcanvas-image-container .image {
+
     height: 200px;
     width: 200px;
     border-radius: 9999px;
-
+    margin-bottom: 50px;
 }
 
 .top-recipe-offcanvas .offcanvas-image-container .image img {

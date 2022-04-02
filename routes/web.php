@@ -20,4 +20,5 @@ Auth::routes();
 
 Route::controller(PagesController::class)->group(function () {
     Route::get('/', 'home')->name('home');
+    Route::get('recipes/{recipe_id}', 'recipe')->name('recipe');
 });
