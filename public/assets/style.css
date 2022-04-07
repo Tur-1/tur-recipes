@@ -7,8 +7,13 @@
     scroll-behavior: smooth;
 }
 
+:root {
+    --main-color: #26908C;
+    --main-bg-color: #f0f0f0;
+}
+
 body {
-    background-color: rgb(33, 33, 33);
+    background-color: var(--main-bg-color);
     max-width: 700px !important;
     margin: auto;
 
@@ -21,7 +26,7 @@ body {
     z-index: 9999;
     width: 100vw;
     height: 100vh;
-    background-color: rgb(15 15 17 / 97%);
+    background-color: rgb(255 255 255 / 94%);
 }
 
 #spinner {
@@ -29,15 +34,10 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
+    color: var(--main-color);
 }
 
-:root {
-    --main-color: #20a885;
-}
+
 
 a {
     text-decoration: none;
@@ -45,7 +45,7 @@ a {
 
 /************* navbar  **********************/
 .navbar {
-    background-color: rgb(33, 33, 33) !important;
+    background-color: var(--main-bg-color) !important;
 }
 
 
@@ -58,7 +58,6 @@ a {
 .user-container .user-name {
     padding-bottom: 10px;
     font-weight: 700;
-    color: white;
 }
 
 .user-container span:last-child {
@@ -79,13 +78,58 @@ a {
     border-radius: 9999px;
 }
 
+/************* footer  **********************/
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: white !important;
+    width: 100%;
+    align-items: center;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+
+    border: 1px solid #eaeaea;
+}
+
+footer ul {
+    justify-content: space-around;
+    align-items: center;
+    padding: 2px;
+    font-size: 20px;
+
+}
+
+footer ul li a i {
+    color: #7e7e7e;
+
+}
+
+.add-recipe-icon a i {
+    border: 1px solid white;
+    color: var(--main-color) !important;
+    border-radius: 100%;
+    transform: scale(2);
+
+}
+
+.add-recipe-icon {
+
+    margin-top: -40px;
+}
+
+main#app {
+    margin-bottom: 100px;
+}
+
 /************* search  **********************/
 .search-field {
     margin: 20px 0px !important;
-    background-color: rgb(45, 45, 45);
+    background-color: white;
     border-radius: 9999px !important;
     border: none !important;
     color: white;
+    box-shadow: 0.3rem 0.125rem 0.34rem rgba(0, 0, 0, .075) !important;
 }
 
 .search-field span {
@@ -93,7 +137,6 @@ a {
     border-right: none !important;
     border-radius: 50%;
     border: none !important;
-    color: white !important
 }
 
 .search-field input {
@@ -103,65 +146,82 @@ a {
     outline: none !important;
     border-top-right-radius: 9999px !important;
     border-bottom-right-radius: 9999px !important;
-    background-color: rgb(45, 45, 45) !important;
-    color: white !important;
+    background-color: white !important;
 
 }
 
 /************* recommend-recipes  **********************/
 
 .recommend-recipes {
-    -webkit-overflow-scrolling: touch;
-    margin: 30px 0px;
+
+    margin: 30px 0px !important;
 
 }
+
 
 
 .recommend-recipes>strong {
     font-size: 14px;
-    color: white;
 }
 
 .recommend-recipes-row .card {
-
-    margin: 20px 10px;
+    position: relative;
+    background-color: var(--main-color) !important;
+    height: 275px !important;
+    margin: 20px;
+    width: 180px !important;
     border-radius: 15px;
-    background-color: transparent !important;
-
-}
-
-
-.recommend-recipes-row .card img {
-    height: 175px !important;
-    border-radius: 15px;
-
-}
-
-.recommend-recipes-row .card .card-img-overlay {
-    top: auto;
-    bottom: 0;
-    background-image: linear-gradient(to top, rgb(0, 0, 0), rgb(0 0 0 / 72%));
-    padding: 2px 20px !important;
-    border-radius: 15px;
-    text-align: center;
-    border: none !important;
-
-}
-
-.recommend-recipes-row .card .card-img-overlay .card-title {
-    text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
-    color: #dedede;
-    font-size: 16px;
+    box-shadow: 0.3rem 0.125rem 0.34rem rgb(0 0 0 / 20%) !important;
 }
 
-.recommend-recipes-row .card .card-img-overlay .recipe-kcal-Time {
+
+.recommend-recipes-row .card .card-image-container {
+    position: absolute;
+    right: -12px;
+    top: 15px;
+    height: 150px;
+    width: 150px;
+    border-radius: 9999px;
+    overflow: hidden;
+    box-shadow: 0.35rem 0.125rem 0.34rem rgb(0 0 0 / 60%) !important;
+}
+
+.recommend-recipes-row .card .card-image-container img {
+
+    height: 100%;
+    width: 100%;
+
+}
+
+.recommend-recipes-row .card .card-body {
+    position: absolute;
+    bottom: 0;
+
+}
+
+.recommend-recipes-row .card .card-body .card-title {
+    font-size: 20px;
+    color: white;
+    overflow: hidden;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-weight: 600;
+}
+
+.recommend-recipes-row .card .card-body .recipe-kcal-Time {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    color: #dedede;
-    font-size: 14px;
+    color: #bcbcbc;
+    font-size: 13px;
+}
+
+.slick-track {
+    margin: 0 !important;
 }
 
 /************* header && see see all  **********************/
@@ -173,12 +233,8 @@ a {
 
 }
 
-.header strong {
-    color: white;
-}
-
 .header .see-all {
-    color: rgb(255, 195, 11);
+    color: var(--main-color);
 }
 
 /************* categories  **********************/
@@ -206,10 +262,10 @@ a {
     align-items: center;
     height: 100px;
     width: 70px;
-    background-color: rgb(45, 45, 45);
+    background-color: white;
     border-radius: 50px;
     padding: 10px;
-    box-shadow: 0.3rem 0.125rem 0.34rem rgb(27 27 27) !important;
+    box-shadow: 0.3rem 0.125rem 0.34rem rgba(0, 0, 0, .075) !important;
 }
 
 
@@ -234,14 +290,14 @@ a {
 }
 
 .categories .category .title {
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 14px;
     font-weight: 600;
 }
 
 .category.active--category {
 
-    background-color: rgb(255, 194, 13) !important;
+    background-color: var(--main-color) !important;
 }
 
 .category.active--category>div {
@@ -263,12 +319,12 @@ a {
 .top-recipe-item {
     margin: 35px 10px;
     position: relative;
-    background-color: rgb(45, 45, 45);
+    background-color: white;
     height: 107px;
     border-radius: 25px;
     display: flex;
     align-items: center;
-    box-shadow: 0.35rem 0.125rem 0.4rem rgb(27 27 27) !important;
+    box-shadow: 0.3rem 0.125rem 0.34rem rgb(0 0 0 / 8%) !important;
     flex-direction: row;
     text-decoration: none;
     width: 95%;
@@ -279,7 +335,8 @@ a {
     height: 120px;
     width: 120px;
     border-radius: 9999px;
-    box-shadow: 0.35rem 0.125rem 0.25rem rgb(27 27 27) !important;
+    box-shadow: 0.3rem 0.125rem 0.34rem rgb(0 0 0 / 20%) !important;
+
 }
 
 .top-recipe-item .image-container img {
@@ -298,7 +355,7 @@ a {
 
 .top-recipe-item .top-recipe-item-details .title {
     font-size: 16px;
-    color: white;
+    color: black;
     overflow: hidden;
     vertical-align: middle;
     text-overflow: ellipsis;
@@ -322,21 +379,38 @@ a {
 /************* top-recipe-offcanvas  **********************/
 .top-recipe-offcanvas {
     height: 100% !important;
-    background-color: rgb(40, 40, 40) !important;
-    border-top: none !important;
+    border: none !important;
 }
 
 
 .top-recipe-offcanvas .offcanvas-header {
-    background-color: rgb(33, 33, 33);
     color: white !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    height: 33% !important;
+    position: relative;
 }
 
+.top-recipe-offcanvas .offcanvas-header .header-btns {
+    position: absolute;
+    top: 14px;
+    z-index: 4234343;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+}
 
-.top-recipe-offcanvas .offcanvas-header .close-btn,
+.image-container,
+img {
+    height: 100%;
+    width: 100%;
+}
+
+.top-recipe-offcanvas .offcanvas-header .back-btn,
 .btn-fav {
-    background-color: rgb(40, 40, 40);
-    color: white !important;
+    background-color: rgba(2, 2, 2, 0.497);
+    color: rgb(255, 255, 255) !important;
     width: 32px !important;
     height: 32px !important;
     padding: 0px !important;
@@ -348,52 +422,32 @@ a {
 
 .top-recipe-offcanvas .offcanvas-body {
     padding: 0 !important;
-    background-color: rgb(40, 40, 40);
-
-
-
-}
-
-.top-recipe-offcanvas .offcanvas-image-container {
-
-    background-color: rgb(33, 33, 33);
-    display: flex;
-    justify-content: center;
-
-}
-
-.top-recipe-offcanvas .offcanvas-image-container .image {
-
-    height: 200px;
-    width: 200px;
-    border-radius: 9999px;
-    margin-bottom: 50px;
-}
-
-.top-recipe-offcanvas .offcanvas-image-container .image img {
-    height: 100%;
-    width: 100%;
-    border-radius: 9999px;
-
-}
-
-.offcanvas-recipe-details {
-    margin-top: -15px;
-    background-color: rgb(40, 40, 40);
+    z-index: 6958;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    margin-top: -13px;
+}
+
+
+
+
+.offcanvas-recipe-details {
+    background-color: white;
     padding: 10px 15px 30px 15px;
-    color: white;
+    color: black;
+    margin-top: -5px;
+
 
 }
 
 .offcanvas-recipe-details-header {
 
-    color: white;
+    color: black;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
+
 }
 
 
@@ -401,6 +455,7 @@ a {
     border: 2px solid #cbcbcb85 !important;
     width: 16%;
     border-radius: 15px;
+    margin-top: 10px;
 }
 
 .offcanvas-recipe-details-header .recipe-label {
@@ -422,7 +477,7 @@ a {
 
 .offcanvas-recipe-details .recipe-time-kcal i {
     font-size: 19px;
-    color: rgb(255, 194, 13);
+    color: rgb(105 105 105);
     margin-bottom: 5px;
 }
 
@@ -446,7 +501,7 @@ a {
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: white;
+    color: black;
     justify-content: space-between;
     font-size: 16px;
 }
@@ -475,7 +530,7 @@ a {
 }
 
 .offcanvas-recipe-details .ingredients .nav {
-    background-color: rgb(33, 33, 33);
+    background-color: var(--main-bg-color);
     border-radius: 50px;
     width: 100%;
     margin-bottom: 10px;
@@ -490,20 +545,22 @@ a {
     width: 100%;
     background-color: transparent !important;
     border-radius: 50px;
-    color: #ccc;
+    color: black;
     border: none;
     font-weight: 600;
 }
 
 .offcanvas-recipe-details .ingredients .nav .nav-item .nav-link.active {
-    background-color: rgb(40, 40, 40) !important;
+    background-color: var(--main-color) !important;
+    color: white !important;
 
 }
 
 .offcanvas-recipe-details .ingredients .ingredients-card {
     margin-top: 10px;
-    background-color: rgb(33, 33, 33);
-    color: white;
+    background-color: var(--main-bg-color);
+    color: black;
     border-radius: 15px;
+    border: none;
 
 }

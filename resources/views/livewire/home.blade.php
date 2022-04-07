@@ -1,5 +1,5 @@
-<div>
-    <div class="search-field input-group shadow-sm">
+<div class="container-fluid">
+    <div class="search-field input-group ">
         <span class="input-group-text" id="basic-addon1">
             <i class="bi bi-search"></i>
         </span>
@@ -10,17 +10,20 @@
     <div class="recommend-recipes">
         <strong>Recommend recipes</strong>
         <div wire:ignore class="recommend-recipes-row">
+
+
             @foreach ($recommendRecipes as $recipe)
                 <a class="card" data-bs-toggle="offcanvas"
                     data-bs-target="#top-recipe-offcanvas-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}">
-                    <img src="{{ $recipe['recipe']['image'] }}" class="card-img" alt="...">
-                    <div class="card-img-overlay">
+                    <div class="card-image-container">
+                        <img src="{{ $recipe['recipe']['image'] }}" alt="...">
+                    </div>
+                    <div class="card-body">
                         <div class="card-title">
                             <span>
                                 {{ $recipe['recipe']['label'] }}
                             </span>
                         </div>
-
                         <div class="recipe-kcal-Time">
                             <div class="me-3">
                                 <i class="bi bi-stopwatch"></i>
@@ -41,11 +44,11 @@
     <div class="categories">
         <div class="header">
             <strong>Categories</strong>
-            <small class="see-all">see All</small>
+
         </div>
         <div wire:ignore class="categories-row">
             @foreach ($categories as $category)
-                <a class="category" wire:click.prevent='getRecipes({{ $category['id'] }})'>
+                <a class="category  " wire:click.prevent='getRecipes({{ $category['id'] }})'>
                     <div class="image-container">
                         <img src="{{ $category['imageUrl'] }}" alt="">
                     </div>
@@ -95,25 +98,27 @@
 
 
         @foreach ($recipes as $recipe)
-            <div class="offcanvas offcanvas-bottom top-recipe-offcanvas" tabindex="-1"
-                id="top-recipe-offcanvas-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
-                aria-labelledby="offcanvasBottomLabel">
+            <div class="offcanvas offcanvas-end top-recipe-offcanvas " tabindex="-1"
+                id="top-recipe-offcanvas-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}">
                 <div class="offcanvas-header">
+                    <div class="header-btns">
 
-                    <button type="button" class="close-btn" data-bs-dismiss="offcanvas" aria-label="Close">
-                        <i class="bi bi-x-lg"></i>
-                    </button>
-                    <button type="button" class="btn-fav">
-                        <i class="bi bi-heart"></i>
-                    </button>
+                        <button type="button" class="back-btn" data-bs-dismiss="offcanvas" aria-label="Close">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <button type="button" class="btn-fav">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                    </div>
+                    <div class="image-container">
+                        <img src="{{ $recipe['recipe']['image'] }}" alt="...">
+                    </div>
+
+
 
                 </div>
                 <div class="offcanvas-body small">
-                    <div class="offcanvas-image-container">
-                        <div class="image">
-                            <img src="{{ $recipe['recipe']['image'] }}">
-                        </div>
-                    </div>
+
                     <div class="offcanvas-recipe-details">
                         <div class="offcanvas-recipe-details-header">
                             <span class="header-border"></span>
@@ -125,17 +130,17 @@
                         </div>
                         <div class="recipe-time-kcal">
                             <div class="time">
-                                <i class="bi bi-clock-fill"></i>
+                                <i class="fa-regular fa-clock"></i>
                                 <span>{{ $recipe['recipe']['totalTime'] }} Minute</span>
                             </div>
                             <span class="recipe-time-kcal-border"></span>
                             <div class="rating">
-                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
                                 <span>3,6</span>
                             </div>
                             <span class="recipe-time-kcal-border"></span>
                             <div class="kcal">
-                                <i class="fa-solid fa-fire-flame-curved"></i>
+                                <i class="fa-solid fa-fire"></i>
                                 <span>{{ intval($recipe['recipe']['calories']) }} Kcal</span>
                             </div>
 
@@ -173,6 +178,7 @@
                             </div>
 
                         </div>
+
 
                         <div class="ingredients">
                             <ul class="nav nav-tabs|pills" id="myTab" role="tablist">
@@ -222,31 +228,33 @@
                             </div>
                         </div>
 
-
                     </div>
                 </div>
             </div>
         @endforeach
+
         @foreach ($recommendRecipes as $recipe)
-            <div class="offcanvas offcanvas-bottom top-recipe-offcanvas" tabindex="-1"
-                id="top-recipe-offcanvas-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
-                aria-labelledby="offcanvasBottomLabel">
+            <div class="offcanvas offcanvas-end top-recipe-offcanvas " tabindex="-1"
+                id="top-recipe-offcanvas-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}">
                 <div class="offcanvas-header">
+                    <div class="header-btns">
 
-                    <button type="button" class="close-btn" data-bs-dismiss="offcanvas" aria-label="Close">
-                        <i class="bi bi-x-lg"></i>
-                    </button>
-                    <button type="button" class="btn-fav">
-                        <i class="bi bi-heart"></i>
-                    </button>
+                        <button type="button" class="back-btn" data-bs-dismiss="offcanvas" aria-label="Close">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <button type="button" class="btn-fav">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                    </div>
+                    <div class="image-container">
+                        <img src="{{ $recipe['recipe']['image'] }}" alt="...">
+                    </div>
+
+
 
                 </div>
                 <div class="offcanvas-body small">
-                    <div class="offcanvas-image-container">
-                        <div class="image">
-                            <img src="{{ $recipe['recipe']['image'] }}">
-                        </div>
-                    </div>
+
                     <div class="offcanvas-recipe-details">
                         <div class="offcanvas-recipe-details-header">
                             <span class="header-border"></span>
@@ -258,17 +266,17 @@
                         </div>
                         <div class="recipe-time-kcal">
                             <div class="time">
-                                <i class="bi bi-clock-fill"></i>
+                                <i class="fa-regular fa-clock"></i>
                                 <span>{{ $recipe['recipe']['totalTime'] }} Minute</span>
                             </div>
                             <span class="recipe-time-kcal-border"></span>
                             <div class="rating">
-                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
                                 <span>3,6</span>
                             </div>
                             <span class="recipe-time-kcal-border"></span>
                             <div class="kcal">
-                                <i class="fa-solid fa-fire-flame-curved"></i>
+                                <i class="fa-solid fa-fire"></i>
                                 <span>{{ intval($recipe['recipe']['calories']) }} Kcal</span>
                             </div>
 
@@ -306,6 +314,7 @@
                             </div>
 
                         </div>
+
 
                         <div class="ingredients">
                             <ul class="nav nav-tabs|pills" id="myTab" role="tablist">
@@ -355,11 +364,13 @@
                             </div>
                         </div>
 
-
                     </div>
                 </div>
             </div>
         @endforeach
+
+
+
     </div>
     <x-livewire-loading />
 </div>
