@@ -74,7 +74,7 @@
             </a>
         </div>
         <div class="top-recipes-row">
-            @foreach ($topRecipes as $recipe)
+            @forelse ($topRecipes as $recipe)
                 <a class="top-recipe-item" data-bs-toggle="offcanvas"
                     data-bs-target="#top-recipe-offcanvas-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}">
                     <div class="image-container">
@@ -98,7 +98,16 @@
                         </div>
                     </div>
                 </a>
-            @endforeach
+
+            @empty
+                <div class="card border-0 bg-transparent">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">no recipes found</h5>
+                    </div>
+                </div>
+            @endforelse
+
+
         </div>
 
 
@@ -153,9 +162,7 @@
                             aria-label="Close">
                             <i class="bi bi-chevron-left"></i>
                         </button>
-                        <button type="button" class="btn-fav">
-                            <i class="bi bi-heart"></i>
-                        </button>
+
                     </div>
                     <div class="image-container">
                         <img src="{{ $recipe['recipe']['image'] }}" alt="...">
@@ -169,6 +176,9 @@
                     <div class="offcanvas-recipe-details">
                         <div class="offcanvas-recipe-details-header">
                             <div class="card">
+                                <button type="button" class="btn-fav">
+                                    <i class="bi bi-heart"></i>
+                                </button>
                                 <div class="card-body">
 
                                     <span class="recipe-label">
@@ -295,9 +305,7 @@
                             aria-label="Close">
                             <i class="bi bi-chevron-left"></i>
                         </button>
-                        <button type="button" class="btn-fav">
-                            <i class="bi bi-heart"></i>
-                        </button>
+
                     </div>
                     <div class="image-container">
                         <img src="{{ $recipe['recipe']['image'] }}" alt="...">
@@ -310,7 +318,11 @@
 
                     <div class="offcanvas-recipe-details">
                         <div class="offcanvas-recipe-details-header">
+
                             <div class="card">
+                                <button type="button" class="btn-fav">
+                                    <i class="bi bi-heart"></i>
+                                </button>
                                 <div class="card-body">
 
                                     <span class="recipe-label">

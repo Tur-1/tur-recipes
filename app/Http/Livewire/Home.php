@@ -25,13 +25,13 @@ class Home extends Component
     {
 
         if ($this->SearchValue != "") {
-            // $this->categories = $this->categories->filter(fn ($item) =>  str_contains($item['name'],  $this->SearchValue));
-
 
             try {
                 $this->recipes =  (new EdamamService())->getRecipes($this->SearchValue);
+                $this->recipes = collect($this->recipes);
+                $this->topRecipes = $this->recipes->take(5);
             } catch (RecipeResponseException $ex) {
-                dd($ex->getMessage());
+                abort(404);
             }
         }
     }
@@ -49,7 +49,7 @@ class Home extends Component
             $this->recipes = collect($this->recipes);
             $this->topRecipes = $this->recipes->take(5);
         } catch (RecipeResponseException $ex) {
-            dd($ex->getMessage());
+            abort(404);
         }
     }
 

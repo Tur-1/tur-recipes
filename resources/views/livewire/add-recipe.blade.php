@@ -1,160 +1,162 @@
-<div class="">
-    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="addRecipe" aria-labelledby="offcanvasBottomLabel">
+<div>
+
+    <div wire:ignore.self class="offcanvas offcanvas-bottom top-recipe-offcanvas" tabindex="-1" data-bs-backdrop="false"
+        id="addRecipe">
         <div class="offcanvas-header">
-            <button type="button" class="back-btn bg-light" data-bs-dismiss="offcanvas" aria-label="Close">
+            <div class="header-btns">
 
-                <i class="bi bi-chevron-down"></i>
-            </button>
-            <h5 class="offcanvas-title" id="offcanvasBottomLabel">add recipe</h5>
-
-            <div>
+                <button type="button" class="back-btn" data-bs-dismiss="offcanvas"
+                    data-bs-target="#top-recipe-offcanvas-dinner-tonight-custardy-popovers-4" aria-label="Close">
+                    <i class="bi bi-chevron-down"></i>
+                </button>
 
             </div>
+            <div class="image-container">
+
+                <label wire:loading.remove wire:target='image' for="reipce-image">
+                    <i class="fa fa-plus-circle "></i>
+                    @if (!is_null($image))
+                        <img src="{{ $image->temporaryUrl() }}" alt="">
+                    @else
+                        <img src="{{ asset('assets/images/upload.svg') }}" alt="" srcset="">
+                    @endif
+                </label>
+                <input class="form-control d-none" id="reipce-image" wire:model="image" type="file">
+                <div id="image-spinner" wire:loading wire:loading.class='card-body text-center' wire:target='image'>
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
         </div>
-        <div class="offcanvas-body small">
+        <div class="offcanvas-body small p-3 ">
+            <div class="text-danger ms-3">
+                @error('image')
+                    {{ $message }}
+                @enderror
+            </div>
+            <form wire:submit.prevent="submit">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <div class="">
+                            <div class="mb-3">
+                                <label for="reipce_name" class="form-label">reipce name</label>
+                                <input type="text"
+                                    class="form-control  form-control-sm  @error('reipce_name') is-invalid @enderror"
+                                    id="reipce_name" wire:model.lazy='reipce_name'>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="protin" class="form-label"> Time</label>
+                                    <input type="number" placeholder="10 "
+                                        class="form-control  form-control-sm  @error('time') is-invalid @enderror"
+                                        id="Time">
+
+                                </div>
+                                <div class="col-6">
+                                    <label for="protin" class="form-label"> Calories </label>
+                                    <input type="number" placeholder="397 "
+                                        class="form-control  form-control-sm @error('calories') is-invalid @enderror"
+                                        id="Calories">
+
+
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+                        <div class="row d-flex justify-content-center  mb-2">
+                            <div class="col-3">
+                                <label for="protin" class="form-label"> Carbs</label>
+                                <input type="number" placeholder="25" wire:model.lazy='carbs'
+                                    class="form-control  form-control-sm @error('carbs') is-invalid @enderror"
+                                    id="carbs">
+                            </div>
+                            <div class="col-3">
+                                <label for="protin" class="form-label"> Fat</label>
+                                <input type="number" placeholder="3 " wire:model.lazy='fat'
+                                    class="form-control  form-control-sm @error('fat') is-invalid @enderror" id="Fat">
+                            </div>
+                            <div class="col-3">
+                                <label for="protin" class="form-label"> protein</label>
+                                <input type="number" placeholder="13 " wire:model.lazy='protein'
+                                    class="form-control  form-control-sm @error('protein') is-invalid @enderror"
+                                    id="protein">
+                            </div>
+
+
+
+                        </div>
+
+
+                        <div class="ingredients ">
+                            <ul class="nav nav-tabs|pills" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active"
+                                        id="ingredients-dinner-tonight-custardy-popovers-4-tab" data-bs-toggle="tab"
+                                        data-bs-target="#ingredients-dinner-tonight-custardy-popovers-4" type="button"
+                                        role="tab" aria-controls="ingredients-dinner-tonight-custardy-popovers-4"
+                                        aria-selected="true">ingredients</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link"
+                                        id="instructions-dinner-tonight-custardy-popovers-4-tab" data-bs-toggle="tab"
+                                        data-bs-target="#instructions-dinner-tonight-custardy-popovers-4" type="button"
+                                        role="tab">instructions
+                                    </button>
+                                </li>
+
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="ingredients-dinner-tonight-custardy-popovers-4"
+                                    role="tabpanel"
+                                    aria-labelledby="ingredients-dinner-tonight-custardy-popovers-4-tab">
+
+                                    @foreach ($ingredientsFields as $field)
+                                        <input type="text" placeholder="1 Egg" class="form-control  ingredients-card "
+                                            id="ingredients-card"
+                                            wire:model.debounce.500ms='ingredientsFields.{{ $loop->index }}.ingredient'>
+                                    @endforeach
+
+
+                                    <div class="mt-4">
+                                        <button type="button" wire:click.prevent='addNewFields' class="btn btn-primary">
+                                            <i class="fa fa-plus-circle me-2"></i>new ingredients</button>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="instructions-dinner-tonight-custardy-popovers-4"
+                                    role="tabpanel"
+                                    aria-labelledby="instructions-dinner-tonight-custardy-popovers-4-tab">
+
+                                    <div class="mb-3">
+                                        <textarea class="form-control ingredients-card" id="instructions-text-area" rows="6"></textarea>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <button type="submit" class="btn btn-primary  float-end">Save</button>
+                    </div>
+                </div>
+
+
+            </form>
 
         </div>
     </div>
 </div>
-
-
-{{-- <div class="offcanvas offcanvas-end top-recipe-offcanvas " tabindex="-1" data-bs-backdrop="false"
-    id="top-recipe-offcanvas-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}">
-    <div class="offcanvas-header">
-        <div class="header-btns">
-
-            <button type="button" class="back-btn" data-bs-dismiss="offcanvas"
-                data-bs-target="#top-recipe-offcanvas-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
-                aria-label="Close">
-                <i class="bi bi-chevron-left"></i>
-            </button>
-            <button type="button" class="btn-fav">
-                <i class="bi bi-heart"></i>
-            </button>
-        </div>
-        <div class="image-container">
-            <img src="{{ $recipe['recipe']['image'] }}" alt="...">
-        </div>
-
-
-
-    </div>
-    <div class="offcanvas-body small">
-
-        <div class="offcanvas-recipe-details">
-            <div class="offcanvas-recipe-details-header">
-                <div class="card">
-                    <div class="card-body">
-
-                        <span class="recipe-label">
-                            {{ $recipe['recipe']['label'] }}
-
-                        </span>
-                        <div class="recipe-time-kcal">
-                            <div class="time">
-                                <i class="fa-regular fa-clock"></i>
-                                <span>{{ $recipe['recipe']['totalTime'] }} Minute</span>
-                            </div>
-                            <span class="recipe-time-kcal-border"></span>
-                            <div class="rating">
-                                <i class="fa-regular fa-star"></i>
-                                <span>3,6</span>
-                            </div>
-                            <span class="recipe-time-kcal-border"></span>
-                            <div class="kcal">
-                                <i class="fa-solid fa-fire"></i>
-                                <span>{{ intval($recipe['recipe']['calories']) }} Kcal</span>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="nutrients">
-                <div class="nutrition-row">
-                    <div class="nutrition-element">
-                        <div class="image-container">
-                            <img src="{{ asset('assets/icons/wheat.png') }}">
-                        </div>
-                        <span>{{ intval($recipe['recipe']['totalNutrients']['CHOCDF']['quantity']) .' ' .$recipe['recipe']['totalNutrients']['CHOCDF']['unit'] }}
-                            carbs</span>
-                    </div>
-                    <div class="nutrition-element">
-                        <div class="image-container">
-                            <img src="{{ asset('assets/icons/pizza-slice.png') }}">
-                        </div>
-                        <span>
-                            {{ intval($recipe['recipe']['totalNutrients']['FAT']['quantity']) .' ' .$recipe['recipe']['totalNutrients']['FAT']['unit'] }}
-
-                            Fat</span>
-                    </div>
-                </div>
-                <div class="nutrition-row">
-                    <div class="nutrition-element">
-                        <div class="image-container">
-                            <img src="{{ asset('assets/icons/avocado.png') }}">
-                        </div>
-                        <span>
-                            {{ intval($recipe['recipe']['totalNutrients']['PROCNT']['quantity']) .' ' .$recipe['recipe']['totalNutrients']['PROCNT']['unit'] }}
-
-                            protin</span>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="ingredients">
-                <ul class="nav nav-tabs|pills" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active"
-                            id="ingredients-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}-tab"
-                            data-bs-toggle="tab"
-                            data-bs-target="#ingredients-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
-                            type="button" role="tab"
-                            aria-controls="ingredients-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
-                            aria-selected="true">ingredients</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link"
-                            id="instructions-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}-tab"
-                            data-bs-toggle="tab"
-                            data-bs-target="#instructions-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
-                            type="button" role="tab">instructions
-                        </button>
-                    </li>
-
-                </ul>
-
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div class="tab-pane active"
-                        id="ingredients-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
-                        role="tabpanel"
-                        aria-labelledby="ingredients-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}-tab">
-                        @foreach ($recipe['recipe']['ingredientLines'] as $ingredient)
-                            <div class="card ingredients-card">
-                                <div class="card-body">
-                                    <p class="card-text">
-                                        {{ $ingredient }}
-                                    </p>
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </div>
-                    <div class="tab-pane"
-                        id="instructions-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}"
-                        role="tabpanel"
-                        aria-labelledby="instructions-{{ Str::slug($recipe['recipe']['label']) }}-{{ $loop->index }}-tab">
-                        ......... instructions
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div> --}}

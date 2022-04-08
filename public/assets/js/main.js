@@ -16,5 +16,6 @@ $('.recommend-recipes-row').slick({
     arrows: false,
     variableWidth: true,
 
+
 });
 
