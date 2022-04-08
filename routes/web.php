@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\PagesController;
+use App\Http\Livewire\Home;
+use App\Http\Livewire\Recipes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::controller(PagesController::class)->group(function () {
-    Route::get('/', 'home')->name('home');
-    Route::get('recipes/{recipe_id}', 'recipe')->name('recipe');
-});
+Route::get('/', Home::class);
+
+Route::get('/recipes', Recipes::class)->name('recipes');

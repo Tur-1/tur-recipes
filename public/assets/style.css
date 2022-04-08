@@ -88,14 +88,14 @@ footer {
     align-items: center;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-
+    padding-bottom: 5px;
     border: 1px solid #eaeaea;
 }
 
 footer ul {
     justify-content: space-around;
     align-items: center;
-    padding: 2px;
+    padding: 5px;
     font-size: 20px;
 
 }
@@ -109,22 +109,31 @@ footer ul li a i {
     border: 1px solid white;
     color: var(--main-color) !important;
     border-radius: 100%;
-    transform: scale(2);
+    transform: scale(2.1);
 
 }
 
-.add-recipe-icon {
 
-    margin-top: -40px;
-}
 
 main#app {
     margin-bottom: 100px;
 }
 
+.offcanvas {
+    border: none !important;
+}
+
+.offcanvas-bottom {
+    height: 100% !important;
+}
+
 /************* search  **********************/
 .search-field {
-    margin: 20px 0px !important;
+    margin: 20px 10px !important;
+
+}
+
+.search-field .input-group {
     background-color: white;
     border-radius: 9999px !important;
     border: none !important;
@@ -132,14 +141,14 @@ main#app {
     box-shadow: 0.3rem 0.125rem 0.34rem rgba(0, 0, 0, .075) !important;
 }
 
-.search-field span {
+.search-field .input-group span {
     background: transparent;
     border-right: none !important;
     border-radius: 50%;
     border: none !important;
 }
 
-.search-field input {
+.search-field .input-group input {
 
     border-left: none !important;
     border: none !important;
@@ -161,18 +170,26 @@ main#app {
 
 
 .recommend-recipes>strong {
+    margin: 0px 10px;
     font-size: 14px;
+}
+
+.recommend-recipes-row {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .recommend-recipes-row .card {
     position: relative;
     background-color: var(--main-color) !important;
     height: 275px !important;
-    margin: 20px;
-    width: 180px !important;
+    margin: 30px;
+    width: 175px !important;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0.3rem 0.125rem 0.34rem rgb(0 0 0 / 20%) !important;
+    transition: all 1s ease-in-out;
+
 }
 
 
@@ -185,6 +202,14 @@ main#app {
     border-radius: 9999px;
     overflow: hidden;
     box-shadow: 0.35rem 0.125rem 0.34rem rgb(0 0 0 / 60%) !important;
+}
+
+.slick-center {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
 }
 
 .recommend-recipes-row .card .card-image-container img {
@@ -247,6 +272,10 @@ main#app {
     margin: 20px 0px;
 }
 
+.categories .header {
+    margin: 10px;
+}
+
 .categories .categories-row {
     display: flex;
     align-items: center;
@@ -256,36 +285,29 @@ main#app {
 
 
 .categories .category {
-    margin: 10px 15px 10px 0px;
+    margin: 10px 7px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    height: 100px;
-    width: 70px;
+    height: 50px;
     background-color: white;
     border-radius: 50px;
-    padding: 10px;
+    padding: 20px 10px 20px 7px;
     box-shadow: 0.3rem 0.125rem 0.34rem rgba(0, 0, 0, .075) !important;
 }
 
 
 .categories .category .image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 4px;
-    width: 60px;
-    height: 60px;
-    border-radius: 100%;
-
     text-align: center;
+    margin-right: 8px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
 }
 
 .categories .category .image-container img {
-    width: 45px;
-    height: 45px;
+    width: 90%;
     border-radius: 100%;
-
 
 }
 
@@ -310,10 +332,12 @@ main#app {
 
 
 /************* top Recipes  **********************/
-
+.top-recipes .header {
+    margin: 10px;
+}
 
 .top-recipes-row {
-    margin: 20px 2px 10px 25px;
+    margin: 15px 15px 25px 40px;
 }
 
 .top-recipe-item {
@@ -377,8 +401,14 @@ main#app {
 
 
 /************* top-recipe-offcanvas  **********************/
+
+.top-recipe-offcanvas .offcanvas-body::-webkit-scrollbar {
+    overflow: hidden;
+    display: none;
+}
+
 .top-recipe-offcanvas {
-    height: 100% !important;
+    width: 100% !important;
     border: none !important;
 }
 
@@ -387,7 +417,7 @@ main#app {
     color: white !important;
     margin: 0px !important;
     padding: 0px !important;
-    height: 33% !important;
+    height: 35% !important;
     position: relative;
 }
 
@@ -403,13 +433,16 @@ main#app {
 
 .image-container,
 img {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     height: 100%;
     width: 100%;
+
 }
 
 .top-recipe-offcanvas .offcanvas-header .back-btn,
 .btn-fav {
-    background-color: rgba(2, 2, 2, 0.497);
+    background-color: rgb(91 91 91 / 83%);
     color: rgb(255, 255, 255) !important;
     width: 32px !important;
     height: 32px !important;
@@ -420,18 +453,20 @@ img {
 
 }
 
+
+
+
 .top-recipe-offcanvas .offcanvas-body {
+
     padding: 0 !important;
-    z-index: 6958;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    margin-top: -13px;
+
 }
 
 
 
 
 .offcanvas-recipe-details {
+    overflow: scroll;
     background-color: white;
     padding: 10px 15px 30px 15px;
     color: black;
@@ -442,14 +477,19 @@ img {
 
 .offcanvas-recipe-details-header {
 
-    color: black;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-between;
+    position: fixed;
+    top: 30%;
+    width: 90%;
+    text-align: center;
+    margin: 0px 4px;
 
 }
 
+.offcanvas-recipe-details-header .card {
+    border-radius: 15px;
+    border: none !important;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+}
 
 .offcanvas-recipe-details-header .header-border {
     border: 2px solid #cbcbcb85 !important;
@@ -477,7 +517,7 @@ img {
 
 .offcanvas-recipe-details .recipe-time-kcal i {
     font-size: 19px;
-    color: rgb(105 105 105);
+    color: #ffb81e;
     margin-bottom: 5px;
 }
 
@@ -494,7 +534,7 @@ img {
 }
 
 .offcanvas-recipe-details .nutrients {
-    margin: 30px 20px;
+    margin: 100px 20px 30px 20px;
 }
 
 .offcanvas-recipe-details .nutrients .nutrition-row {
@@ -564,3 +604,50 @@ img {
     border: none;
 
 }
+
+
+/************* allRecipes-offcanvas  **********************/
+.allRecipes {
+    position: fixed;
+    bottom: 0;
+    z-index: 1050;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    visibility: hidden;
+    background-color: #fff;
+    background-clip: padding-box;
+    outline: 0;
+    transition: transform .3s ease-in-out;
+    border: none;
+
+}
+
+.allRecipes .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+}
+
+.allRecipes .header #closeAllRecipes {
+    background: transparent;
+    width: 37px;
+    height: 31px;
+    border-radius: 7px;
+    border: 1px solid #b6b6b6cc;
+}
+
+.allRecipes.show {
+    transform: none;
+
+}
+
+
+.allRecipes-body {
+    padding: 0px 15px 0px 35px;
+    overflow-y: scroll;
+    overflow-x: hidden !important;
+}
+
+/************* add Recipe  **********************/

@@ -19,6 +19,8 @@ class Home extends Component
     public $recipeName = null;
     public $recommendMeal;
     public $recommendRecipes = [];
+    public $topRecipes = [];
+
     public function updated()
     {
 
@@ -36,12 +38,16 @@ class Home extends Component
     public function getRecipes($categoryId = null)
     {
 
+
         if (!is_null($categoryId)) {
             $this->recipeName =   $this->categories->where("id", $categoryId)->first()['name'];
         }
 
         try {
             $this->recipes =  (new EdamamService())->getRecipes($this->recipeName);
+
+            $this->recipes = collect($this->recipes);
+            $this->topRecipes = $this->recipes->take(5);
         } catch (RecipeResponseException $ex) {
             dd($ex->getMessage());
         }
@@ -65,11 +71,12 @@ class Home extends Component
     {
 
 
-        $this->recommendRecipes = $this->getRecommendMeal();
+
+        $this->recommendRecipes = $this->getRecommendRecipes();
 
         $this->categories =  $this->getCategories();
     }
-    public function getRecommendMeal()
+    public function getRecommendRecipes()
     {
         $startMorning = Carbon::createFromTime(0, 0, 0, 'GMT+3');
         $endMorning = Carbon::createFromTime(12, 0, 0, 'GMT+3');
@@ -83,6 +90,7 @@ class Home extends Component
 
 
         $timeNow = Carbon::now('GMT+3');
+
         if ($timeNow->between($startMorning, $endMorning, true)) {
             $this->recommendMeal = 'breakfast';
         }
@@ -93,6 +101,7 @@ class Home extends Component
         if ($timeNow->between($startEvning, $endEvning, true)) {
             $this->recommendMeal = 'dinner';
         }
+
 
         try {
             $recommendRecipes =  (new EdamamService())->getRecipes($this->recommendMeal);

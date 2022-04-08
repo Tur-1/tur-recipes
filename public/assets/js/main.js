@@ -1,10 +1,10 @@
 
 
-// $(window).on('load', () => {
+$(window).on('load', () => {
 
-//     $("#loading").fadeOut(1000);
-//     $("#app").fadeIn(1000);
-// });
+    $("#loading").fadeOut(1000);
+    $("#app").fadeIn(1000);
+});
 
 $('.recommend-recipes-row').slick({
     centerMode: true,
