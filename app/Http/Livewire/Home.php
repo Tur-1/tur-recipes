@@ -12,6 +12,7 @@ use Carbon\Carbon;
 class Home extends Component
 {
     public $categories;
+    public $msg;
     public $SearchValue;
     public $recipes = [];
     public $recipeIngredients = [];
@@ -22,6 +23,11 @@ class Home extends Component
     public $topRecipes = [];
 
     public function updated()
+    {
+
+        $this->searchRecipes();
+    }
+    public function searchRecipes()
     {
 
         if ($this->SearchValue != "") {
