@@ -9,10 +9,10 @@ use Livewire\WithFileUploads;
 class AddRecipe extends Component
 {
     use WithFileUploads;
-    public  $selectImage  = null;
+
     public $ingredientsFields = [];
     public $reipce_name, $fat, $carbs, $protein, $time, $calories, $instructions, $ingredients;
-
+    public  $image  = null;
 
     protected $rules = [
         'reipce_name' => 'required',

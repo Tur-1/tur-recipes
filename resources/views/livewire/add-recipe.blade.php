@@ -12,17 +12,16 @@
 
             </div>
             <div class="image-container">
-                <label wire:loading.remove wire:target='selectImage' for="reipce-image">
+                <label wire:loading.remove wire:target='image' for="reipce-image">
                     <i class="fa fa-plus-circle "></i>
-                    @if (!is_null($selectImage))
-                        <img src="{{ $selectImage->temporaryUrl() }}" alt="">
+                    @if (!is_null($image))
+                        <img src="{{ $image->temporaryUrl() }}" alt="">
                     @else
                         <img src="{{ asset('assets/images/upload.svg') }}" alt="" srcset="">
                     @endif
                 </label>
 
-                <div id="image-spinner" wire:loading wire:loading.class='card-body text-center'
-                    wire:target='selectImage'>
+                <div id="image-spinner" wire:loading wire:loading.class='card-body text-center' wire:target='image'>
                     <div class="d-flex justify-content-center">
                         <div class="spinner-border" role="status">
                             <span class="visually-hidden">Loading...</span>
@@ -36,16 +35,17 @@
 
         </div>
         <div class="offcanvas-body small p-3 ">
-            <div class="text-danger ms-3">
-                @error('image')
-                    {{ $message }}
-                @enderror
-            </div>
+
             <form wire:submit.prevent="submit" enctype="multipart/form-data">
                 <div class="card border-0">
                     <div class="card-body">
+                        <div class="text-danger m-3">
+                            @error('image')
+                                {{ $message }}
+                            @enderror
+                        </div>
                         <div class="">
-                            <input type="file" class="form-control " id="reipce-image" wire:model="selectImage"
+                            <input type="file" class="form-control d-none" id="reipce-image" wire:model="image"
                                 name="image">
 
                             <div class="mb-3">
