@@ -23,7 +23,7 @@ class AddRecipe extends Component
         'protein' => 'required',
         'time' => 'required',
         'calories' => 'required',
-        'image' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg', 'max:10000'],
+        'image' => ['required'],
     ];
 
     public function submit()

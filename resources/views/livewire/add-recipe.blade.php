@@ -41,7 +41,8 @@
                     {{ $message }}
                 @enderror
             </div>
-            <form wire:submit.prevent="submit">
+            <form wire:submit.prevent="submit" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="card border-0">
                     <div class="card-body">
                         <div class="">
