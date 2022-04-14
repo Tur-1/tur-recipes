@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Home;
 
 use Carbon\Carbon;
 use Illuminate\View\Component;
@@ -48,6 +48,7 @@ class Header extends Component
             $welcomeMsg = 'Good Evening';
         }
 
-        return view('components.header', compact('welcomeMsg'));
+
+        return view('components.home.header', compact('welcomeMsg'));
     }
 }

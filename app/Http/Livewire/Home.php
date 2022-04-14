@@ -7,16 +7,18 @@ use Illuminate\Support\Str;
 use App\services\EdamamService;
 use Illuminate\Support\Facades\Http;
 use App\Exceptions\RecipeResponseException;
+use App\services\SpoonacularApiService;
 use Carbon\Carbon;
 
 class Home extends Component
 {
     public $categories;
-    public $msg;
+    public $showRecipe = false;
+    public $recipe;
+
     public $SearchValue;
     public $recipes = [];
-    public $recipeIngredients = [];
-    public $baseUri = '';
+
     public $recipeName = null;
     public $recommendMeal;
     public $recommendRecipes = [];
@@ -50,7 +52,7 @@ class Home extends Component
         }
 
         try {
-            $this->recipes =  (new EdamamService())->getRecipes($this->recipeName);
+            $this->recipes =  (new SpoonacularApiService())->getRecipes($this->recipeName, '20');
 
             $this->recipes = collect($this->recipes);
             $this->topRecipes = $this->recipes->take(5);
@@ -110,13 +112,15 @@ class Home extends Component
 
 
         try {
-            $recommendRecipes =  (new EdamamService())->getRecipes($this->recommendMeal);
+            $recommendRecipes =  (new SpoonacularApiService())->getRecipes($this->recommendMeal, 10);
         } catch (RecipeResponseException $ex) {
             dd($ex->getMessage());
         }
 
         return $recommendRecipes;
     }
+
+
     public function render()
     {
 

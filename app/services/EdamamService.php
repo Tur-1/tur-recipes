@@ -37,17 +37,14 @@ class EdamamService
             'q' => $recipeName,
             'app_id' =>  $this->apiId,
             'app_key' =>  $this->apiKey,
+
             'field' => [
                 'label',
                 'image',
                 'ingredientLines',
-                'totalNutrients' => [
-                    'FAT',
-                    'PROCNT',
-                    'CHOCDF.net'
-                ],
+                'totalTime',
                 'calories',
-            ]
+            ],
 
         ];
     }

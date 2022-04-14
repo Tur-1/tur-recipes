@@ -1,8 +1,9 @@
-<nav class="navbar sticky-top">
+<nav class="navbar">
     <div class="container-fluid">
         <div class="user-container">
-            <span class="user-name"> {{ $welcomeMsg . ' ' . auth()->user()?->name }} </span>
-            <span>what do you want to cook today?</span>
+            <span>{{ $welcomeMsg }}</span>
+            <span class="user-name"> {{ auth()->user()?->name }} TUrki </span>
+
         </div>
 
         <a href="{{ route('login') }}" class="user-imge-container">

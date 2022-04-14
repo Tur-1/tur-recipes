@@ -2,9 +2,9 @@
 
 use App\Http\Livewire\Home;
 use App\Http\Livewire\Recipes;
+use App\Http\Livewire\RecipeDetail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +22,5 @@ Auth::routes();
 Route::get('/', Home::class);
 
 Route::get('/recipes', Recipes::class)->name('recipes');
+
+Route::get('/recipe/{id}', RecipeDetail::class)->name('recipeDetail');

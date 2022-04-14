@@ -51,6 +51,7 @@ a {
 
 /************* navbar  **********************/
 .navbar {
+    padding-top: 30px;
     background-color: var(--main-bg-color) !important;
 }
 
@@ -64,11 +65,13 @@ a {
 .user-container .user-name {
     padding-bottom: 10px;
     font-weight: 700;
+    font-size: 19px;
 }
 
-.user-container span:last-child {
-    font-size: 12px;
+.user-container span:first-child {
+    font-size: 13px;
     color: #8a8a8a;
+    font-weight: 600;
 }
 
 .user-imge-container {
@@ -115,7 +118,7 @@ footer ul li a i {
     border: 1px solid white;
     color: var(--main-color) !important;
     border-radius: 100%;
-    transform: scale(2.1);
+    transform: scale(2.2);
 
 }
 
@@ -138,7 +141,7 @@ main#app {
 
 /************* search  **********************/
 .search-field {
-    margin: 20px 10px !important;
+    margin: 10px 10px !important;
 
 }
 
@@ -227,6 +230,7 @@ main#app {
 .recommend-recipes-row .card .card-image-container img {
     height: 100%;
     width: 100%;
+    object-fit: cover;
 }
 
 
@@ -249,7 +253,6 @@ main#app {
 .recommend-recipes-row .card .card-body .recipe-kcal-Time {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     color: #bcbcbc;
     font-size: 13px;
 }

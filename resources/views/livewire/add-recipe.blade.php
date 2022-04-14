@@ -21,7 +21,7 @@
                         <img src="{{ asset('assets/images/upload.svg') }}" alt="" srcset="">
                     @endif
                 </label>
-                <input class="form-control d-none" id="reipce-image" wire:model="image" type="file">
+
                 <div id="image-spinner" wire:loading wire:loading.class='card-body text-center' wire:target='image'>
                     <div class="d-flex justify-content-center">
                         <div class="spinner-border" role="status">
@@ -45,6 +45,8 @@
                 <div class="card border-0">
                     <div class="card-body">
                         <div class="">
+                            <input class="form-control d-none" id="reipce-image" wire:model="image" name="image"
+                                type="file">
                             <div class="mb-3">
                                 <label for="reipce_name" class="form-label">reipce name</label>
                                 <input type="text"

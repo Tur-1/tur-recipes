@@ -11,8 +11,8 @@ class AddRecipe extends Component
     use WithFileUploads;
 
     public $ingredientsFields = [];
-    public $reipce_name, $fat, $carbs, $protein, $time, $calories, $image, $instructions, $ingredients;
-
+    public $reipce_name, $fat, $carbs, $protein, $time, $calories, $instructions, $ingredients;
+    public  $image;
 
     protected $rules = [
         'reipce_name' => 'required',
