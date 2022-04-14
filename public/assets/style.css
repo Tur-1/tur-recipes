@@ -90,21 +90,21 @@ a {
 /************* footer  **********************/
 footer {
     position: fixed;
-    bottom: 0;
+    bottom: 10px;
     left: 0;
+    right: 0;
     background-color: white !important;
-    width: 100%;
+    width: 99%;
+    margin: 0px 2px;
     align-items: center;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    padding-bottom: 10px;
+    border-radius: 15px;
     border: 1px solid #eaeaea;
 }
 
 footer ul {
     justify-content: space-around;
     align-items: center;
-    padding: 5px;
+    padding: 10px;
     font-size: 20px;
 
 }
@@ -118,7 +118,7 @@ footer ul li a i {
     border: 1px solid white;
     color: var(--main-color) !important;
     border-radius: 100%;
-    transform: scale(2.2);
+    transform: scale(2.3);
 
 }
 

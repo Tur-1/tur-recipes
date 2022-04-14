@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('reipces', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->string('reipce_name');
+            $table->string('title');
             $table->string('fat');
             $table->string('carbs');
             $table->string('protein');

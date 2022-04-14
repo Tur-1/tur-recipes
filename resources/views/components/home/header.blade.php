@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="user-container">
             <span>{{ $welcomeMsg }}</span>
-            <span class="user-name"> {{ auth()->user()?->name }} TUrki </span>
+            <span class="user-name"> {{ auth()->user()?->name }} </span>
 
         </div>
 
