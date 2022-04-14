@@ -12,17 +12,17 @@
 
             </div>
             <div class="image-container">
-
-                <label wire:loading.remove wire:target='image' for="reipce-image">
+                <label wire:loading.remove wire:target='selectImage' for="reipce-image">
                     <i class="fa fa-plus-circle "></i>
-                    @if (!is_null($image))
-                        <img src="{{ $image->temporaryUrl() }}" alt="">
+                    @if (!is_null($selectImage))
+                        <img src="{{ $selectImage->temporaryUrl() }}" alt="">
                     @else
                         <img src="{{ asset('assets/images/upload.svg') }}" alt="" srcset="">
                     @endif
                 </label>
 
-                <div id="image-spinner" wire:loading wire:loading.class='card-body text-center' wire:target='image'>
+                <div id="image-spinner" wire:loading wire:loading.class='card-body text-center'
+                    wire:target='selectImage'>
                     <div class="d-flex justify-content-center">
                         <div class="spinner-border" role="status">
                             <span class="visually-hidden">Loading...</span>
@@ -41,13 +41,13 @@
                     {{ $message }}
                 @enderror
             </div>
-            <form wire:submit.prevent="submit" method="POST" enctype="multipart/form-data">
-                @csrf
+            <form wire:submit.prevent="submit" enctype="multipart/form-data">
                 <div class="card border-0">
                     <div class="card-body">
                         <div class="">
-                            <input class="form-control d-none" id="reipce-image" wire:model="image" name="image"
-                                type="file">
+                            <input type="file" class="form-control " id="reipce-image" wire:model="selectImage"
+                                name="image">
+
                             <div class="mb-3">
                                 <label for="reipce_name" class="form-label">reipce name</label>
                                 <input type="text"
@@ -156,8 +156,6 @@
                         <button type="submit" class="btn btn-primary  float-end">Save</button>
                     </div>
                 </div>
-
-
             </form>
 
         </div>

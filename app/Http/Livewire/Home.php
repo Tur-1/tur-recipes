@@ -80,7 +80,7 @@ class Home extends Component
 
 
 
-        $this->recommendRecipes = $this->getRecommendRecipes();
+        // $this->recommendRecipes = $this->getRecommendRecipes();
 
         $this->categories =  $this->getCategories();
     }

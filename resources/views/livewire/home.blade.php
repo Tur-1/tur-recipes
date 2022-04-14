@@ -14,8 +14,8 @@
 
 
     @include('components.layouts.livewire-loading')
-
-    @include('components.layouts.footer')
+    <livewire:add-recipe>
+        @include('components.layouts.footer')
 
 </div>
 

@@ -447,6 +447,10 @@ main#app {
     position: relative;
 }
 
+.top-recipe-offcanvas .offcanvas-header .image-container img {
+    object-fit: cover;
+}
+
 .image-container,
 .image-container img,
 .image-container label {
@@ -454,6 +458,7 @@ main#app {
     border-bottom-right-radius: 20px;
     height: 100%;
     width: 100%;
+
 
 }
 

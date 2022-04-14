@@ -12,7 +12,7 @@
 
     <main id="app">
         {{ $slot }}
-        <livewire:add-recipe>
+
     </main>
 
 
