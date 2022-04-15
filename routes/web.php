@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', Home::class);
+Route::get('/', Home::class)->name('home');
 
 Route::get('/recipes', Recipes::class)->name('recipes');
 

@@ -74,15 +74,26 @@ class Home extends Component
 
         ]);
     }
+    public function getRandomRecipes()
+    {
+        try {
+            $this->recipes =  (new SpoonacularApiService())->getRecipes($this->categories->pluck('name'), '20');
 
+            $this->recipes = collect($this->recipes);
+            $this->topRecipes = $this->recipes->take(5);
+        } catch (RecipeResponseException $ex) {
+            abort(404);
+        }
+    }
     public function mount()
     {
 
 
 
-        // $this->recommendRecipes = $this->getRecommendRecipes();
+        $this->recommendRecipes = $this->getRecommendRecipes();
 
         $this->categories =  $this->getCategories();
+        $this->getRandomRecipes();
     }
     public function getRecommendRecipes()
     {

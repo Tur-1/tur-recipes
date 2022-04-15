@@ -17,7 +17,8 @@
                     @if (!is_null($image))
                         <img src="{{ $image->temporaryUrl() }}" alt="">
                     @else
-                        <img src="{{ asset('assets/images/upload.svg') }}" alt="" srcset="">
+                        <img src="{{ asset('assets/images/upload.svg') }}" alt="" srcset=""
+                            style="object-fit: contain;">
                     @endif
                 </label>
 
@@ -38,7 +39,7 @@
 
             <form wire:submit.prevent="submit" enctype="multipart/form-data">
                 <div class="card border-0">
-                    <div class="card-body">
+                    <div class="card-body mb-5">
                         <div class="text-danger m-3">
                             @error('image')
                                 {{ $message }}
@@ -77,7 +78,7 @@
                             </div>
 
                         </div>
-                        <div class="row d-flex justify-content-center  mb-2">
+                        <div class="row d-flex justify-content-center  mb-3 mt-3">
                             <div class="col-3">
                                 <label for="protin" class="form-label"> Carbs</label>
                                 <input type="number" placeholder="25" wire:model.lazy='carbs'
@@ -101,7 +102,7 @@
                         </div>
 
 
-                        <div class="ingredients ">
+                        <div class="ingredients  mt-4">
                             <ul class="nav nav-tabs|pills" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active"
@@ -133,10 +134,10 @@
                                     @endforeach
 
 
-                                    <div class="mt-4">
+                                    {{-- <div class="mt-4">
                                         <button type="button" wire:click.prevent='addNewFields' class="btn btn-primary">
                                             <i class="fa fa-plus-circle me-2"></i>new ingredients</button>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="tab-pane" id="instructions-dinner-tonight-custardy-popovers-4"
                                     role="tabpanel"
@@ -152,7 +153,9 @@
                         </div>
 
                     </div>
-                    <div class="card-footer bg-transparent">
+                    <div class="card-footer bg-light position-fixed bottom-0 w-100">
+                        <button type="button" wire:click.prevent='addNewFields' class="btn btn-primary float-start">
+                            <i class="fa fa-plus-circle me-2"></i>new ingredients</button>
                         <button type="submit" class="btn btn-primary  float-end">Save</button>
                     </div>
                 </div>

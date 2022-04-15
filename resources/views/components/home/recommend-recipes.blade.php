@@ -4,7 +4,7 @@
 
 
         @foreach ($recommendRecipes as $recipe)
-            <a class="card" wire:click.prevent='showRecipe({{ $recipe['id'] }})'>
+            <a class="card" href="{{ route('recipeDetail', ['id' => $recipe['id']]) }}">
                 <div class="card-image-container">
                     <img src="{{ $recipe['image'] }}" alt="...">
                 </div>
