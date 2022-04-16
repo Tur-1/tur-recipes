@@ -35,7 +35,7 @@ class SpoonacularApiService
 
 
         $responseInfo = collect($responseInfo->json())->filter(function ($recipe) {
-            return isset($recipe['image']);
+            return isset($recipe['image']) && isset($recipe['id']);
         })->toArray();
 
 
@@ -61,6 +61,7 @@ class SpoonacularApiService
                 'dish_types' => $dish_types,
             ];
         })->toArray();
+
 
 
         return $recipes;
