@@ -23,7 +23,8 @@ class SpoonacularApiService
             ->get($randomRecipesAccessPoint, $this->getRecipesQuery());
 
 
-        $ids = collect($response['recipes'])->pluck('id');
+
+        $ids = collect($response['results'])->pluck('id');
         $ids = $ids->toJson();
 
         $responseInfo = Http::withHeaders(['Content-Type' => 'application/json'])
@@ -72,7 +73,7 @@ class SpoonacularApiService
         return [
 
             'apiKey' => $this->apiKey,
-            'number' => 5000,
+            'number' => 2,
 
         ];
     }
