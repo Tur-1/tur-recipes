@@ -31,7 +31,7 @@ class SpoonacularApiService
             ->baseUrl($this->baseUrl)
             ->get($infoPoint, ['apiKey' => $this->apiKey, 'ids' =>   $ids, 'includeNutrition' => 'true']);
 
-        dd($response['recipes'], $responseInfo->json());
+
 
         $recipes = collect($responseInfo->json())->map(function ($recipe) {
             $ingre =  collect($recipe['extendedIngredients'])->map(function ($inr) {
