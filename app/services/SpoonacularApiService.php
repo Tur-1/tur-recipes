@@ -33,13 +33,13 @@ class SpoonacularApiService
 
 
 
-        $recipes = collect($responseInfo->json())->filter(function ($recipe) {
+        $responseInfo = collect($responseInfo->json())->filter(function ($recipe) {
             return isset($recipe['image']);
         })->toArray();
 
 
 
-        $recipes = collect($responseInfo->json())->map(function ($recipe) {
+        $recipes = collect($responseInfo)->map(function ($recipe) {
             $ingre =  collect($recipe['extendedIngredients'])->map(function ($inr) {
                 return  $inr['original'];
             })->toArray();
@@ -74,7 +74,7 @@ class SpoonacularApiService
             'apiKey' => $this->apiKey,
             'query' => ['breakfast', 'lunch', 'dinner', 'pizza', 'burger', 'dessert', 'drinks', 'steak', 'pasta'],
             'tags' => ['breakfast', 'lunch', 'dinner', 'pizza', 'burger', 'dessert', 'drinks', 'steak', 'pasta'],
-            'number' => 5000,
+            'number' => 50,
 
         ];
     }
