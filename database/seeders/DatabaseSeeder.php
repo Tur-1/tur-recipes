@@ -20,7 +20,9 @@ class DatabaseSeeder extends Seeder
         $reecipes = (new SpoonacularApiService())->getRecipes();
 
         foreach ($reecipes as $key => $value) {
-            Recipe::create($value);
+            if (!Recipe::where('id', $value['id'])->exists()) {
+                Recipe::create($value);
+            }
         }
 
 

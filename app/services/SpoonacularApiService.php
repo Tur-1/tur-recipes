@@ -15,7 +15,7 @@ class SpoonacularApiService
 
     public function getRecipes()
     {
-        $randomRecipesAccessPoint = '/random';
+        $randomRecipesAccessPoint = '/complexSearch';
         $infoPoint = '/informationBulk';
 
         $response = Http::withHeaders(['Content-Type' => 'application/json'])
@@ -72,7 +72,6 @@ class SpoonacularApiService
         return [
 
             'apiKey' => $this->apiKey,
-
             'number' => 5000,
 
         ];
