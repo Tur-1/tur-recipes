@@ -98,6 +98,7 @@ class Home extends Component
     public function mount()
     {
 
+
         $this->recommendRecipes =  $this->getAllRecipes($this->getRecommendMeal());
         $this->categories =  $this->getCategories();
         $this->recipes = $this->getAllRecipes();

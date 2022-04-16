@@ -8,7 +8,7 @@ use App\Exceptions\RecipeResponseException;
 
 class SpoonacularApiService
 {
-    private $apiKey = '4f983cf763974d19aa58c0c4333b68e8';
+    private $apiKey = 'd108bc9ce3d246df95f54544865d8ceb';
     private $baseUrl = 'https://api.spoonacular.com/recipes';
 
 
@@ -23,7 +23,6 @@ class SpoonacularApiService
             ->get($randomRecipesAccessPoint, $this->getRecipesQuery());
 
 
-
         $ids = collect($response['recipes'])->pluck('id');
         $ids = $ids->toJson();
 
@@ -33,12 +32,20 @@ class SpoonacularApiService
 
 
 
+
+        $recipes = collect($responseInfo->json())->filter(function ($recipe) {
+            return isset($recipe['image']);
+        })->toArray();
+
+
+
         $recipes = collect($responseInfo->json())->map(function ($recipe) {
             $ingre =  collect($recipe['extendedIngredients'])->map(function ($inr) {
                 return  $inr['original'];
             })->toArray();
 
-            $dish_types =  collect($recipe['dishTypes'])->__toString();
+            $str =  collect($recipe['dishTypes'])->__toString();
+            $dish_types = str_replace(['"', '[', ']'], ' ', $str);
 
             return [
                 'title' => $recipe['title'],
@@ -53,7 +60,6 @@ class SpoonacularApiService
                 'dish_types' => $dish_types,
             ];
         })->toArray();
-
 
 
         return $recipes;
