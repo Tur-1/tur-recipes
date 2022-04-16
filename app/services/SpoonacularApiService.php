@@ -8,7 +8,7 @@ use App\Exceptions\RecipeResponseException;
 
 class SpoonacularApiService
 {
-    private $apiKey = 'd108bc9ce3d246df95f54544865d8ceb';
+    private $apiKey = '025d82f526a2435f81db25c2971b42fa';
     private $baseUrl = 'https://api.spoonacular.com/recipes';
 
 
@@ -73,7 +73,7 @@ class SpoonacularApiService
         return [
 
             'apiKey' => $this->apiKey,
-            'number' => 2,
+            'number' => 5000,
 
         ];
     }
