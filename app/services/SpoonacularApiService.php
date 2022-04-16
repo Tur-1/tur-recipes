@@ -15,7 +15,7 @@ class SpoonacularApiService
 
     public function getRecipes()
     {
-        $randomRecipesAccessPoint = '/complexSearch';
+        $randomRecipesAccessPoint = '/random';
         $infoPoint = '/informationBulk';
 
         $response = Http::withHeaders(['Content-Type' => 'application/json'])
@@ -24,7 +24,7 @@ class SpoonacularApiService
 
 
 
-        $ids = collect($response['results'])->pluck('id');
+        $ids = collect($response['recipes'])->pluck('id');
         $ids = $ids->toJson();
 
         $responseInfo = Http::withHeaders(['Content-Type' => 'application/json'])
@@ -49,6 +49,7 @@ class SpoonacularApiService
             $dish_types = str_replace(['"', '[', ']'], ' ', $str);
 
             return [
+                'idd' => $recipe['id'],
                 'title' => $recipe['title'],
                 'ready_in_minutes' => $recipe['readyInMinutes'],
                 'instructions' =>  $recipe['instructions'],
@@ -74,7 +75,7 @@ class SpoonacularApiService
         return [
 
             'apiKey' => $this->apiKey,
-            'number' => 5000,
+            'number' => 100,
 
         ];
     }
