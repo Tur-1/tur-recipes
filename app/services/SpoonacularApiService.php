@@ -8,7 +8,7 @@ use App\Exceptions\RecipeResponseException;
 
 class SpoonacularApiService
 {
-    private $apiKey = '6ca57dbf85bf4601b5c70201444b91a3';
+    private $apiKey = '4f983cf763974d19aa58c0c4333b68e8';
     private $baseUrl = 'https://api.spoonacular.com/recipes';
 
 
@@ -57,21 +57,12 @@ class SpoonacularApiService
 
     public function getRecipesQuery()
     {
-        $cats = collect([
-            ['id' => 1, 'name' => 'pizza', 'imageUrl' => asset('assets/images/pizza-clip-art-15.png')],
-            ['id' => 2, 'name' => 'burger ', 'imageUrl' => asset('assets/images/burgur.png')],
-            ['id' => 3, 'name' => 'dessert', 'imageUrl' => asset('assets/images/8-86854_food-dessert-cupcake-muffin-clipart-hd-png-download.png')],
-            ['id' => 4, 'name' => 'drinks', 'imageUrl' => asset('assets/images/drinks.jpg')],
-            ['id' => 5, 'name' => 'steak', 'imageUrl' => asset('assets/images/steak.png')],
-            ['id' => 6, 'name' => 'pasta', 'imageUrl' => asset('assets/images/5-57766_pasta-png-spaghetti-png.png')],
 
-        ]);
 
         return [
 
             'apiKey' => $this->apiKey,
-            'query' =>   $cats->pluck('name')->__toString(),
-            'tags' => ['breakfast', 'lunch', 'dinner'],
+            'tags' => ['breakfast', 'lunch', 'dinner', 'pizza', 'burger', 'dessert', 'drinks', 'steak', 'pasta'],
             'number' => 1000
         ];
     }
