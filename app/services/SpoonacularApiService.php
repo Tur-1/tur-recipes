@@ -15,21 +15,23 @@ class SpoonacularApiService
 
     public function getRecipes()
     {
-        $randomRecipesAccessPoint = '/complexSearch';
+        $randomRecipesAccessPoint = '/random';
         $infoPoint = '/informationBulk';
 
         $response = Http::withHeaders(['Content-Type' => 'application/json'])
             ->baseUrl($this->baseUrl)
             ->get($randomRecipesAccessPoint, $this->getRecipesQuery());
 
-        $ids = collect($response['results'])->pluck('id');
+
+
+        $ids = collect($response['recipes'])->pluck('id');
         $ids = $ids->toJson();
 
         $responseInfo = Http::withHeaders(['Content-Type' => 'application/json'])
             ->baseUrl($this->baseUrl)
             ->get($infoPoint, ['apiKey' => $this->apiKey, 'ids' =>   $ids, 'includeNutrition' => 'true']);
 
-
+        dd($response['recipes'], $responseInfo->json());
 
         $recipes = collect($responseInfo->json())->map(function ($recipe) {
             $ingre =  collect($recipe['extendedIngredients'])->map(function ($inr) {
@@ -52,6 +54,8 @@ class SpoonacularApiService
             ];
         })->toArray();
 
+
+
         return $recipes;
     }
 
@@ -62,8 +66,10 @@ class SpoonacularApiService
         return [
 
             'apiKey' => $this->apiKey,
+            'query' => ['breakfast', 'lunch', 'dinner', 'pizza', 'burger', 'dessert', 'drinks', 'steak', 'pasta'],
             'tags' => ['breakfast', 'lunch', 'dinner', 'pizza', 'burger', 'dessert', 'drinks', 'steak', 'pasta'],
-            'number' => 1000
+            'number' => 5000,
+
         ];
     }
 }
