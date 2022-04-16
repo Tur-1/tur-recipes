@@ -72,9 +72,8 @@ class SpoonacularApiService
         return [
 
             'apiKey' => $this->apiKey,
-            'query' => ['breakfast', 'lunch', 'dinner', 'pizza', 'burger', 'dessert', 'drinks', 'steak', 'pasta'],
-            'tags' => ['breakfast', 'lunch', 'dinner', 'pizza', 'burger', 'dessert', 'drinks', 'steak', 'pasta'],
-            'number' => 50,
+
+            'number' => 5000,
 
         ];
     }
