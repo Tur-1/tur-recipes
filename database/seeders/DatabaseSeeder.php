@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
                     [
 
                         'title' => $recipe['title'],
-                        'ready_in_minutes' => $recipe['readyInMinutes'],
+                        'ready_in_minutes' => $recipe['ready_in_minutes'],
                         'instructions' =>  $recipe['instructions'],
                         'ingredients' => $recipe['ingredients'],
                         'image' => $recipe['image'],
