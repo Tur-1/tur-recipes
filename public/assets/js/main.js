@@ -10,7 +10,7 @@ $('.recommend-recipes-row').slick({
     centerMode: true,
     slidesToShow: 1,
     infinite: true,
-    autoplay: false,
+    autoplay: true,
     swipe: true,
     speed: 1000,
     arrows: false,

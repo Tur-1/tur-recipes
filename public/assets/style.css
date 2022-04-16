@@ -19,16 +19,18 @@
 }
 
 
-body::-webkit-scrollbar {
-    overflow: hidden;
-    display: none;
+::-webkit-scrollbar {
+    overflow-y: hidden !important;
+    display: none !important;
+
 }
+
 
 body {
     background-color: var(--main-bg-color);
     max-width: 700px !important;
     margin: auto;
-    overflow-y: scroll;
+
 
 }
 
