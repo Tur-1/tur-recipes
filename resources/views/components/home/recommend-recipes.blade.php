@@ -4,7 +4,8 @@
 
 
         @foreach ($recommendRecipes as $recipe)
-            <a class="card" href="{{ route('recipeDetail', ['id' => $recipe['id']]) }}">
+            <a class="card" role="button" data-bs-toggle="offcanvas"
+                data-bs-target="#recipe-detail-{{ $recipe['id'] }}">
                 <div class="card-image-container">
                     <img src="{{ $recipe['image'] }}" alt="...">
                 </div>
@@ -15,74 +16,76 @@
                         </span>
                     </div>
                     <div class="recipe-kcal-Time">
-                        <div class="me-3">
+                        <div>
                             <i class="bi bi-stopwatch"></i>
-                            <span>{{ $recipe['readyInMinutes'] }} min</span>
+                            <span>{{ $recipe['ready_in_minutes'] }} </span>
                         </div>
-
-
+                        <div>
+                            <i class="fa-solid fa-fire"></i>
+                            <span>{{ intval($recipe['calories']) }} Kcal</span>
+                        </div>
                     </div>
                 </div>
             </a>
         @endforeach
     </div>
 
-    @if ($showRecipe)
-        <div class="offcanvas offcanvas-end top-recipe-offcanvas " tabindex="-1" data-bs-backdrop="false"
-            id="recipe-{{ $recipe['id'] }}">
+
+
+
+    @foreach ($recommendRecipes as $recipe)
+        <div class="offcanvas offcanvas-end top-recipe-offcanvas" id="recipe-detail-{{ $recipe['id'] }}">
             <div class="offcanvas-header">
                 <div class="header-btns">
 
-                    <button type="button" class="back-btn" data-bs-dismiss="offcanvas"
-                        data-bs-target="#recipe-{{ $recipe['id'] }}" aria-label="Close">
+                    <button type="button" id="closeRecipeDetail" class="back-btn" aria-label="Close"
+                        data-bs-dismiss="offcanvas" data-bs-target="#recipe-detail-{{ $recipe['id'] }}">
                         <i class="bi bi-chevron-left"></i>
                     </button>
-
+                    <button type="button" class="fav-btn">
+                        <i class="bi bi-heart"></i>
+                    </button>
                 </div>
                 <div class="image-container">
-                    <img src="{{ $recipe['image'] }}" alt="...">
+                    <img src=" {{ $recipe['image'] ?? '' }}" alt="...">
                 </div>
 
 
 
             </div>
             <div class="offcanvas-body small">
+                <div class="offcanvas-recipe-details-header">
+                    <div class="card">
 
-                <div class="offcanvas-recipe-details">
-                    <div class="offcanvas-recipe-details-header">
+                        <div class="card-body">
 
-                        <div class="card">
-                            <button type="button" class="btn-fav">
-                                <i class="bi bi-heart"></i>
-                            </button>
-                            <div class="card-body">
+                            <span class="recipe-label text-center">
+                                {{ $recipe['title'] ?? '' }}
 
-                                <span class="recipe-label">
-                                    {{ $recipe['title'] }}
-
-                                </span>
-                                <div class="recipe-time-kcal">
-                                    <div class="time">
-                                        <i class="fa-regular fa-clock"></i>
-                                        <span>{{ $recipe['readyInMinutes'] }} Minute</span>
-                                    </div>
-                                    <span class="recipe-time-kcal-border"></span>
-                                    <div class="rating">
-                                        <i class="fa-regular fa-star"></i>
-                                        <span>3,6</span>
-                                    </div>
-                                    <span class="recipe-time-kcal-border"></span>
-                                    <div class="kcal">
-                                        <i class="fa-solid fa-fire"></i>
-                                        {{-- <span>{{ $recipe['calories'] }} Kcal</span> --}}
-                                    </div>
-
-
+                            </span>
+                            <div class="recipe-time-kcal">
+                                <div class="time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <span>{{ $recipe['ready_in_minutes'] ?? '' }} Minutes</span>
                                 </div>
+                                <span class="recipe-time-kcal-border"></span>
+                                <div class="rating">
+                                    <i class="fa-regular fa-star"></i>
+                                    <span>3,6</span>
+                                </div>
+                                <span class="recipe-time-kcal-border"></span>
+                                <div class="kcal">
+                                    <i class="fa-solid fa-fire"></i>
+                                    <span>{{ $recipe['calories'] ?? '' }} Kcal</span>
+                                </div>
+
+
                             </div>
                         </div>
-
                     </div>
+
+                </div>
+                <div class="offcanvas-recipe-details">
 
                     <div class="nutrients">
                         <div class="nutrition-row">
@@ -90,15 +93,13 @@
                                 <div class="image-container">
                                     <img src="{{ asset('assets/icons/wheat.png') }}">
                                 </div>
-                                <span>{{ $recipe['carbs'] }}
-                                    carbs</span>
+                                <span> {{ $recipe['carbs'] ?? '' }} carbs</span>
                             </div>
                             <div class="nutrition-element">
                                 <div class="image-container">
                                     <img src="{{ asset('assets/icons/pizza-slice.png') }}">
                                 </div>
-                                <span>{{ $recipe['fat'] }}
-                                    Fat</span>
+                                <span>{{ $recipe['fat'] ?? '' }} Fat</span>
                             </div>
                         </div>
                         <div class="nutrition-row">
@@ -106,7 +107,7 @@
                                 <div class="image-container">
                                     <img src="{{ asset('assets/icons/avocado.png') }}">
                                 </div>
-                                <span> {{ $recipe['protein'] }} protein</span>
+                                <span> {{ $recipe['protein'] ?? '' }} protein</span>
                             </div>
                         </div>
 
@@ -134,20 +135,27 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="ingredients-{{ $recipe['id'] }}" role="tabpanel"
                                 aria-labelledby="ingredients-{{ $recipe['id'] }}-tab">
-                                @foreach ($recipe['extendedIngredients'] as $ingredient)
+                                @foreach ($recipe['ingredients'] ?? [] as $Ingredient)
                                     <div class="card ingredients-card">
                                         <div class="card-body">
                                             <p class="card-text">
-                                                {{ $ingredient['original'] }}
+                                                {{ $Ingredient }}
                                             </p>
                                         </div>
                                     </div>
                                 @endforeach
 
+
+
                             </div>
                             <div class="tab-pane" id="instructions-{{ $recipe['id'] }}" role="tabpanel"
                                 aria-labelledby="instructions-{{ $recipe['id'] }}-tab">
-                                {{ $recipe['instructions'] }}
+
+
+                                <div class="mt-3 mb-3 bg-light p-3 rounded ">
+                                    {!! $recipe['instructions'] ?? '' !!}
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -155,8 +163,10 @@
                 </div>
             </div>
         </div>
+    @endforeach
 
-    @endif
+
+
 
 
 </div>

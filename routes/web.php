@@ -22,5 +22,3 @@ Auth::routes();
 Route::get('/', Home::class)->name('home');
 
 Route::get('/recipes', Recipes::class)->name('recipes');
-
-Route::get('/recipe/{id}', RecipeDetail::class)->name('recipeDetail');

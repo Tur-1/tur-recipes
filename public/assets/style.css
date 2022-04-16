@@ -18,10 +18,17 @@
     border: none !important;
 }
 
+
+body::-webkit-scrollbar {
+    overflow: hidden;
+    display: none;
+}
+
 body {
     background-color: var(--main-bg-color);
     max-width: 700px !important;
     margin: auto;
+    overflow-y: scroll;
 
 }
 
@@ -51,7 +58,7 @@ a {
 
 /************* navbar  **********************/
 .navbar {
-    padding-top: 30px;
+
     background-color: var(--main-bg-color) !important;
 }
 
@@ -176,7 +183,7 @@ main#app {
 
 .recommend-recipes {
 
-    margin: 30px 0px !important;
+    margin: 20px 0px !important;
 
 }
 
@@ -187,16 +194,12 @@ main#app {
     font-size: 14px;
 }
 
-.recommend-recipes-row {
-    margin-top: 15px;
-    margin-bottom: 10px;
-}
 
 .recommend-recipes-row .card {
     background-color: var(--main-color) !important;
-    height: 275px !important;
+    min-height: 235px !important;
     margin: 30px;
-    width: 175px !important;
+    width: 150px !important;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0.3rem 0.125rem 0.34rem rgb(0 0 0 / 20%) !important;
@@ -206,23 +209,22 @@ main#app {
 
 .recommend-recipes-row .card.slick-center {
     transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -o-transform: scale(1.1);
+
 }
 
 .recommend-recipes-row .card .card-body {
     position: absolute;
     bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .recommend-recipes-row .card .card-image-container {
     position: absolute;
     right: -5px;
     top: 15px;
-    height: 150px;
-    width: 150px;
+    height: 125px;
+    width: 125px;
     border-radius: 9999px;
     overflow: hidden;
     box-shadow: 0.35rem 0.125rem 0.34rem rgb(0 0 0 / 60%) !important;
@@ -240,7 +242,7 @@ main#app {
 
 
 .recommend-recipes-row .card .card-body .card-title {
-    font-size: 15px;
+    font-size: 13px;
     color: white;
     overflow: hidden;
     vertical-align: middle;
@@ -254,6 +256,7 @@ main#app {
 .recommend-recipes-row .card .card-body .recipe-kcal-Time {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     color: #bcbcbc;
     font-size: 13px;
 }
@@ -419,6 +422,7 @@ main#app {
 .top-recipe-offcanvas .offcanvas-body::-webkit-scrollbar {
     overflow: hidden;
     display: none;
+    z-index: 796896896896896789898;
 }
 
 .top-recipe-offcanvas {
@@ -559,14 +563,13 @@ main#app {
 .offcanvas-recipe-details-header .recipe-time-kcal i {
     font-size: 19px;
     color: #ffb81e;
-    margin-bottom: 5px;
 }
 
 .offcanvas-recipe-details-header .recipe-time-kcal>div {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    align-items: center;
+    gap: 9px;
 }
 
 .offcanvas-recipe-details-header .recipe-time-kcal .recipe-time-kcal-border {
@@ -652,6 +655,12 @@ main#app {
 
 }
 
+.ingredients .tab-content>.tab-pane {
+
+    font-weight: 600;
+    text-align: left;
+    font-size: 16px;
+}
 
 
 .offcanvas-body form {
@@ -680,6 +689,11 @@ main#app {
 /************* allRecipes-offcanvas  **********************/
 .offcanvas-end {
     width: 100% !important;
+}
+
+.allRecipes .allRecipes-body::-webkit-scrollbar {
+    overflow: hidden;
+    display: none;
 }
 
 .allRecipes {
@@ -715,7 +729,6 @@ main#app {
 
 .allRecipes.show {
     transform: none;
-
 }
 
 

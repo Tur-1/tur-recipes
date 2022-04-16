@@ -13,18 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reipces', function (Blueprint $table) {
+        Schema::create('recipes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
             $table->string('title');
             $table->string('fat');
             $table->string('carbs');
             $table->string('protein');
             $table->string('calories')->nullable();
-            $table->string('time')->nullable();
+            $table->string('ready_in_minutes')->nullable();
             $table->string('image');
             $table->longText('instructions')->nullable();
             $table->json('ingredients')->nullable();
+            $table->string('dish_types');
+
 
             $table->timestamps();
         });

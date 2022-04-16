@@ -12,14 +12,17 @@
 
     @include('components.home.top-recipes')
 
+    @include('components.home.all-recipes')
+
+    @include('components.home.recipe-detail')
 
     @include('components.layouts.livewire-loading')
+
+    @include('components.layouts.footer')
+
     <livewire:add-recipe>
-        @include('components.layouts.footer')
 
 </div>
-
-
 
 
 
@@ -29,6 +32,7 @@
     <script>
         let seeAllRecipesBtn = document.getElementById('seeAllRecipes');
         let closeAllRecipesBtn = document.getElementById('closeAllRecipes');
+
 
         seeAllRecipesBtn.addEventListener("click", (e) => {
             let allRecipes = document.getElementById('allRecipes');

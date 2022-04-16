@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('fav_reipces', function (Blueprint $table) {
+        Schema::create('fav_recipes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('reipce_id')->constrained('reipces')->cascadeOnDelete();
+            $table->foreignId('reipce_id')->constrained('recipes')->cascadeOnDelete();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
         });
     }
