@@ -7,6 +7,17 @@
     scroll-behavior: smooth;
 }
 
+
+
+.form-control:focus,
+a:focus,
+button:focus,
+input:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
 :root {
     --main-color: #26908C;
     --main-bg-color: #f0f0f0;
@@ -46,10 +57,11 @@ body {
 
 #spinner {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-40%, -50%);
     color: var(--main-color);
+
 }
 
 
@@ -60,7 +72,7 @@ a {
 
 /************* navbar  **********************/
 .navbar {
-
+    padding: 15px 5px;
     background-color: var(--main-bg-color) !important;
 }
 
@@ -84,8 +96,8 @@ a {
 }
 
 .user-imge-container {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border-radius: 9999px;
 
 }
@@ -121,8 +133,11 @@ footer ul {
 
 footer ul li a i {
     color: #4a4a4a;
-
+    border-radius: 100%;
 }
+
+
+
 
 .add-recipe-icon a i {
     border: 1px solid white;
@@ -132,9 +147,6 @@ footer ul li a i {
 
 }
 
-li.nav-item.add-recipe-icon {
-    margin-top: -5px;
-}
 
 
 main#app {
@@ -244,6 +256,8 @@ main#app {
 
 
 .recommend-recipes-row .card .card-body .card-title {
+    max-height: 45px;
+    max-width: 125px;
     font-size: 13px;
     color: white;
     overflow: hidden;
@@ -442,7 +456,8 @@ main#app {
     position: relative;
 }
 
-.top-recipe-offcanvas .offcanvas-header .header-btns {
+.top-recipe-offcanvas .offcanvas-header .header-btns,
+.header-btns {
     position: absolute;
     top: 14px;
     z-index: 4234343;
@@ -461,8 +476,7 @@ main#app {
 }
 
 .image-container,
-.image-container img,
-.image-container label {
+.image-container img {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     height: 100%;
@@ -472,9 +486,9 @@ main#app {
 }
 
 .top-recipe-offcanvas .offcanvas-header .back-btn,
+.back-btn,
 .fav-btn {
     background-color: var(--main-bg-color);
-    color: black;
     width: 40px !important;
     height: 40px !important;
     line-height: 40px;
@@ -485,10 +499,25 @@ main#app {
 
 }
 
-.top-recipe-offcanvas .offcanvas-header .back-btn,
-.fav-btn i {
+.top-recipe-offcanvas .offcanvas-header .back-btn i,
+.back-btn i {
     font-size: 19px;
     font-weight: bold;
+}
+
+.fav-icon {
+    width: 26px !important;
+    height: 26px !important;
+    font-weight: bold;
+    stroke: black;
+    stroke-width: 2;
+
+    fill: none;
+}
+
+.fav-icon.in-favorite-list {
+    stroke: none;
+    fill: #51c0a9;
 }
 
 .btn-fav {
@@ -665,29 +694,6 @@ main#app {
 }
 
 
-.offcanvas-body form {
-    overflow-x: hidden !important;
-}
-
-.image-container label>i {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 80px;
-    opacity: 0.5;
-    color: #4b4b4b;
-}
-
-.image-container #image-spinner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #26908C;
-
-}
-
 /************* allRecipes-offcanvas  **********************/
 .offcanvas-end {
     width: 100% !important;
@@ -738,4 +744,92 @@ main#app {
     padding: 0px 15px 0px 35px;
     overflow-y: scroll;
     overflow-x: hidden !important;
+}
+
+/************* new recipe offcanvas  **********************/
+.recipe-input {
+    background-color: white;
+    border-radius: 9999px !important;
+    border: 0.1px solid #ced4daa8 !important;
+    box-shadow: 0.3rem 0.125rem 0.34rem rgba(0, 0, 0, .075) !important;
+
+}
+
+
+
+.offcanvas-body form {
+    overflow-x: hidden !important;
+}
+
+.imageContainer {
+    height: 320px;
+    width: 320px;
+    margin: 0px auto;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.imageContainer label {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.imageContainer img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.upload-image {
+    width: 287px !important;
+
+}
+
+.imageContainer label>i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    opacity: 0.2;
+    color: #4b4b4b;
+}
+
+.imageContainer #image-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #26908C;
+
+}
+
+
+
+.icon-primary i {
+    text-align: center;
+    color: var(--main-color);
+    font-size: 40px;
+}
+
+.form-submit-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--main-color);
+    border-radius: 100%;
+    text-align: center;
+}
+
+.form-submit-icon i {
+    text-align: center;
+    color: white;
+    font-size: 29px;
+    line-height: 40px;
+}
+
+#new-ingredients .icon-primary i {
+    margin: 20px 0px;
+
+
 }

@@ -11,8 +11,7 @@
     <x-layouts.loading />
 
     <main id="app">
-        {{ $slot }}
-
+        @yield('content')
     </main>
 
 

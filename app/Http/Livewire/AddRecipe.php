@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Reipce;
+use App\Models\Recipe;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -32,7 +32,7 @@ class AddRecipe extends Component
         $validated = $this->validate();
 
 
-        Reipce::create($validated);
+        // Recipe::create($validated);
     }
 
     public function mount()

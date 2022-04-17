@@ -1,7 +1,7 @@
 <div class="allRecipes offcanvas-end" id="allRecipes">
     <div class="header">
         <button type="button" id="closeAllRecipes">
-            <i class="bi bi-chevron-left"></i>
+            <i class="fas fa-chevron-left"></i>
         </button>
         <h5 class="allRecipesLabel">recipes</h5>
         <div></div>
@@ -9,7 +9,8 @@
     <div class="allRecipes-body">
 
         @foreach ($recipes as $recipe)
-            <a class="top-recipe-item" data-bs-toggle="offcanvas" data-bs-target="#recipe-detail-{{ $recipe['id'] }}">
+            <a role="button" href="#" class="top-recipe-item" data-bs-toggle="offcanvas"
+                data-bs-target="#recipe-detail-{{ $recipe['id'] }}">
                 <div class="image-container">
                     <img src="{{ $recipe['image'] }}">
                 </div>

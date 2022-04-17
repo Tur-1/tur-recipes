@@ -25,9 +25,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="{{ asset('assets/style.css?v=') . time() }}">
-    @livewireStyles
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css?v=') . time() }}">
+    <livewire:styles />
 
 </head>

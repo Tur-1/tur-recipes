@@ -1,13 +1,14 @@
 <div class="top-recipes">
     <div class="header">
         <strong>Top {{ count($topRecipes) > 5 ? 5 : count($topRecipes) }} recipes</strong>
-        <a type="button" class="border-0 bg-transparent" id="seeAllRecipes">
+        <a role="button" href="#" class="border-0 bg-transparent" id="seeAllRecipes">
             <small class="see-all">see All</small>
         </a>
     </div>
     <div class="top-recipes-row">
         @forelse ($topRecipes as $recipe)
-            <a class="top-recipe-item" data-bs-toggle="offcanvas" data-bs-target="#recipe-detail-{{ $recipe['id'] }}">
+            <a role="button" href="#" class="top-recipe-item" data-bs-toggle="offcanvas"
+                data-bs-target="#recipe-detail-{{ $recipe['id'] }}">
                 <div class="image-container">
                     <img src="{{ $recipe['image'] }}">
                 </div>

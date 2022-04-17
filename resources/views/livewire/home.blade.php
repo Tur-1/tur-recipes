@@ -52,14 +52,24 @@
 
         const categoryItems = [...document.querySelectorAll('.category')];
 
-        categoryItems.forEach(category => {
-            category.addEventListener("click", (e) => {
+        categoryItems.forEach(current_category => {
+            current_category.addEventListener("click", (e) => {
 
-                categoryItems.forEach(allcategory => {
-                    allcategory.classList.remove("active--category");
+                if (!current_category.classList.contains("active--category")) {
+                    current_category.classList.add("active--category");
+                } else {
+                    current_category.classList.remove("active--category");
+
+
+
+                }
+
+                categoryItems.forEach(prev_category => {
+                    if (prev_category.getAttribute("id") != current_category.getAttribute("id")) {
+                        prev_category.classList.remove("active--category");
+                    }
 
                 });
-                category.classList.add("active--category");
 
             });
 

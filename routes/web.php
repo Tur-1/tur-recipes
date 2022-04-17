@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PagesController;
 use App\Http\Livewire\Home;
 use App\Http\Livewire\Recipes;
 use App\Http\Livewire\RecipeDetail;
@@ -18,5 +19,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
-
-Route::get('/', Home::class)->name('home');
+Route::controller(PagesController::class)->group(function () {
+    Route::get('/', 'home')->name('home');
+});

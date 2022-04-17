@@ -7,7 +7,7 @@
         </div>
 
         <a href="{{ route('login') }}" class="user-imge-container">
-            <img src="{{ asset('assets/images/avatar_male.png') }}" alt="">
+            <img src="{{ asset('assets/images/zz.jpg') }}" alt="">
         </a>
     </div>
 </nav>

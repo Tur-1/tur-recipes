@@ -10,8 +10,4 @@ class PagesController extends Controller
     {
         return view('pages.home');
     }
-    public function recipe($recipe_id)
-    {
-        return view('pages.recipe');
-    }
 }

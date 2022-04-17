@@ -3,14 +3,13 @@
 namespace App\Http\Livewire;
 
 use App\Models\Recipe;
-use App\services\SpoonacularApiService;
 use Carbon\Carbon;
 use Livewire\Component;
 
 class Home extends Component
 {
     public $categories = [];
-    public $category = null;
+    public $category;
     public $recipes = [];
     public $topRecipes = [];
 
@@ -18,6 +17,7 @@ class Home extends Component
     public $recipe;
     public $showRecipe = false;
     public $searchValue;
+
 
     public function updated()
     {
@@ -46,14 +46,21 @@ class Home extends Component
 
     public function getRecipesByCategory($categoryId)
     {
-        if (!is_null($categoryId)) {
 
-            $category =   collect($this->categories)->where("id", $categoryId)->first()['name'];
+
+        if (!is_null($this->category) && $this->category['id'] == $categoryId) {
+            $this->recipes = $this->getAllRecipes();
+            return;
+        }
+        if (!is_null($categoryId)) {
+            $this->category =   collect($this->categories)->where("id", $categoryId)->first();
         }
 
-        if (!is_null($category)) {
 
-            $this->recipes = $this->getAllRecipes($category);
+
+        if (!is_null($this->category)) {
+
+            $this->recipes = $this->getAllRecipes($this->category['name']);
         }
     }
 
@@ -97,7 +104,6 @@ class Home extends Component
 
     public function mount()
     {
-
 
         $this->recommendRecipes =  $this->getAllRecipes($this->getRecommendMeal());
         $this->categories =  $this->getCategories();
