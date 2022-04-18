@@ -1,4 +1,4 @@
-<div class="allRecipes offcanvas-end" id="allRecipes">
+<div wire:ignore class="allRecipes offcanvas-end" id="allRecipes">
     <div class="header">
         <button type="button" id="closeAllRecipes">
             <i class="fas fa-chevron-left"></i>
@@ -9,8 +9,8 @@
     <div class="allRecipes-body">
 
         @foreach ($recipes as $recipe)
-            <a role="button" href="#" class="top-recipe-item" data-bs-toggle="offcanvas"
-                data-bs-target="#recipe-detail-{{ $recipe['id'] }}">
+            <a role="button" href="#" class="top-recipe-item"
+                wire:click.prevent='openRecipeModal({{ $recipe['id'] }})'>
                 <div class="image-container">
                     <img src="{{ $recipe['image'] }}">
                 </div>
@@ -22,7 +22,7 @@
                     <div class="recipe-kcal-Time">
 
                         <div>
-                            <i class="bi bi-stopwatch"></i>
+                            <i class="fa-regular fa-clock me-1"></i>
                             <span>{{ $recipe['ready_in_minutes'] }} </span>
                         </div>
                         <div>

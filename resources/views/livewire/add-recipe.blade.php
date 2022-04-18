@@ -49,21 +49,21 @@
                                 <label for="reipce_name" class="form-label">title</label>
                                 <input type="text" placeholder="title"
                                     class="recipe-input form-control  recipe-input form-control-sm   @error('reipce_name') is-invalid @enderror"
-                                    id="reipce_name" wire:model.lazy='reipce_name'>
+                                    id="reipce_name" wire:model.lazy='title'>
 
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
-                                <label for="protin" class="form-label"> Time</label>
-                                <input type="number" placeholder="10 "
+                                <label for="ready_in_minutes" class="form-label"> Time</label>
+                                <input type="number" placeholder="10 " wire:modal.lazy='ready_in_minutes'
                                     class="recipe-input form-control  recipe-input form-control-sm   @error('time') is-invalid @enderror"
                                     id="Time">
 
                             </div>
                             <div class="col-6">
                                 <label for="protin" class="form-label"> Calories </label>
-                                <input type="number" placeholder="397 "
+                                <input type="number" placeholder="397 " wire:modal.lazy='calories'
                                     class="recipe-input form-control  recipe-input form-control-sm  @error('calories') is-invalid @enderror"
                                     id="Calories">
 
@@ -96,6 +96,20 @@
 
 
                         </div>
+                        <div class="row">
+
+                            <div class="form-group">
+                                <label for="dish_types" class="form-label">Categories</label>
+                                <select multiple wire:model.lazy='dish_types' name="dish_types"
+                                    class="form-select form-select-sm rounded-1  @error('dish_types') is-invalid @enderror">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category['name'] }}"> {{ $category['name'] }}</option>
+                                    @endforeach
+
+
+                                </select>
+                            </div>
+                        </div>
 
 
                         <div class="ingredients  mt-4">
@@ -118,7 +132,8 @@
                                 <div class="tab-pane active" id="new-ingredients" role="tabpanel">
 
                                     @foreach ($ingredientsFields as $field)
-                                        <input type="text" placeholder="1 cup" class=" form-control ingredients-card "
+                                        <input type="text" placeholder="1 cup"
+                                            class="input-ingredients form-control ingredients-card "
                                             id=" ingredients-card"
                                             wire:model.debounce.500ms='ingredientsFields.{{ $loop->index }}.ingredient'>
                                     @endforeach
@@ -151,3 +166,15 @@
 
 
 </div>
+@push('script')
+    <script>
+        window.addEventListener("input-field-was-added", (e) => {
+
+            const lastTnputField = document.querySelector("#new-ingredients").lastElementChild
+                .previousElementSibling;
+
+            lastTnputField.scrollIntoView();
+
+        });
+    </script>
+@endpush

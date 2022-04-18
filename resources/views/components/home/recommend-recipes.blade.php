@@ -4,8 +4,7 @@
 
 
         @foreach ($recommendRecipes as $recipe)
-            <a role="button" href="#" class="card" data-bs-toggle="offcanvas"
-                data-bs-target="#recipe-detail-{{ $recipe['id'] }}">
+            <a role="button" href="#" class="card" wire:click.prevent='openRecipeModal({{ $recipe['id'] }})'>
                 <div class="card-image-container">
                     <img src="{{ $recipe['image'] }}" alt="...">
                 </div>
@@ -17,7 +16,7 @@
                     </div>
                     <div class="recipe-kcal-Time">
                         <div>
-                            <i class="bi bi-stopwatch"></i>
+                            <i class="fa-regular fa-clock me-1"></i>
                             <span>{{ $recipe['ready_in_minutes'] }} </span>
                         </div>
                         <div>

@@ -41,7 +41,7 @@ body {
     background-color: var(--main-bg-color);
     max-width: 700px !important;
     margin: auto;
-
+    overflow-y: scroll;
 
 }
 
@@ -312,6 +312,7 @@ main#app {
     display: flex;
     align-items: center;
     overflow: scroll;
+    padding: 10px 0px;
 }
 
 
@@ -328,6 +329,15 @@ main#app {
     box-shadow: 0.3rem 0.125rem 0.34rem rgba(0, 0, 0, .075) !important;
 }
 
+.categories .category:first-child {
+    margin-left: 11px;
+
+}
+
+.categories .category:last-child {
+    margin-right: 15px;
+
+}
 
 .categories .category .image-container {
     text-align: center;

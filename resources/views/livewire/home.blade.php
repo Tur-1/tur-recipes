@@ -74,5 +74,20 @@
             });
 
         });
+
+        $(document).ready(function() {
+            window.addEventListener("open-recipe-modal", (e) => {
+
+                $('#recipe-detail-' + e.detail.recipeId).offcanvas('show');
+
+
+            })
+            window.addEventListener("close-recipe-modal", (e) => {
+
+                $('#recipe-detail-' + e.detail.recipeId).offcanvas('hide');
+
+
+            })
+        });
     </script>
 @endpush
