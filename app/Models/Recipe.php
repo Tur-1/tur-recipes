@@ -39,4 +39,14 @@ class Recipe extends Model
     {
         $this->attributes['ingredients'] = json_encode($value);
     }
+
+    public function getImageAttribute($value)
+    {
+        if (str_starts_with($value, 'http')) {
+            return $value;
+        } else {
+
+            return asset('storage/images/recipes/' . $value);
+        }
+    }
 }

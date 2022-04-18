@@ -1,4 +1,4 @@
-<div wire:ignore class="allRecipes offcanvas-end" id="allRecipes">
+<div wire:ignore.self class="allRecipes allRecipes-end" id="allRecipes">
     <div class="header">
         <button type="button" id="closeAllRecipes">
             <i class="fas fa-chevron-left"></i>
@@ -7,7 +7,6 @@
         <div></div>
     </div>
     <div class="allRecipes-body">
-
         @foreach ($recipes as $recipe)
             <a role="button" href="#" class="top-recipe-item"
                 wire:click.prevent='openRecipeModal({{ $recipe['id'] }})'>

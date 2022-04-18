@@ -30,6 +30,7 @@
 
 @push('script')
     <script>
+        /***********************  all recipes offcanvas  ****************************/
         let seeAllRecipesBtn = document.getElementById('seeAllRecipes');
         let closeAllRecipesBtn = document.getElementById('closeAllRecipes');
 
@@ -50,6 +51,8 @@
 
         });
 
+
+        /***********************  categoryItems  ****************************/
         const categoryItems = [...document.querySelectorAll('.category')];
 
         categoryItems.forEach(current_category => {
@@ -75,6 +78,10 @@
 
         });
 
+
+
+
+        /***********************  recipe detail offcanvas  ****************************/
         $(document).ready(function() {
             window.addEventListener("open-recipe-modal", (e) => {
 

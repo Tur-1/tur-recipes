@@ -163,11 +163,12 @@ main#app {
 
 /************* search  **********************/
 .search-field {
-    margin: 10px 10px !important;
+    margin: 10px 15px !important;
 
 }
 
 .search-field .input-group {
+    padding: 5px;
     background-color: white;
     border-radius: 9999px !important;
     border: none !important;
@@ -458,11 +459,11 @@ main#app {
 
 
 .top-recipe-offcanvas .offcanvas-header {
-    z-index: 12 !important;
     color: white !important;
     margin: 0px !important;
     padding: 0px !important;
-    min-height: 35% !important;
+    width: 100%;
+    max-height: 45% !important;
     position: relative;
 }
 
@@ -482,13 +483,12 @@ main#app {
 }
 
 .top-recipe-offcanvas .offcanvas-header .image-container img {
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .image-container,
 .image-container img {
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+
     height: 100%;
     width: 100%;
 
@@ -539,42 +539,33 @@ main#app {
     box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
 }
 
-.top-recipe-offcanvas .offcanvas-body {
-    z-index: 98989999999999999999999 !important;
-    padding: 0 !important;
-    margin-top: -42px;
-
-}
 
 
 
 
-.offcanvas-recipe-details {
-    margin-bottom: 30px;
-    height: 100%;
-    background-color: white;
-    padding: 10px 15px 30px 15px;
-    color: black;
 
-}
 
 .offcanvas-recipe-details-header {
-    width: 90%;
+    width: 100%;
     text-align: center;
-    margin: 16px 20px;
+    padding: 0px 25px;
+    position: absolute;
+    color: black;
+    bottom: -35px;
+    z-index: 99999999999999568595 !important;
 
 }
 
 .offcanvas-recipe-details-header .card {
     border-radius: 15px;
     border: none !important;
-    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+    box-shadow: 0.3rem 0.125rem 0.34rem rgb(0 0 0 / 20%) !important;
 
 }
 
 .offcanvas-recipe-details-header .card .card-body {
-    margin-top: 20px;
-    padding: 0.5rem;
+    margin-top: 5px;
+    padding: 7px;
 }
 
 .offcanvas-recipe-details-header .header-border {
@@ -616,6 +607,25 @@ main#app {
 .offcanvas-recipe-details-header .recipe-time-kcal .recipe-time-kcal-border {
     border-left: 1px solid rgb(58, 58, 58) !important;
     height: 30px;
+}
+
+/* ******* offcanvas-body ******* */
+
+.top-recipe-offcanvas .offcanvas-body {
+    z-index: 12;
+    padding: 60px 0px 0px 0px !important;
+    margin-top: -25px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: white;
+}
+
+.offcanvas-recipe-details {
+    margin-bottom: 30px;
+    height: 100%;
+    padding: 10px 15px 30px 15px;
+    color: black;
+
 }
 
 .offcanvas-recipe-details .nutrients {
@@ -705,8 +715,16 @@ main#app {
 
 
 /************* allRecipes-offcanvas  **********************/
-.offcanvas-end {
+.allRecipes-end {
     width: 100% !important;
+}
+
+.allRecipes-end {
+    top: 0;
+    right: 0;
+    width: 400px;
+    border-left: 1px solid rgba(0, 0, 0, .2);
+    transform: translateX(100%);
 }
 
 .allRecipes .allRecipes-body::-webkit-scrollbar {
@@ -808,9 +826,9 @@ main#app {
 
 .imageContainer #image-spinner {
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -30%);
     color: #26908C;
 
 }
@@ -842,4 +860,132 @@ main#app {
     margin: 20px 0px;
 
 
+}
+
+/************* login page  **********************/
+
+.login-page {
+    position: relative;
+    overflow: hidden;
+}
+
+.login-page .row {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.login-page .label {
+    margin-left: 20px;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgb(0 0 0), rgb(0 0 0), rgb(0 0 0 / 14%), rgb(0 0 0 / 0%));
+}
+
+.login-page .label h1 {
+    max-width: 50%;
+    color: white;
+    font-weight: 600;
+}
+
+.login-page .label p {
+    color: rgb(159, 159, 159);
+    max-width: 67%;
+    font-size: 15px;
+}
+
+.login-page .login-register-btns {
+
+    display: flex;
+    flex-direction: column;
+    padding: 10px 30px 20px 30px;
+    gap: 1rem;
+
+
+}
+
+.login-page .login-register-btns button {
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+}
+
+.login-page .login-register-btns button:last-child {
+    background-color: transparent;
+    border: 1px solid var(--main-color);
+}
+
+
+
+
+
+
+.userAuth {
+    background-color: #fff;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.userAuthHeading {
+    margin-top: 40px;
+    width: 100%;
+    position: relative;
+    border-bottom: 1px solid #eee;
+}
+
+.userAuthHeadingTab--active,
+.userAuthHeadingTab--invalid {
+    padding: 0.7rem !important;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
+}
+
+
+.userAuthHeadingTab--invalid {
+    color: #c12837 !important;
+    border-bottom: 2px solid #c12837 !important;
+}
+
+.userAuthHeadingTab {
+    color: #51c0a9 !important;
+    border-bottom: 2px solid #51c0a9;
+
+    font-weight: 600;
+    font-size: 15px;
+    height: 50px;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+.userAuthHeading.register__active:after {
+    transform: translateX(100%);
+}
+
+
+
+
+#login-modal .modal-content,
+#register-modal .modal-content {
+    border: none !important;
+    background: transparent !important;
+}
+
+.social-btns li a {
+    margin-top: 15px;
+    border-radius: 5px;
+    padding: 13px 4px !important;
+    font-size: 13px !important;
+    color: #fff;
+    display: block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: 0;
+    text-align: center;
+
+}
+
+
+.social-btns li .btn-danger {
+    background-color: rgb(248, 48, 48) !important;
+    border: none !important;
 }

@@ -17,8 +17,7 @@
 
             <form enctype="multipart/form-data">
                 <div class="imageContainer ">
-                    <label wire:loading.remove wire:target='image' for="reipce-image"
-                        class="d-flex justify-content-center">
+                    <label wire:loading.remove wire:target='image' for="reipce-image" class="text-center">
                         <i class="fa fa-plus-circle "></i>
                         @if (!is_null($image))
                             <img src="{{ $image->temporaryUrl() }}" alt="">
@@ -26,8 +25,7 @@
                             <img class="upload-image" src="{{ asset('assets/images/upload.svg') }}">
                         @endif
                     </label>
-                    <input type="file" class="recipe-input form-control d-none" id="reipce-image" wire:model="image"
-                        name="image">
+
                     <div id="image-spinner" wire:loading wire:loading.class='card-body text-center' wire:target='image'>
                         <div class="d-flex justify-content-center">
                             <div class="spinner-border" role="status">
@@ -36,6 +34,8 @@
                         </div>
 
                     </div>
+                    <input type="file" class="recipe-input form-control d-none" id="reipce-image" wire:model="image"
+                        name="image">
                 </div>
                 <div class="card border-0">
                     <div class="card-body mb-5">
@@ -46,27 +46,26 @@
                         </div>
                         <div class="row mb-3">
                             <div class="form-group">
-                                <label for="reipce_name" class="form-label">title</label>
+                                <label for="title" class="form-label">title</label>
                                 <input type="text" placeholder="title"
-                                    class="recipe-input form-control  recipe-input form-control-sm   @error('reipce_name') is-invalid @enderror"
-                                    id="reipce_name" wire:model.lazy='title'>
+                                    class="recipe-input form-control  recipe-input form-control-sm   @error('title') is-invalid @enderror"
+                                    id="title" wire:model.lazy='title'>
 
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <label for="ready_in_minutes" class="form-label"> Time</label>
-                                <input type="number" placeholder="10 " wire:modal.lazy='ready_in_minutes'
-                                    class="recipe-input form-control  recipe-input form-control-sm   @error('time') is-invalid @enderror"
-                                    id="Time">
+                                <input type="number" placeholder="10 " wire:model.lazy='ready_in_minutes'
+                                    class="recipe-input form-control  recipe-input form-control-sm   @error('ready_in_minutes') is-invalid @enderror"
+                                    id="ready_in_minutes">
 
                             </div>
                             <div class="col-6">
-                                <label for="protin" class="form-label"> Calories </label>
-                                <input type="number" placeholder="397 " wire:modal.lazy='calories'
+                                <label for="calories" class="form-label"> Calories </label>
+                                <input wire:model.lazy='calories' type="number" placeholder="397 "
                                     class="recipe-input form-control  recipe-input form-control-sm  @error('calories') is-invalid @enderror"
-                                    id="Calories">
-
+                                    id="calories">
 
                             </div>
 
@@ -75,16 +74,16 @@
                         </div>
                         <div class="row d-flex justify-content-around  mb-4 mt-4">
                             <div class="col-4">
-                                <label for="protin" class="form-label"> Carbs</label>
+                                <label for="carbs" class="form-label"> Carbs</label>
                                 <input type="number" placeholder="25" wire:model.lazy='carbs'
                                     class="recipe-input form-control  recipe-input form-control-sm  @error('carbs') is-invalid @enderror"
                                     id="carbs">
                             </div>
                             <div class="col-4">
-                                <label for="protin" class="form-label"> Fat</label>
+                                <label for="fat" class="form-label"> Fat</label>
                                 <input type="number" placeholder="3 " wire:model.lazy='fat'
                                     class="recipe-input form-control  recipe-input form-control-sm  @error('fat') is-invalid @enderror"
-                                    id="Fat">
+                                    id="fat">
                             </div>
                             <div class="col-4">
                                 <label for="protin" class="form-label"> protein</label>
@@ -131,11 +130,10 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="new-ingredients" role="tabpanel">
 
-                                    @foreach ($ingredientsFields as $field)
+                                    @foreach ($ingredients as $field)
                                         <input type="text" placeholder="1 cup"
                                             class="input-ingredients form-control ingredients-card "
-                                            id=" ingredients-card"
-                                            wire:model.debounce.500ms='ingredientsFields.{{ $loop->index }}.ingredient'>
+                                            id=" ingredients-card" wire:model.lazy='ingredients.{{ $loop->index }}'>
                                     @endforeach
 
 

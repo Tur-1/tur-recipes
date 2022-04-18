@@ -19,11 +19,6 @@
          <div class="image-container">
              <img src=" {{ $recipeImage ?? '' }}" alt="...">
          </div>
-
-
-
-     </div>
-     <div class="offcanvas-body small">
          <div class="offcanvas-recipe-details-header">
              <div class="card">
 
@@ -50,6 +45,11 @@
              </div>
 
          </div>
+
+
+     </div>
+     <div class="offcanvas-body small">
+
          <div class="offcanvas-recipe-details">
 
              <div class="nutrients">

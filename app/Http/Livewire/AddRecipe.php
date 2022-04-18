@@ -2,30 +2,38 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
-use Livewire\WithFileUploads;
-
 use App\Models\Recipe;
+use Livewire\Component;
+
+use App\Traits\FileUpload;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 class AddRecipe extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, FileUpload;
 
-    public $ingredientsFields = [];
+    public $ingredients = [];
     public $categories = [];
     public $dish_types = [];
-    public $title, $fat, $carbs, $protein, $ready_in_minutes, $image,
-        $calories,  $instructions, $ingredients;
+    public $title;
+    public $fat;
+    public $carbs;
+    public $protein;
+    public $ready_in_minutes;
+    public $image;
+    public $calories;
+    public $instructions;
 
 
     protected $rules = [
-        'reipce_name' => 'required',
+        'title' => 'required',
         'instructions' => 'nullable',
         'ingredients' => 'nullable',
         'fat' => 'required',
         'carbs' => 'required',
         'protein' => 'required',
-        'time' => 'required',
+        'ready_in_minutes' => 'required',
         'calories' => 'required',
         'dish_types' => 'required',
         'image' => ['required'],
@@ -35,18 +43,26 @@ class AddRecipe extends Component
     {
 
 
+
         $str =  collect($this->dish_types)->__toString();
         $this->dish_types = str_replace(['"', '[', ']'], ' ', $str);
-        dd($this->dish_types);
+
 
         $this->validate();
+
+
+        if ($this->image) {
+
+            $newImageName = $this->uploadImageInStorage($this->image, 'recipes');
+        }
+
 
         $validated = [
             'title' => $this->title,
             'ready_in_minutes' => $this->ready_in_minutes,
             'instructions' => $this->instructions,
             'ingredients' => $this->ingredients,
-            'image' => $this->image,
+            'image' => $newImageName,
             'calories' => $this->calories,
             'carbs' =>  $this->carbs,
             'fat' =>  $this->fat,
@@ -54,6 +70,7 @@ class AddRecipe extends Component
             'dish_types' => $this->dish_types,
         ];
         Recipe::create($validated);
+        dd('recipe has been created');
     }
 
     public function getCategories()
@@ -74,12 +91,12 @@ class AddRecipe extends Component
     }
     public function mount()
     {
-        $this->ingredientsFields[] = ['ingredient' => null];
+        $this->ingredients[] = [];
         $this->categories =  $this->getCategories();
     }
     public function addNewFields()
     {
-        $this->ingredientsFields[] = ['ingredient' => null];
+        $this->ingredients[] = [];
         $this->dispatchBrowserEvent('input-field-was-added');
     }
     public function render()
