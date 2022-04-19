@@ -1,4 +1,4 @@
-<div class="userAuth p-2 border">
+<div class="userAuth">
 
     <div class="userAuthContent">
 

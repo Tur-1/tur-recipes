@@ -16,7 +16,8 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link " href="/"><i class="fa fa-user" aria-hidden="true"></i></a>
+            <a class="nav-link " href="{{ route('myAccountPage') }}"><i class="fa fa-user"
+                    aria-hidden="true"></i></a>
         </li>
 
     </ul>

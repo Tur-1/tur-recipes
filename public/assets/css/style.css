@@ -9,13 +9,14 @@
 
 
 
+
 .form-control:focus,
 a:focus,
 button:focus,
 input:focus {
     border-color: inherit;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
 }
 
 :root {
@@ -25,10 +26,32 @@ input:focus {
 
 .btn-primary {
     background-color: var(--main-color) !important;
-    color: white !important;
-    border: none !important;
+
+
 }
 
+.bg-danger {
+    background-color: #c12837 !important;
+
+}
+
+.bg-primary {
+    background-color: var(--main-color) !important;
+    color: white !important;
+}
+
+.toast {
+    position: fixed;
+    top: 15px !important;
+    right: 5px !important;
+    width: -moz-fit-content;
+    width: fit-content;
+    color: white;
+    border: none;
+    z-index: 9999999999999999999999999999999999 !important;
+}
+
+.toast-body {}
 
 ::-webkit-scrollbar {
     overflow-y: hidden !important;
@@ -862,6 +885,10 @@ main#app {
 
 }
 
+.font-size-25 {
+    font-size: 25px;
+}
+
 /************* login page  **********************/
 
 .login-page {
@@ -871,7 +898,7 @@ main#app {
 
 .login-page .row {
     position: fixed;
-    bottom: 0;
+    bottom: 20px;
     left: 0;
     right: 0;
 }
@@ -907,22 +934,40 @@ main#app {
     padding: 20px;
     border-radius: 15px;
     color: white;
+    border: 1px solid var(--main-color) !important;
 }
 
 .login-page .login-register-btns button:last-child {
     background-color: transparent;
-    border: 1px solid var(--main-color);
+
 }
 
 
 
+.login-register-modal {
+    height: 70% !important;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border: none !important;
+}
 
+.login-register-modal .offcanvas-header {
+    justify-content: center !important;
+}
 
+.header-border {
+    align-self: center;
+    width: 20%;
+    border: 2px solid #ccc;
+    background: #ccc;
+    border-radius: 25px;
+}
 
 .userAuth {
     background-color: #fff;
     width: 100%;
     overflow-x: hidden;
+    padding: 10px;
 }
 
 .userAuthHeading {
@@ -986,6 +1031,152 @@ main#app {
 
 
 .social-btns li .btn-danger {
+
     background-color: rgb(248, 48, 48) !important;
     border: none !important;
+}
+
+
+
+/************* account page *********************/
+.account-page {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    z-index: 1050;
+    visibility: visible;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff;
+    outline: 0;
+    border: none;
+    background-color: var(--main-bg-color);
+}
+
+.account-page-header {
+    background-color: var(--main-bg-color);
+    height: 40%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.account-page-header header {
+    position: absolute;
+    top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    width: 100%;
+}
+
+.account-page-header header a {
+
+    color: black;
+
+}
+
+.account-page-header header a i {
+
+    font-size: 20px;
+
+}
+
+.account-wrapper {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-55%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+}
+
+.opacity-3 {
+    opacity: 0.3;
+
+}
+
+.account-wrapper #image-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.account-image-container {
+    position: relative;
+    width: 135px !important;
+    height: 135px !important;
+    overflow: hidden;
+    border-radius: 100%;
+    box-shadow: 0.35rem 0.125rem 0.34rem rgb(0 0 0 / 60%) !important;
+
+}
+
+.account-image-container img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.account-image-container span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000000a6;
+    text-align: center;
+    font-family: monospace;
+    font-size: 15px;
+    color: #9b9b9b;
+    padding: 1px;
+
+}
+
+.account-wrapper .user-name {
+    margin-top: 12px;
+}
+
+.account-page-body {
+    height: 70% !important;
+    padding: 10px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: white;
+
+}
+
+.account-page-body ul {
+    list-style: none;
+    padding: 15px;
+}
+
+.account-page-body ul li a {
+    display: flex;
+
+    justify-content: center;
+    align-items: baseline;
+}
+
+.account-form-labal {
+    padding: 10px;
+}
+
+.profile-card-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    background-color: transparent;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+
 }

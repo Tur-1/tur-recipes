@@ -8,12 +8,12 @@ trait AlertMessages
 
     public function showTostSuccessMessage($message)
     {
-        $this->dispatchBrowserEvent('showMessage', ['message' => $message, 'background' => "bg-alert-success"]);
+        $this->dispatchBrowserEvent('show-alert-message', ['message' => $message, 'background' => "bg-primary"]);
     }
 
     public function showTostErrorMessage($message)
     {
-        $this->dispatchBrowserEvent('showMessage', ['message' => $message, 'background' => "bg-alert-error"]);
+        $this->dispatchBrowserEvent('show-alert-message', ['message' => $message, 'background' => "bg-danger"]);
     }
     public function RedirectWithSuccessMsg($RouteName, $message)
     {
@@ -21,14 +21,14 @@ trait AlertMessages
     }
     public function RedirectToUrlWithSuccessMsg($url, $message)
     {
-        return redirect()->to($url)->with(['message' => $message, 'background' => "bg-alert-success"]);
+        return redirect()->to($url)->with(['message' => $message, 'background' => "bg-primary"]);
     }
     public function RedirectBackWithErrorMsg($message)
     {
-        return redirect()->back()->with(['message' => $message, 'background' => "bg-alert-error"]);
+        return redirect()->back()->with(['message' => $message, 'background' => "bg-danger"]);
     }
     public function RedirectBackWithSuccessMsg($message)
     {
-        return redirect()->back()->with(['message' => $message, 'background' => "bg-alert-success"]);
+        return redirect()->back()->with(['message' => $message, 'background' => "bg-primary"]);
     }
 }

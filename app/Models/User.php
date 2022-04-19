@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
     ];
 
     /**
@@ -41,4 +42,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getAvatarUrlAttribute()
+    {
+        if (is_null($this->avatar)) {
+            return asset('assets/images/avatar_male.png');
+        } else {
+
+            return asset('storage/images/avatars/' . $this->avatar);
+        }
+    }
 }

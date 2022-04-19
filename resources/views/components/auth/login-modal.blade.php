@@ -1,4 +1,4 @@
-<div class="userAuth p-2 border">
+<div class="userAuth">
 
     <div class=" userAuthContent">
 
@@ -26,14 +26,14 @@
 
                 <div class="form-group ">
 
-                    <label for="register_password" class=" col-form-label text-md-right">{{ __('Password') }}</label>
-                    <input id="register_password" type="password"
-                        class="form-control  {{ $errors->register->has('register_password') ? 'is-invalid' : '' }}"
-                        name="register_password" required autocomplete="new-password">
+                    <label for="login_password" class=" col-form-label text-md-right">{{ __('Password') }}</label>
+                    <input id="login_password" type="password"
+                        class="form-control  {{ $errors->has('password') ? 'is-invalid' : '' }}" name="password"
+                        required>
 
-                    @if ($errors->register->has('register_password'))
+                    @if ($errors->has('password'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->register->first('register_password') }}</strong>
+                            <strong>{{ $errors->first('password') }}</strong>
                         </span>
                     @endif
                 </div>

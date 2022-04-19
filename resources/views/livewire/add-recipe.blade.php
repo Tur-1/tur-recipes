@@ -174,5 +174,8 @@
             lastTnputField.scrollIntoView();
 
         });
+        window.addEventListener("close-form-recipe-modal", (e) => {
+            $('#addRecipe').offcanvas('hide');
+        });
     </script>
 @endpush

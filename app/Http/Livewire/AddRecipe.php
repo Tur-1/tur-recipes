@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Recipe;
+use App\Traits\AlertMessages;
 use Livewire\Component;
 
 use App\Traits\FileUpload;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 class AddRecipe extends Component
 {
-    use WithFileUploads, FileUpload;
+    use WithFileUploads, FileUpload, AlertMessages;
 
     public $ingredients = [];
     public $categories = [];
@@ -43,7 +44,6 @@ class AddRecipe extends Component
     {
 
 
-
         $str =  collect($this->dish_types)->__toString();
         $this->dish_types = str_replace(['"', '[', ']'], ' ', $str);
 
@@ -70,7 +70,9 @@ class AddRecipe extends Component
             'dish_types' => $this->dish_types,
         ];
         Recipe::create($validated);
-        dd('recipe has been created');
+
+        $this->showTostSuccessMessage('recipe was added succ');
+        $this->dispatchBrowserEvent('close-form-recipe-modal');
     }
 
     public function getCategories()

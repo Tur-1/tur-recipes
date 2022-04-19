@@ -1,34 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-    <div wire:ignore.self class="modal fade " id="login-modal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header border-0 bg-transparent ">
-                    <button type="button" class="btn-close btn-close-white float-end" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-0">
-                    <x-auth.login-modal />
-                </div>
+    <div class="offcanvas offcanvas-bottom login-register-modal" tabindex="-1" id="login-modal"
+        aria-labelledby="offcanvasBottomLabel">
+        <div class="offcanvas-header">
+            <span class="header-border"></span>
 
-            </div>
+
+        </div>
+        <div class="offcanvas-body small">
+            <x-auth.login-modal />
         </div>
     </div>
-    <div wire:ignore.self class="modal fade " id="register-modal" tabindex="-1" role="dialog"
-        aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header border-0 bg-transparent ">
-                    <button type="button" class="btn-close btn-close-white float-end" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-0">
-                    <x-auth.register-modal />
-                </div>
 
-            </div>
+    <div class="offcanvas offcanvas-bottom login-register-modal" tabindex="-1" id="register-modal"
+        aria-labelledby="offcanvasBottomLabel">
+        <div class="offcanvas-header">
+            <span class="header-border"></span>
+
+
+        </div>
+        <div class="offcanvas-body small">
+            <x-auth.register-modal />
+
         </div>
     </div>
     <div class="login-page">
@@ -40,9 +34,10 @@
             </div>
             <div class="login-register-btns">
 
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                <button type="button" class="btn btn-primary" data-bs-toggle="offcanvas"
                     data-bs-target="#login-modal">Login</button>
-                <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#register-modal">Sign
+                <button type="button" class="btn " data-bs-toggle="offcanvas" data-bs-target="#register-modal"
+                    id="register-btn">Sign
                     up</button>
             </div>
         </div>

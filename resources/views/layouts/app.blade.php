@@ -12,6 +12,7 @@
 
     <main id="app">
         @yield('content')
+        <x-layouts.alert-message />
     </main>
 
 

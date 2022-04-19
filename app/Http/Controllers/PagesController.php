@@ -10,4 +10,8 @@ class PagesController extends Controller
     {
         return view('pages.home');
     }
+    public function myAccountPage()
+    {
+        return view('pages.my-account-page');
+    }
 }
