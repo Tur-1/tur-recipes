@@ -904,15 +904,15 @@ main#app {
     background-clip: padding-box;
     outline: 0;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100% 60%;
     background-color: black;
     background-position: top;
-
 
 }
 
 #login-page .offcanvas-body {
     position: relative;
+    overflow: hidden !important;
 
 }
 
@@ -921,7 +921,6 @@ main#app {
     bottom: 10px;
     left: 0;
     right: 0;
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgb(0 0 0), rgb(0 0 0) 70%, rgb(0 0 0 / 14%), rgb(0 0 0 / 0%));
 }
 
 
