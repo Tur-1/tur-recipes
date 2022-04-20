@@ -3,10 +3,26 @@
 * {
     margin: 0;
     padding: 0;
+    border: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
 
+
+
+::-webkit-scrollbar {
+    overflow-y: hidden !important;
+    display: none !important;
+
+}
+
+body {
+    background-color: var(--main-bg-color);
+    max-width: 700px !important;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 
 
 
@@ -49,23 +65,6 @@ input:focus {
     color: white;
     border: none;
     z-index: 9999999999999999999999999999999999 !important;
-}
-
-.toast-body {}
-
-::-webkit-scrollbar {
-    overflow-y: hidden !important;
-    display: none !important;
-
-}
-
-
-body {
-    background-color: var(--main-bg-color);
-    max-width: 700px !important;
-    margin: auto;
-    overflow-y: scroll;
-
 }
 
 #loading {
@@ -891,32 +890,32 @@ main#app {
 
 /************* login page  **********************/
 
-#login-page {
-    position: fixed;
-    bottom: 0;
-    top: 0;
-    right: 0;
-    z-index: 1050;
-    display: flex;
-    flex-direction: column;
+.login-page {
+    min-height: 100vh;
     width: 100%;
-    visibility: visible;
-    background-clip: padding-box;
-    outline: 0;
-    background-repeat: no-repeat;
-    background-size: 100% 60%;
     background-color: black;
-    background-position: top;
-
 }
 
-#login-page .offcanvas-body {
+.login-page .login-page-header {
+    height: 70vh;
+    background-color: black;
+}
+
+.login-page .login-page-header img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+.login-page .login-page-body {
     position: relative;
-    overflow: hidden !important;
-
+    height: 30vh;
+    background-color: black;
+    background-image: linear-gradient(to bottom, rgb(36 36 36 / 60%) 5%, black);
 }
 
-#login-page .row {
+.login-page-body-container {
     position: absolute;
     bottom: 10px;
     left: 0;
@@ -925,38 +924,42 @@ main#app {
 
 
 
-#login-page .label h1 {
-    max-width: 50%;
-    color: white;
-    font-weight: 600;
+.login-page .login-page-body .label {
     margin-left: 20px;
+    margin-top: -100px;
 }
 
-#login-page .label p {
+.login-page .login-page-body .label h2 {
+    max-width: 50%;
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+}
+
+.login-page .login-page-body .label p {
     color: rgb(159, 159, 159);
     max-width: 67%;
     font-size: 15px;
-    margin-left: 20px;
 }
 
-#login-page .login-register-btns {
-
+.login-page .login-page-body .login-register-btns {
     display: flex;
     flex-direction: column;
-    padding: 10px 30px 20px 30px;
+    margin: 5px 19px 10px 19px;
     gap: 1rem;
 
 
 }
 
-#login-page .login-register-btns button {
-    padding: 20px;
+.login-page .login-page-body .login-register-btns button {
+    padding: 15px;
     border-radius: 15px;
     color: white;
     border: 1px solid var(--main-color) !important;
 }
 
-#login-page .login-register-btns button:last-child {
+.login-page .login-page-body .login-register-btns button:last-child {
     background-color: transparent;
 
 }
@@ -964,15 +967,21 @@ main#app {
 
 
 .login-register-modal {
-    height: 70% !important;
+    height: auto !important;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     border: none !important;
 }
 
+.login-register-modal .offcanvas-body {
+
+    padding: 5px 5px 30px 5px !important;
+}
+
 .login-register-modal .offcanvas-header {
     justify-content: center !important;
 }
+
 
 .header-border {
     align-self: center;
