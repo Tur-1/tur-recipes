@@ -29,19 +29,15 @@
             <img src="{{ asset('assets/images/loginBackgound.jpg') }}" alt="">
         </div>
         <div class="login-page-body">
-            <div class="login-page-body-container">
+            <div class="login-page-body-container ">
                 <div class="label">
                     <h2>Cooking a Delicious Food Easily </h2>
                     <p>discover more than 1200 food recipes in your hands and cooking it easily</p>
                 </div>
                 <div class="login-register-btns">
 
-                    <button type="button" class="btn btn-primary" data-bs-toggle="offcanvas"
-                        data-bs-target="#login-modal">Login</button>
-                    <button type="button" class="btn " data-bs-toggle="offcanvas" data-bs-target="#register-modal"
-                        id="register-btn">
-                        Sign up
-                    </button>
+                    <button type="button" class="btn btn-primary" id="btn-login">Login</button>
+                    <button type="button" class="btn " id="btn-Sign-up"> Sign up </button>
                 </div>
             </div>
 
@@ -51,10 +47,20 @@
 
 @push('script')
     <script>
-        // document.body.style.backgroundImage = "url({{ asset('assets/images/loginBackgound.jpg') }})";
-        document.body.style.backgroundColor = "black";
-        // document.body.style.backgroundRepeat = "no-repeat";
-        // document.body.style.backgroundSize = "cover";
-        // document.body.style.backgroundPosition = "initial";
+        $('.login-page').click(function(event) {
+            var $target = $(event.target);
+            if (!$target.closest('.login-register-modal').length && !$target.closest('.login-page-body-container')
+                .length) {
+                $('.login-register-modal').offcanvas('hide');
+                $('.offcanvas-backdrop ').remove();
+            } else {
+                $('#btn-login').click(function(event) {
+                    $('#login-modal').offcanvas('show');
+                });
+                $('#btn-Sign-up').click(function(event) {
+                    $('#register-modal').offcanvas('show');
+                });
+            }
+        });
     </script>
 @endpush
