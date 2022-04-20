@@ -19,7 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
-Route::controller(PagesController::class)->group(function () {
+Route::middleware('auth')->controller(PagesController::class)->group(function () {
     Route::get('/', 'home')->name('home');
     Route::get('/my-account', 'myAccountPage')->name('myAccountPage');
+    Route::get('/fav-recipes', 'myAccountPage')->name('favRecipes');
+    Route::get('/my-recipes', 'myAccountPage')->name('myRecipes');
 });

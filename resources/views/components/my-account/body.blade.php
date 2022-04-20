@@ -1,11 +1,12 @@
 <div class="account-page-body">
+    <span class="header-border "></span>
     <ul>
         <li class="pt-3">
             <a data-bs-toggle="offcanvas" href="#account-settings" role="button" class="text-dark">
                 <div class="me-3 icon">
                     <i class="fa-regular fa-address-card fa-lg "></i>
                 </div>
-                <div class="d-flex align-items-center justify-content-between w-100 border-bottom  pb-3">
+                <div class="d-flex align-items-center justify-content-between w-100 pb-3">
                     <h6>My Profile</h6>
                     <i class="fas fa-chevron-right fa-lg"></i>
                 </div>
@@ -19,7 +20,7 @@
                     <i class="fa-solid fa-right-from-bracket  fa-lg"></i>
 
                 </div>
-                <div class="d-flex align-items-center justify-content-between w-100 border-bottom  pb-3">
+                <div class="d-flex align-items-center justify-content-between w-100  pb-3">
                     <h6>Log out</h6>
                     <i class="fas fa-chevron-right fa-lg"></i>
                 </div>

@@ -8,7 +8,15 @@
     scroll-behavior: smooth;
 }
 
+:root {
+    --main-color: #26908C;
+    --main-bg-color: #151419;
+    --main-bg-element: #1B1923;
+    --main-text-color: #ccc;
+    --main-text-grey: #6c6c6c;
+}
 
+/* #f0f0f0 */
 
 ::-webkit-scrollbar {
     overflow-y: hidden !important;
@@ -35,10 +43,6 @@ input:focus {
     box-shadow: none !important;
 }
 
-:root {
-    --main-color: #26908C;
-    --main-bg-color: #f0f0f0;
-}
 
 .btn-primary {
     background-color: var(--main-color) !important;
@@ -48,6 +52,11 @@ input:focus {
 
 .bg-danger {
     background-color: #c12837 !important;
+
+}
+
+.text-danger {
+    color: var(--main-text-color) !important;
 
 }
 
@@ -74,16 +83,19 @@ input:focus {
     z-index: 9999;
     width: 100vw;
     height: 100vh;
-    background-color: rgb(255 255 255 / 99%);
+    background-color: var(--main-bg-color);
 }
 
 #spinner {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
-    transform: translate(-40%, -50%);
+    transform: translate(-50%, -50%);
     color: var(--main-color);
-
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
 }
 
 
@@ -109,11 +121,12 @@ a {
     padding-bottom: 10px;
     font-weight: 700;
     font-size: 19px;
+    color: var(--main-text-color);
 }
 
 .user-container span:first-child {
     font-size: 13px;
-    color: #8a8a8a;
+    color: var(--main-text-grey);
     font-weight: 600;
 }
 
@@ -133,28 +146,27 @@ a {
 /************* footer  **********************/
 footer {
     position: fixed;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    background-color: white !important;
-    width: 97%;
-    margin: 0px auto;
     align-items: center;
-    border-radius: 50px;
-    border: 1px solid #eaeaea;
+    bottom: 0;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: var(--main-bg-element) !important;
+
 
 }
 
 footer ul {
     justify-content: space-around;
     align-items: center;
-    padding: 10px;
+    padding: 15px 0;
     font-size: 20px;
 
 }
 
 footer ul li a i {
-    color: #4a4a4a;
+    /* color: #a3a3a3; */
+    color: var(--main-text-grey);
     border-radius: 100%;
 }
 
@@ -162,7 +174,6 @@ footer ul li a i {
 
 
 .add-recipe-icon a i {
-    border: 1px solid white;
     color: var(--main-color) !important;
     border-radius: 100%;
     transform: scale(2.3);
@@ -191,10 +202,10 @@ main#app {
 
 .search-field .input-group {
     padding: 5px;
-    background-color: white;
+    background-color: var(--main-bg-element);
     border-radius: 9999px !important;
     border: none !important;
-    color: white;
+    color: var(--main-text-grey) !important;
     box-shadow: 0.3rem 0.125rem 0.34rem rgba(0, 0, 0, .075) !important;
 }
 
@@ -203,6 +214,7 @@ main#app {
     border-right: none !important;
     border-radius: 50%;
     border: none !important;
+    color: var(--main-text-grey);
 }
 
 .search-field .input-group input {
@@ -212,7 +224,8 @@ main#app {
     outline: none !important;
     border-top-right-radius: 9999px !important;
     border-bottom-right-radius: 9999px !important;
-    background-color: white !important;
+    background-color: var(--main-bg-element);
+    color: var(--main-text-grey);
 
 }
 
@@ -227,6 +240,7 @@ main#app {
 
 
 .recommend-recipes>strong {
+    color: var(--main-text-color);
     margin: 0px 10px;
     font-size: 14px;
 }
@@ -279,7 +293,7 @@ main#app {
 
 
 .recommend-recipes-row .card .card-body .card-title {
-    max-height: 45px;
+    max-height: 42px;
     max-width: 125px;
     font-size: 13px;
     color: white;
@@ -328,6 +342,7 @@ main#app {
 }
 
 .categories .header {
+    color: var(--main-text-color);
     margin: 10px;
 }
 
@@ -346,8 +361,9 @@ main#app {
     flex-direction: row;
     align-items: center;
     height: 50px;
-    background-color: white;
+    background-color: var(--main-bg-element);
     border-radius: 50px;
+    border: 1px solid #5656565c;
     padding: 20px 10px 20px 7px;
     box-shadow: 0.3rem 0.125rem 0.34rem rgba(0, 0, 0, .075) !important;
 }
@@ -377,7 +393,7 @@ main#app {
 }
 
 .categories .category .title {
-    color: rgb(0, 0, 0);
+    color: var(--main-text-color);
     font-size: 14px;
     font-weight: 600;
 }
@@ -398,6 +414,8 @@ main#app {
 
 /************* top Recipes  **********************/
 .top-recipes .header {
+    color: var(--main-text-color);
+
     margin: 10px;
 }
 
@@ -408,7 +426,7 @@ main#app {
 .top-recipe-item {
     margin: 35px 10px;
     position: relative;
-    background-color: white;
+    background-color: var(--main-bg-element);
     height: 107px;
     border-radius: 25px;
     display: flex;
@@ -435,17 +453,17 @@ main#app {
 
 }
 
-.top-recipe-item .top-recipe-item-details {
+.top-recipe-item-details {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: 70%;
 }
 
-.top-recipe-item .top-recipe-item-details .title {
+.top-recipe-item-details .title {
     padding: 5px;
     font-size: 16px;
-    color: black;
+    color: var(--main-text-color);
     overflow: hidden;
     vertical-align: middle;
     text-overflow: ellipsis;
@@ -456,7 +474,7 @@ main#app {
     text-align: center;
 }
 
-.top-recipe-item .top-recipe-item-details .recipe-kcal-Time {
+.top-recipe-item-details .recipe-kcal-Time {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -465,6 +483,129 @@ main#app {
 
 }
 
+/************* allRecipes-offcanvas  **********************/
+.allRecipes-end {
+    width: 100% !important;
+}
+
+.allRecipes-end {
+    top: 0;
+    right: 0;
+    width: 400px;
+    border-left: 1px solid rgba(0, 0, 0, .2);
+    transform: translateX(100%);
+}
+
+.allRecipes .allRecipes-body::-webkit-scrollbar {
+    overflow: hidden;
+    display: none;
+}
+
+.allRecipes {
+    position: fixed;
+    bottom: 0;
+    z-index: 1050;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    visibility: hidden;
+    background-color: var(--main-bg-color);
+    background-clip: padding-box;
+    outline: 0;
+    transition: transform .3s ease-in-out;
+    border: none;
+
+}
+
+.allRecipes .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    color: var(--main-text-color);
+}
+
+.allRecipes .header #closeAllRecipes {
+    background: transparent;
+    width: 37px;
+    height: 31px;
+    border: none;
+    color: var(--main-text-color);
+}
+
+.allRecipes.show {
+    transform: none;
+}
+
+
+.allRecipes-body {
+    padding: 10px 5px;
+    overflow-y: scroll;
+    overflow-x: hidden !important;
+}
+
+.allRecipes-body .row {
+    margin: 0 !important;
+
+}
+
+.allRecipes-body .row .col-6 {
+    margin: 10px 0px
+}
+
+.allRecipes-body .row .card {
+    border: none;
+    height: 190px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--main-bg-element);
+
+}
+
+.allRecipes-body .row .card img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+
+}
+
+.allRecipes-body .row .card .recipe-item-details {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    width: 96%;
+    margin: 0 auto;
+    right: 0;
+    bottom: 4px;
+    left: 0;
+    padding: 5px;
+    font-size: 13px;
+
+
+}
+
+.allRecipes-body .row .card .recipe-item-details .recipe-kcal-Time {
+    display: flex;
+    justify-content: space-around;
+    font-size: 11px;
+    color: white;
+}
+
+.recipe-item-details .title {
+    color: white;
+    font-size: 15px;
+    overflow: hidden;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    margin-bottom: 5px;
+    margin-left: 16px;
+    text-align: left;
+}
 
 /************* top-recipe-offcanvas  **********************/
 
@@ -520,7 +661,8 @@ main#app {
 .top-recipe-offcanvas .offcanvas-header .back-btn,
 .back-btn,
 .fav-btn {
-    background-color: var(--main-bg-color);
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
     width: 40px !important;
     height: 40px !important;
     line-height: 40px;
@@ -535,13 +677,15 @@ main#app {
 .back-btn i {
     font-size: 19px;
     font-weight: bold;
+    color: var(--main-text-color);
+
 }
 
 .fav-icon {
     width: 26px !important;
     height: 26px !important;
     font-weight: bold;
-    stroke: black;
+    stroke: var(--main-text-color);
     stroke-width: 2;
 
     fill: none;
@@ -572,7 +716,7 @@ main#app {
     text-align: center;
     padding: 0px 25px;
     position: absolute;
-    color: black;
+    color: var(--main-text-color);
     bottom: -35px;
     z-index: 99999999999999568595 !important;
 
@@ -582,7 +726,7 @@ main#app {
     border-radius: 15px;
     border: none !important;
     box-shadow: 0.3rem 0.125rem 0.34rem rgb(0 0 0 / 20%) !important;
-
+    background-color: var(--main-bg-color);
 }
 
 .offcanvas-recipe-details-header .card .card-body {
@@ -598,7 +742,7 @@ main#app {
 }
 
 .offcanvas-recipe-details-header .recipe-label {
-
+    color: var(--main-text-color);
     font-size: 16px;
     font-weight: 600;
     text-align: center;
@@ -612,11 +756,12 @@ main#app {
     width: 90%;
     align-content: center;
     align-items: center;
+    color: var(--main-text-grey);
 }
 
 .offcanvas-recipe-details-header .recipe-time-kcal i {
     font-size: 19px;
-    color: #ffb81e;
+
 }
 
 .offcanvas-recipe-details-header .recipe-time-kcal>div {
@@ -639,14 +784,14 @@ main#app {
     margin-top: -25px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    background-color: white;
+    background-color: var(--main-bg-element);
 }
 
 .offcanvas-recipe-details {
     margin-bottom: 30px;
     height: 100%;
     padding: 10px 15px 30px 15px;
-    color: black;
+    color: var(--main-text-grey);
 
 }
 
@@ -658,7 +803,7 @@ main#app {
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: black;
+    color: var(--main-text-color);
     justify-content: space-between;
     font-size: 16px;
 }
@@ -676,15 +821,15 @@ main#app {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     background-color: var(--main-bg-color);
     border-radius: 5px;
 }
 
 .offcanvas-recipe-details .nutrients .nutrition-row .nutrition-element .image-container img {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
 }
 
 .ingredients {
@@ -708,7 +853,7 @@ main#app {
     width: 100%;
     background-color: transparent !important;
     border-radius: 50px;
-    color: black;
+    color: var(--main-text-grey);
     border: none;
     font-weight: 600;
 }
@@ -722,7 +867,7 @@ main#app {
 .ingredients .ingredients-card {
     margin-top: 10px;
     background-color: var(--main-bg-color);
-    color: black;
+    color: var(--main-text-color);
     border-radius: 15px;
     border: none;
 
@@ -736,84 +881,88 @@ main#app {
 }
 
 
-/************* allRecipes-offcanvas  **********************/
-.allRecipes-end {
-    width: 100% !important;
-}
-
-.allRecipes-end {
-    top: 0;
-    right: 0;
-    width: 400px;
-    border-left: 1px solid rgba(0, 0, 0, .2);
-    transform: translateX(100%);
-}
-
-.allRecipes .allRecipes-body::-webkit-scrollbar {
-    overflow: hidden;
-    display: none;
-}
-
-.allRecipes {
-    position: fixed;
-    bottom: 0;
-    z-index: 1050;
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    visibility: hidden;
-    background-color: #fff;
-    background-clip: padding-box;
-    outline: 0;
-    transition: transform .3s ease-in-out;
-    border: none;
-
-}
-
-.allRecipes .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1rem;
-}
-
-.allRecipes .header #closeAllRecipes {
-    background: transparent;
-    width: 37px;
-    height: 31px;
-    border-radius: 7px;
-    border: 1px solid #b6b6b6cc;
-}
-
-.allRecipes.show {
-    transform: none;
-}
-
-
-.allRecipes-body {
-    padding: 0px 15px 0px 35px;
-    overflow-y: scroll;
-    overflow-x: hidden !important;
-}
 
 /************* new recipe offcanvas  **********************/
+.new-recipe-offcanvas {
+    background-color: var(--main-bg-color);
+}
+
+.new-recipe-offcanvas .offcanvas-header {
+    padding: 11px;
+    background-color: var(--main-bg-color);
+}
+
+.new-recipe-offcanvas .offcanvas-header button {
+    width: 35px;
+    height: 35px;
+}
+
+.new-recipe-offcanvas .offcanvas-header .back-btn {
+    background-color: transparent;
+    color: white;
+}
+
 .recipe-input {
-    background-color: white;
+    background-color: var(--main-bg-color);
     border-radius: 9999px !important;
-    border: 0.1px solid #ced4daa8 !important;
-    box-shadow: 0.3rem 0.125rem 0.34rem rgba(0, 0, 0, .075) !important;
+    border: none;
+    color: var(--main-text-color);
+
+}
+
+.recipe-input:focus {
+    background-color: var(--main-bg-color);
+
+    color: var(--main-text-color);
 
 }
 
 
+.new-recipe-body {
+    padding: 0 !important
+}
 
-.offcanvas-body form {
+
+
+.offcanvas-body.new-recipe-body form {
     overflow-x: hidden !important;
 }
 
+
+
+.offcanvas-body.new-recipe-body form .card-body {
+    background-color: var(--main-bg-element);
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+
+}
+
+
+.offcanvas-body.new-recipe-body form .card-body label {
+    color: var(--main-text-color);
+}
+
+.offcanvas-body.new-recipe-body form .card-body select {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    border: none;
+}
+
+.offcanvas-body.new-recipe-body form .card-body input {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color) !important;
+
+}
+
+
+
 .imageContainer {
-    height: 320px;
-    width: 320px;
+    max-height: 320px;
+    width: 100%;
     margin: 0px auto;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -864,8 +1013,8 @@ main#app {
 }
 
 .form-submit-icon {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     background-color: var(--main-color);
     border-radius: 100%;
     text-align: center;
@@ -920,7 +1069,8 @@ main#app {
     position: relative;
     height: 30% !important;
     background-color: black;
-    background-image: linear-gradient(to bottom, rgb(36 36 36 / 60%) 5%, black);
+    background-image: linear-gradient(to bottom, rgb(24 23 24) 5%, black);
+
 }
 
 .login-page-body-container {
@@ -1009,24 +1159,29 @@ main#app {
     width: 100%;
     position: relative;
     border-bottom: 1px solid #eee;
+
 }
 
 .userAuthHeadingTab--active,
 .userAuthHeadingTab--invalid {
     padding: 0.7rem !important;
-    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
 }
 
 
 .userAuthHeadingTab--invalid {
+
+    border-color: #c12837 !important;
+}
+
+.userAuthHeadingTab--invalid button {
     color: #c12837 !important;
-    border-bottom: 2px solid #c12837 !important;
 }
 
 .userAuthHeadingTab {
-    color: #51c0a9 !important;
+
     border-bottom: 2px solid #51c0a9;
 
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
     font-weight: 600;
     font-size: 15px;
     height: 50px;
@@ -1038,6 +1193,7 @@ main#app {
 
 .userAuthHeadingTab button {
     border: none !important;
+    color: #51c0a9;
 }
 
 .userAuthHeading.register__active:after {
@@ -1095,7 +1251,7 @@ main#app {
 
 .account-page-header {
     background-color: var(--main-bg-color);
-    height: 40%;
+    height: 45%;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -1109,18 +1265,17 @@ main#app {
     justify-content: space-between;
     padding: 1rem 1rem;
     width: 100%;
+    color: var(--main-text-color);
 }
 
 .account-page-header header a {
-
-    color: black;
+    color: var(--main-text-color);
 
 }
 
 .account-page-header header a i {
-
     font-size: 20px;
-
+    color: var(--main-text-color);
 }
 
 .account-wrapper {
@@ -1173,34 +1328,47 @@ main#app {
     text-align: center;
     font-family: monospace;
     font-size: 15px;
-    color: #9b9b9b;
+    color: var(--main-text-color);
     padding: 1px;
 
 }
 
 .account-wrapper .user-name {
     margin-top: 12px;
+    color: var(--main-text-color);
 }
 
 .account-page-body {
-    height: 70% !important;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 55% !important;
     padding: 10px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    background-color: white;
+    background-color: var(--main-bg-element);
+    color: var(--main-text-color);
 
 }
 
 .account-page-body ul {
     list-style: none;
     padding: 15px;
+    height: 90%;
+    color: var(--main-text-color);
 }
 
 .account-page-body ul li a {
     display: flex;
-
+    color: var(--main-text-color);
     justify-content: center;
     align-items: baseline;
+}
+
+.account-page-body ul li a div {
+
+    color: var(--main-text-color);
+
 }
 
 .account-form-labal {

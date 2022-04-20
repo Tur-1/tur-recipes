@@ -21,7 +21,7 @@
                         </div>
                         <div>
                             <i class="fa-solid fa-fire"></i>
-                            <span>{{ intval($recipe['calories']) }} Kcal</span>
+                            <span>{{ intval($recipe['calories']) }} </span>
                         </div>
                     </div>
                 </div>

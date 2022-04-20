@@ -4,8 +4,6 @@
     <div class="offcanvas offcanvas-bottom login-register-modal" id="login-modal" aria-labelledby="offcanvasBottomLabel">
         <div class="offcanvas-header">
             <span class="header-border"></span>
-
-
         </div>
         <div class="offcanvas-body small">
             <x-auth.login-modal />
@@ -45,7 +43,23 @@
     </div>
 @endsection
 
+
 @push('script')
+    @if (count($errors->register) > 0)
+        <script>
+            $(document).ready(function() {
+                $('#register-modal').offcanvas('show');
+            });
+        </script>
+    @endif
+    @if (count($errors->default) > 0)
+        <script>
+            $(document).ready(function() {
+                $('#login-modal').offcanvas('show');
+            });
+        </script>
+    @endif
+
     <script>
         $('.login-page').click(function(event) {
             var $target = $(event.target);

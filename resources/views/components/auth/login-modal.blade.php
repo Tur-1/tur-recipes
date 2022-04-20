@@ -14,7 +14,7 @@
                     <div class="">
                         <input id="email" type="email"
                             class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" name="email"
-                            value="{{ old('email') }}" required autocomplete="email">
+                            value="{{ old('email') }}" autocomplete="email">
 
                         @if ($errors->has('email'))
                             <span class="invalid-feedback" role="alert">
@@ -28,8 +28,7 @@
 
                     <label for="login_password" class=" col-form-label text-md-right">{{ __('Password') }}</label>
                     <input id="login_password" type="password"
-                        class="form-control  {{ $errors->has('password') ? 'is-invalid' : '' }}" name="password"
-                        required>
+                        class="form-control  {{ $errors->has('password') ? 'is-invalid' : '' }}" name="password">
 
                     @if ($errors->has('password'))
                         <span class="invalid-feedback" role="alert">

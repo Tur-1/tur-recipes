@@ -12,8 +12,7 @@
                     <div class="">
                         <input id="register_name" type="text"
                             class="form-control {{ $errors->register->has('register_name') ? 'is-invalid' : '' }}"
-                            name="register_name" value="{{ old('register_name') }}" required autocomplete="name"
-                            autofocus>
+                            name="register_name" value="{{ old('register_name') }}" autocomplete="name" autofocus>
 
                         @if ($errors->register->has('register_name'))
                             <span class="invalid-feedback" role="alert">
@@ -29,7 +28,7 @@
                     <div class="">
                         <input id="register_email" type="email"
                             class="form-control {{ $errors->register->has('register_email') ? 'is-invalid' : '' }}"
-                            name="register_email" value="{{ old('register_email') }}" required autocomplete="email">
+                            name="register_email" value="{{ old('register_email') }}" autocomplete="email">
 
                         @if ($errors->register->has('register_email'))
                             <span class="invalid-feedback" role="alert">
@@ -44,7 +43,7 @@
                     <label for="register_password" class=" col-form-label text-md-right">{{ __('Password') }}</label>
                     <input id="register_password" type="password"
                         class="form-control  {{ $errors->register->has('register_password') ? 'is-invalid' : '' }}"
-                        name="register_password" required autocomplete="new-password">
+                        name="register_password" autocomplete="new-password">
 
                     @if ($errors->register->has('register_password'))
                         <span class="invalid-feedback" role="alert">
@@ -58,7 +57,7 @@
                         class=" col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                        required autocomplete="new-password">
+                        autocomplete="new-password">
 
                 </div>
 

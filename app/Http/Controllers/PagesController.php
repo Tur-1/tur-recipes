@@ -12,6 +12,14 @@ class PagesController extends Controller
     }
     public function myAccountPage()
     {
-        return view('pages.my-account-page');
+        return view('pages.my-account');
+    }
+    public function favRecipes()
+    {
+        return view('pages.fav-recipes');
+    }
+    public function myRecipes()
+    {
+        return view('pages.my-recipes');
     }
 }

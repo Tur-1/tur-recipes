@@ -56,13 +56,13 @@
                  <div class="nutrition-row">
                      <div class="nutrition-element">
                          <div class="image-container">
-                             <img src="{{ asset('assets/icons/wheat.png') }}">
+                             <img src="{{ asset('assets/icons/icons8-wheat-16.png') }}">
                          </div>
                          <span> {{ $recipeCarbs ?? '' }} carbs</span>
                      </div>
                      <div class="nutrition-element">
                          <div class="image-container">
-                             <img src="{{ asset('assets/icons/pizza-slice.png') }}">
+                             <img src="{{ asset('assets/icons/icons8-pizza-80.png') }}">
                          </div>
                          <span>{{ $recipeFat ?? '' }} Fat</span>
                      </div>
@@ -70,7 +70,7 @@
                  <div class="nutrition-row">
                      <div class="nutrition-element">
                          <div class="image-container">
-                             <img src="{{ asset('assets/icons/avocado.png') }}">
+                             <img src="{{ asset('assets/icons/icons8-avocado-48.png') }}">
                          </div>
                          <span> {{ $recipeProtein ?? '' }} protein</span>
                      </div>
@@ -113,12 +113,15 @@
                      </div>
                      <div class="tab-pane" id="instructions-{{ $recipeId }}" role="tabpanel"
                          aria-labelledby="instructions-{{ $recipeId }}-tab">
-
-
-                         <div class="mt-3 mb-3 bg-light p-3 rounded ">
-                             {!! $recipeInstructions ?? '' !!}
-
+                         <div class="card ingredients-card">
+                             <div class="card-body">
+                                 <p class="card-text">
+                                     {!! $recipeInstructions ?? '' !!}
+                                 </p>
+                             </div>
                          </div>
+
+
                      </div>
                  </div>
              </div>
