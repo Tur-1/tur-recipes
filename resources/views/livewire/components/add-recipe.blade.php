@@ -18,12 +18,12 @@
 
             <form enctype="multipart/form-data">
                 <div class="imageContainer ">
-                    <label wire:loading.remove wire:target='image' for="reipce-image" class="text-center">
+                    <label wire:loading.class='opacity-3' wire:target='image' for="reipce-image" class="text-center">
                         <i class="fa fa-plus-circle "></i>
                         @if (!is_null($image))
                             <img src="{{ $image->temporaryUrl() }}" alt="">
                         @else
-                            <img class="upload-image" src="{{ asset('assets/images/upload.svg') }}">
+                            <img class="placeholder-image" src="{{ asset('assets/images/upload.svg') }}">
                         @endif
                     </label>
 

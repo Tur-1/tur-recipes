@@ -1,14 +1,14 @@
-<div wire:ignore.self class="allRecipes allRecipes-end" id="allRecipes">
+<div class="allRecipes allRecipes-end show" id="allRecipes" style="visibility: visible">
     <div class="header">
-        <button type="button" id="closeAllRecipes">
+        <a href="{{ route('home') }}" id="closeAllRecipes">
             <i class="fas fa-arrow-left"></i>
-        </button>
-        <h5 class="allRecipesLabel">recipes</h5>
+        </a>
+        <h5 class="allRecipesLabel ">My Recipes</h5>
         <div></div>
     </div>
-    <div class="allRecipes-body ">
-        <div class="row mb-3">
-            @foreach ($recipes as $recipe)
+    <div class="allRecipes-body">
+        <div class="row">
+            @forelse ($myRecipes as $recipe)
                 <div class="col-6">
                     <a role="button" href="#" class="card "
                         wire:click.prevent='openRecipeModal({{ $recipe['id'] }})'>
@@ -34,12 +34,31 @@
                         </div>
                     </a>
                 </div>
-            @endforeach
+
+            @empty
+                <div class="col-12">
+                    <h5>no recipes found</h5>
+                </div>
+            @endforelse
         </div>
-
-
-        <button class="btn btn-primary " id="loadMore" wire:click='loadMore'>load more...</button>
-
-
     </div>
+    @include('components.home.recipe-detail');
 </div>
+@push('script')
+    <script>
+        $(document).ready(function() {
+            window.addEventListener("open-recipe-modal", (e) => {
+
+                $('#recipe-detail-' + e.detail.recipeId).offcanvas('show');
+
+
+            })
+            window.addEventListener("close-recipe-modal", (e) => {
+
+                $('#recipe-detail-' + e.detail.recipeId).offcanvas('hide');
+
+
+            })
+        });
+    </script>
+@endpush

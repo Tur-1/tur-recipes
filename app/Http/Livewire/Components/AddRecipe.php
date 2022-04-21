@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Components;
 
-use App\Models\Recipe;
 use App\Traits\AlertMessages;
 use Livewire\Component;
 
 use App\Traits\FileUpload;
 use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\Storage;
 
 class AddRecipe extends Component
 {
@@ -69,9 +67,10 @@ class AddRecipe extends Component
             'protein' => $this->protein,
             'dish_types' => $this->dish_types,
         ];
-        Recipe::create($validated);
+        auth()->user()->myRecipes()->create($validated);
 
-        $this->showTostSuccessMessage('recipe was added succ');
+
+        $this->showTostSuccessMessage('recipe was successfully added');
         $this->dispatchBrowserEvent('close-form-recipe-modal');
     }
 
@@ -103,6 +102,6 @@ class AddRecipe extends Component
     }
     public function render()
     {
-        return view('livewire.add-recipe');
+        return view('livewire.components.add-recipe');
     }
 }

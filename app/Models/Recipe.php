@@ -21,7 +21,7 @@ class Recipe extends Model
         'carbs',
         'protein',
         'calories',
-        'time',
+        'ready_in_minutes',
         'instructions',
         'ingredients',
         'dish_types'

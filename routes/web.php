@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\PagesController;
-use App\Http\Livewire\Home;
-use App\Http\Livewire\Recipes;
-use App\Http\Livewire\RecipeDetail;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Pages\Home;
+use App\Http\Livewire\Pages\MyAccount;
+use App\Http\Livewire\Pages\MyRecipes;
+use App\Http\Livewire\Pages\MyFavRecipes;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,9 +20,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
-Route::middleware('auth')->controller(PagesController::class)->group(function () {
-    Route::get('/', 'home')->name('home');
-    Route::get('/my-account', 'myAccountPage')->name('myAccountPage');
-    Route::get('/fav-recipes', 'myAccountPage')->name('favRecipes');
-    Route::get('/my-recipes', 'myAccountPage')->name('myRecipes');
+Route::middleware('auth')->group(function () {
+    Route::get('/', Home::class)->name('home');
+    Route::get('/my-account', MyAccount::class)->name('myAccount');
+    Route::get('/my-fav-recipes', MyFavRecipes::class)->name('myFavRecipes');
+    Route::get('/my-recipes', MyRecipes::class)->name('myRecipes');
 });

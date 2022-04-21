@@ -1,16 +1,14 @@
-@extends('layouts.app')
+<div class="account-page ">
 
-@section('content')
-    <div class="account-page ">
 
-        <x-my-account.header />
 
-        <x-my-account.body />
+    @include('components.my-account.header')
 
-        <livewire:user-account-settings />
-    </div>
-@endsection
+    @include('components.my-account.body')
 
+    @include('components.my-account.profile')
+
+</div>
 
 @push('script')
     <script>
@@ -43,36 +41,54 @@
             passwordForm.hide();
 
             openAccountFormBtn.on('click', function() {
-                editHeaderCardAccount.slideUp("slow");
-                updateHeaderCardAccount.slideDown("slow");
 
-                accountFormLabel.slideUp("slow");
+                updateHeaderCardAccount.slideDown("slow");
                 accountForm.slideDown("slow");
 
-
+                editHeaderCardAccount.slideUp("slow");
+                accountFormLabel.slideUp("slow");
             });
 
 
             closeAcccountBtn.on('click', function() {
                 accountForm.slideUp("slow");
-                accountFormLabel.slideDown("slow");
 
                 updateHeaderCardAccount.slideUp("slow");
+                accountFormLabel.slideDown("slow");
+
+                editHeaderCardAccount.slideDown("slow");
+            });
+
+            $(window).on('updated_account_info', function() {
+                accountForm.slideUp("slow");
+
+                updateHeaderCardAccount.slideUp("slow");
+                accountFormLabel.slideDown("slow");
+
                 editHeaderCardAccount.slideDown("slow");
             });
 
 
             openPasswordFormBtn.on('click', function() {
                 editHeaderCardPassword.slideUp("slow");
+                updateHeaderCardPassword.removeClass("d-none");
                 updateHeaderCardPassword.slideDown("slow");
 
 
                 passwordFormLabel.slideUp("slow");
+                passwordForm.removeClass("d-none");
                 passwordForm.slideDown("slow");
             });
 
 
             closePasswordFormBtn.on('click', function() {
+                passwordForm.slideUp("slow");
+                passwordFormLabel.slideDown("slow");
+
+                updateHeaderCardPassword.slideUp("slow");
+                editHeaderCardPassword.slideDown("slow");
+            });
+            $(window).on('updated_account_password', function() {
                 passwordForm.slideUp("slow");
                 passwordFormLabel.slideDown("slow");
 

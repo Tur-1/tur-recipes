@@ -6,6 +6,7 @@
         <h6>MY ACCOUNT</h6>
         <div></div>
     </header>
-    <livewire:update-user-avatar>
+
+    @include('components.my-account.avatar')
 
 </div>

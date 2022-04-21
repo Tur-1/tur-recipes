@@ -1,4 +1,4 @@
- <div class="offcanvas offcanvas-end top-recipe-offcanvas" id="recipe-detail-{{ $recipeId }}">
+ <div wire:ignore.self class="offcanvas offcanvas-end top-recipe-offcanvas" id="recipe-detail-{{ $recipeId }}">
      <div class="offcanvas-header">
          <div class="header-btns">
 
@@ -6,15 +6,15 @@
                  wire:click.prevent='closeRecipeModal({{ $recipeId }})'>
                  <i class="fas fa-arrow-left"></i>
              </button>
-             <button type="button" class="fav-btn">
-                 <svg xmlns="http://www.w3.org/2000/svg" class="fav-icon " viewBox="0 0 24 24">
-                     <path
-                         d="M12 21.35l-1.45-1.32c-5.15-4.67-8.55-7.75-8.55-11.53 0-3.08 2.42-5.5 5.5-5.5 1.74 0 3.41.81 4.5 2.09 1.09-1.28 2.76-2.09 4.5-2.09 3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54l-1.45 1.31z">
-                     </path>
+             @if (!is_null($recipeId))
+                 @if (auth()->user()->myFavRecipesHas($recipeId))
+                     <livewire:components.favorite-button :recipeId="$recipeId" :alreadyInFavRecipes="true" />
+                 @else
+                     <livewire:components.favorite-button :recipeId="$recipeId" />
+                 @endif
+             @endif
 
 
-                 </svg>
-             </button>
          </div>
          <div class="image-container">
              <img src=" {{ $recipeImage ?? '' }}" alt="...">
@@ -99,7 +99,7 @@
                      <div class="tab-pane active" id="ingredients-{{ $recipeId }}" role="tabpanel"
                          aria-labelledby="ingredients-{{ $recipeId }}-tab">
                          @foreach ($recipeIngredients ?? [] as $Ingredient)
-                             <div class="card ingredients-card">
+                             <div class=" ingredients-card">
                                  <div class="card-body">
                                      <p class="card-text">
                                          {{ $Ingredient }}
@@ -113,7 +113,7 @@
                      </div>
                      <div class="tab-pane" id="instructions-{{ $recipeId }}" role="tabpanel"
                          aria-labelledby="instructions-{{ $recipeId }}-tab">
-                         <div class="card ingredients-card">
+                         <div class=" ingredients-card">
                              <div class="card-body">
                                  <p class="card-text">
                                      {!! $recipeInstructions ?? '' !!}

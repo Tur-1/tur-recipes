@@ -14,7 +14,9 @@
 
     @include('components.home.all-recipes')
 
+
     @include('components.home.recipe-detail')
+
 
     @include('components.layouts.livewire-loading')
 

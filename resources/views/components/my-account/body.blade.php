@@ -2,7 +2,7 @@
     <span class="header-border "></span>
     <ul>
         <li class="pt-3">
-            <a data-bs-toggle="offcanvas" href="#account-settings" role="button" class="text-dark">
+            <a data-bs-toggle="offcanvas" data-bs-target="#account-settings" role="button" class="text-dark">
                 <div class="me-3 icon">
                     <i class="fa-regular fa-address-card fa-lg "></i>
                 </div>

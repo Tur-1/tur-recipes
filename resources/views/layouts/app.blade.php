@@ -11,12 +11,12 @@
     <x-layouts.loading />
 
     <main id="app">
-        @yield('content')
+        {{ $slot }}
         <x-layouts.alert-message />
     </main>
 
 
-    <livewire:add-recipe>
+    <livewire:components.add-recipe>
         <x-layouts.footer />
 
 

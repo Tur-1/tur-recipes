@@ -13,7 +13,8 @@
     --main-bg-color: #151419;
     --main-bg-element: #1B1923;
     --main-text-color: #ccc;
-    --main-text-grey: #6c6c6c;
+    --main-grey: #939393;
+
 }
 
 /* #f0f0f0 */
@@ -37,17 +38,34 @@ body {
 .form-control:focus,
 a:focus,
 button:focus,
-input:focus {
+input:focus,
+.nav-link:focus {
     border-color: inherit;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
+    background-color: var(--main-bg-color);
 }
 
+input,
+select,
+.form-control {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color) !important;
+    border: none !important;
+}
+
+i {
+    color: var(--main-text-color);
+}
 
 .btn-primary {
     background-color: var(--main-color) !important;
 
 
+}
+
+.text-primary {
+    color: var(--main-color) !important;
 }
 
 .bg-danger {
@@ -63,6 +81,33 @@ input:focus {
 .bg-primary {
     background-color: var(--main-color) !important;
     color: white !important;
+}
+
+.offcanvas {
+    border: none !important;
+    background-color: var(--main-bg-element);
+    width: 100%;
+}
+
+.offcanvas-body {
+    background-color: var(--main-bg-element);
+    color: var(--main-text-color);
+
+}
+
+.offcanvas-header {
+    background-color: var(--main-bg-element);
+    color: var(--main-text-color);
+}
+
+.offcanvas-bottom {
+    height: 100% !important;
+}
+
+.card {
+    background-color: var(--main-bg-element) !important;
+    color: var(--main-text-color);
+    border: none !important;
 }
 
 .toast {
@@ -126,7 +171,7 @@ a {
 
 .user-container span:first-child {
     font-size: 13px;
-    color: var(--main-text-grey);
+    color: var(--main-grey);
     font-weight: 600;
 }
 
@@ -149,8 +194,8 @@ footer {
     align-items: center;
     bottom: 0;
     width: 100%;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
     background-color: var(--main-bg-element) !important;
 
 
@@ -159,14 +204,14 @@ footer {
 footer ul {
     justify-content: space-around;
     align-items: center;
-    padding: 15px 0;
+    padding: 9px 0 17px 0;
     font-size: 20px;
 
 }
 
 footer ul li a i {
-    /* color: #a3a3a3; */
-    color: var(--main-text-grey);
+
+    color: var(--main-grey);
     border-radius: 100%;
 }
 
@@ -186,13 +231,6 @@ main#app {
     margin-bottom: 100px;
 }
 
-.offcanvas {
-    border: none !important;
-}
-
-.offcanvas-bottom {
-    height: 100% !important;
-}
 
 /************* search  **********************/
 .search-field {
@@ -205,7 +243,7 @@ main#app {
     background-color: var(--main-bg-element);
     border-radius: 9999px !important;
     border: none !important;
-    color: var(--main-text-grey) !important;
+    color: var(--main-grey) !important;
     box-shadow: 0.3rem 0.125rem 0.34rem rgba(0, 0, 0, .075) !important;
 }
 
@@ -214,7 +252,7 @@ main#app {
     border-right: none !important;
     border-radius: 50%;
     border: none !important;
-    color: var(--main-text-grey);
+    color: var(--main-grey);
 }
 
 .search-field .input-group input {
@@ -225,7 +263,7 @@ main#app {
     border-top-right-radius: 9999px !important;
     border-bottom-right-radius: 9999px !important;
     background-color: var(--main-bg-element);
-    color: var(--main-text-grey);
+    color: var(--main-grey);
 
 }
 
@@ -542,6 +580,13 @@ main#app {
     padding: 10px 5px;
     overflow-y: scroll;
     overflow-x: hidden !important;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#loadMore {
+    margin: 15px auto;
 }
 
 .allRecipes-body .row {
@@ -572,7 +617,7 @@ main#app {
 
 .allRecipes-body .row .card .recipe-item-details {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     border-radius: 10px;
     width: 96%;
@@ -594,6 +639,7 @@ main#app {
 }
 
 .recipe-item-details .title {
+    max-height: 23px;
     color: white;
     font-size: 15px;
     overflow: hidden;
@@ -661,11 +707,11 @@ main#app {
 .top-recipe-offcanvas .offcanvas-header .back-btn,
 .back-btn,
 .fav-btn {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
-    width: 40px !important;
-    height: 40px !important;
-    line-height: 40px;
+    width: 35px !important;
+    height: 35px !important;
+    line-height: 35px;
     padding: 0px !important;
     border: none;
     text-align: center;
@@ -691,7 +737,7 @@ main#app {
     fill: none;
 }
 
-.fav-icon.in-favorite-list {
+.fav-icon.in-favorite-recipes {
     stroke: none;
     fill: #51c0a9;
 }
@@ -756,7 +802,7 @@ main#app {
     width: 90%;
     align-content: center;
     align-items: center;
-    color: var(--main-text-grey);
+    color: var(--main-grey);
 }
 
 .offcanvas-recipe-details-header .recipe-time-kcal i {
@@ -791,7 +837,7 @@ main#app {
     margin-bottom: 30px;
     height: 100%;
     padding: 10px 15px 30px 15px;
-    color: var(--main-text-grey);
+    color: var(--main-grey);
 
 }
 
@@ -853,7 +899,7 @@ main#app {
     width: 100%;
     background-color: transparent !important;
     border-radius: 50px;
-    color: var(--main-text-grey);
+    color: var(--main-grey);
     border: none;
     font-weight: 600;
 }
@@ -870,6 +916,12 @@ main#app {
     color: var(--main-text-color);
     border-radius: 15px;
     border: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
 
 }
 
@@ -883,24 +935,16 @@ main#app {
 
 
 /************* new recipe offcanvas  **********************/
-.new-recipe-offcanvas {
-    background-color: var(--main-bg-color);
+.placeholder-image {
+    width: 230px !important;
 }
 
 .new-recipe-offcanvas .offcanvas-header {
     padding: 11px;
-    background-color: var(--main-bg-color);
+    background-color: var(--main-bg-color) !important;
 }
 
-.new-recipe-offcanvas .offcanvas-header button {
-    width: 35px;
-    height: 35px;
-}
 
-.new-recipe-offcanvas .offcanvas-header .back-btn {
-    background-color: transparent;
-    color: white;
-}
 
 .recipe-input {
     background-color: var(--main-bg-color);
@@ -919,7 +963,8 @@ main#app {
 
 
 .new-recipe-body {
-    padding: 0 !important
+    padding: 0 !important;
+    background-color: var(--main-bg-color);
 }
 
 
@@ -961,11 +1006,11 @@ main#app {
 
 
 .imageContainer {
-    max-height: 320px;
-    width: 100%;
-    margin: 0px auto;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    position: relative;
+    min-height: 250px;
+    max-height: 290px;
+    margin: 15px;
+    border-radius: 20px;
 }
 
 .imageContainer label {
@@ -978,12 +1023,10 @@ main#app {
     object-fit: contain;
     width: 100%;
     height: 100%;
-}
-
-.upload-image {
-    width: 287px !important;
+    border-radius: 20px;
 
 }
+
 
 .imageContainer label>i {
     position: absolute;
@@ -997,11 +1040,11 @@ main#app {
 
 .imageContainer #image-spinner {
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -30%);
+    transform: translate(-50%, -50%);
     color: #26908C;
-
+    background: transparent;
 }
 
 
@@ -1077,6 +1120,7 @@ main#app {
     position: absolute;
     bottom: 0;
     left: 0;
+    right: 0;
 }
 
 
@@ -1148,10 +1192,11 @@ main#app {
 }
 
 .userAuth {
-    background-color: #fff;
+    background-color: var(--main-bg-element);
     width: 100%;
     overflow-x: hidden;
     padding: 10px;
+    color: var(--main-grey);
 }
 
 .userAuthHeading {

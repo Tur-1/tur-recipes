@@ -43,6 +43,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function myRecipes()
+    {
+        return  $this->hasMany(Recipe::class, 'user_id');
+    }
+    public function myFavRecipes()
+    {
+        return  $this->belongsToMany(Recipe::class, 'my_favorite_recipes');
+    }
+    public function myFavRecipesHas($recipeId)
+    {
+        return  $this->myFavRecipes()->where('recipe_id', $recipeId)->exists('recipe_id');
+    }
+
     public function getAvatarUrlAttribute()
     {
         if (is_null($this->avatar)) {

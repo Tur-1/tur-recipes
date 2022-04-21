@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Pages;
 
 use App\Models\Recipe;
 use Carbon\Carbon;
@@ -10,6 +10,9 @@ class Home extends Component
 {
     public $categories = [];
     public $category;
+    public $amount = 10;
+    public $recipe;
+
     public $recipes = [];
     public $topRecipes = [];
     public $recommendRecipes = [];
@@ -17,6 +20,16 @@ class Home extends Component
     public $searchValue;
     public $recipeTitle, $recipeFat, $recipeCarbs, $recipeProtein, $recipeReadyInMinutes, $recipeImage,
         $recipeCalories,  $recipeInstructions, $recipeIngredients, $recipeId, $recipeDish_types;
+
+
+    public function render()
+    {
+        $this->recommendRecipes =  $this->getAllRecipes($this->getRecommendMeal());
+        $this->categories =  $this->getCategories();
+
+        $this->recipes  = $this->getAllRecipes();
+        return view('livewire.pages.home');
+    }
 
     public function updated()
     {
@@ -70,10 +83,14 @@ class Home extends Component
     public function getAllRecipes($value = null)
     {
 
-        $recipes = Recipe::SearchRecipe($value)->inRandomOrder()->get();
+        $recipes = Recipe::SearchRecipe($value)->inRandomOrder()->take($this->amount)->get();
         $this->topRecipes =  $recipes->take(5);
 
         return $recipes;
+    }
+    public function loadMore()
+    {
+        $this->amount += 10;
     }
 
     public function getRecommendMeal()
@@ -105,34 +122,28 @@ class Home extends Component
     }
 
 
-    public function mount()
-    {
-
-        $this->recommendRecipes =  $this->getAllRecipes($this->getRecommendMeal());
-        $this->categories =  $this->getCategories();
-
-        $this->recipes  = $this->getAllRecipes();
-    }
-
     public function openRecipeModal($recipeId)
     {
 
         if (is_null($recipeId))   return;
 
-        $recipe = Recipe::find($recipeId);
-        if (is_null($recipe))  return;
+        $this->recipe = Recipe::find($recipeId);
 
-        $this->recipeId = $recipe->id;
-        $this->recipeTitle = $recipe->title;
-        $this->recipeFat = $recipe->fat;
-        $this->recipeReadyInMinutes = $recipe->ready_in_minutes;
-        $this->recipeCarbs = $recipe->carbs;
-        $this->recipeProtein = $recipe->protein;
-        $this->recipeCalories = $recipe->calories;
-        $this->recipeImage = $recipe->image;
-        $this->recipeIngredients = $recipe->ingredients;
-        $this->recipeInstructions = $recipe->instructions;
-        $this->recipeDishTypes = $recipe->dish_types;
+        if (is_null($this->recipe))  return;
+
+
+
+        $this->recipeId = $this->recipe->id;
+        $this->recipeTitle = $this->recipe->title;
+        $this->recipeFat = $this->recipe->fat;
+        $this->recipeReadyInMinutes = $this->recipe->ready_in_minutes;
+        $this->recipeCarbs = $this->recipe->carbs;
+        $this->recipeProtein = $this->recipe->protein;
+        $this->recipeCalories = $this->recipe->calories;
+        $this->recipeImage = $this->recipe->image;
+        $this->recipeIngredients = $this->recipe->ingredients;
+        $this->recipeInstructions = $this->recipe->instructions;
+        $this->recipeDishTypes = $this->recipe->dish_types;
 
 
         $this->showRecipeModal = true;
@@ -144,10 +155,5 @@ class Home extends Component
 
         $this->dispatchBrowserEvent('close-recipe-modal', ['recipeId' => $this->recipeId]);
         $this->showRecipeModal = false;
-    }
-    public function render()
-    {
-
-        return view('livewire.home');
     }
 }
