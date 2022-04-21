@@ -1,6 +1,6 @@
 <div class="">
     <button type="button" class="fav-btn" wire:click.prevent="addToFavoriteRecipesList">
-        <svg xmlns="http://www.w3.org/2000/svg"
+        <svg wire:loading.remove xmlns="http://www.w3.org/2000/svg"
             class="fav-icon {{ $recipeAddedToFavList || $alreadyInFavRecipes ? 'in-favorite-recipes' : '' }}"
             viewBox="0 0 24 24">
             <path
@@ -9,5 +9,7 @@
 
 
         </svg>
+        <span wire:loading wire:target='addToFavoriteRecipesList' class="spinner-border spinner-border-sm" role="status"
+            aria-hidden="true"></span>
     </button>
 </div>

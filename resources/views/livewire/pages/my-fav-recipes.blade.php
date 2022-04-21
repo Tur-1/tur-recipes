@@ -36,8 +36,8 @@
                 </div>
 
             @empty
-                <div class="col-12">
-                    <h5>no recipes found</h5>
+                <div class="col-12 text-center">
+                    <h5 class="text-white">no recipes found</h5>
                 </div>
             @endforelse
         </div>

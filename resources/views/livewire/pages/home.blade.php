@@ -19,7 +19,7 @@
 
 
 
-     {{-- @include('components.layouts.livewire-loading') --}}
+     @include('components.layouts.livewire-loading')
 
 
 

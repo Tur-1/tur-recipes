@@ -256,7 +256,7 @@ footer {
 footer ul {
     justify-content: space-around;
     align-items: center;
-    padding: 9px 0 21px 0;
+    padding: 9px 0 23px 0;
     font-size: 20px;
 
 }
@@ -681,8 +681,12 @@ main#app {
 
 .allRecipes-body .row .card .recipe-item-details {
     position: absolute;
-    background-color: rgb(40 40 40 / 70%);
-    backdrop-filter: blur(20px);
+    background: rgb(24 24 24 / 72%);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11px);
+    -webkit-backdrop-filter: blur(11px);
+
     border-radius: 10px;
     width: 96%;
     margin: 0 auto;

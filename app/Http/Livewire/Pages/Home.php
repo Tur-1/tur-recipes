@@ -60,7 +60,8 @@ class Home extends Component
 
 
         if (!is_null($this->category) && $this->category['id'] == $categoryId) {
-            $this->recipes = $this->getAllRecipes();
+
+            $this->searchValue = null;
             return;
         }
 
