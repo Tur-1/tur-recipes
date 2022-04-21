@@ -10,7 +10,7 @@
          <div class="row ">
              @foreach ($recipes as $recipe)
                  <div class="col-6">
-                     <a role="button" href="#" class="card"
+                     <a role="button" href="#" class="card recipe-card"
                          wire:click.prevent='openRecipeModal({{ $recipe['id'] }})'>
                          <img src="{{ $recipe['image_url'] }}">
                          <div class="recipe-item-details">

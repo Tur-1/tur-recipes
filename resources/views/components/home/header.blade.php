@@ -6,7 +6,7 @@
 
         </div>
 
-        <a href="{{ route('login') }}" class="user-imge-container">
+        <a href="{{ route('myAccount') }}" class="user-imge-container">
             <img src="{{ auth()->user()->avatar_url ?? asset('assets/images/avatar_male.png') }}" alt="">
         </a>
     </div>

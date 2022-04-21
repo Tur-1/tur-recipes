@@ -15,7 +15,7 @@
                             wire:click.prevent="openDeleteConfirmModal({{ $recipe['id'] }})"></button>
                     </div>
 
-                    <a role="button" href="#" class="card"
+                    <a role="button" href="#" class="card recipe-card"
                         wire:click.prevent='openRecipeModal({{ $recipe['id'] }})'>
                         <img src="{{ $recipe['image_url'] }}">
 

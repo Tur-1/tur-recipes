@@ -10,8 +10,8 @@
 
 :root {
     --main-color: #26908C;
-    --main-bg-color: #151419;
-    --main-bg-element: #1B1923;
+    --main-bg-color: #000000;
+    --main-bg-element: #171717;
     --main-text-color: #ccc;
     --main-grey: #939393;
 
@@ -50,13 +50,13 @@ input:focus,
     border-color: inherit;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    background-color: var(--main-bg-color);
+    background-color: var(--main-bg-element);
 }
 
 input,
 select,
 .form-control {
-    background-color: var(--main-bg-color);
+    background-color: var(--main-bg-element);
     color: var(--main-text-color) !important;
     border: none !important;
 }
@@ -97,18 +97,18 @@ i {
 
 .offcanvas {
     border: none !important;
-    background-color: var(--main-bg-element);
+    background-color: var(--main-bg-color);
     width: 100%;
 }
 
 .offcanvas-body {
-    background-color: var(--main-bg-element);
+    background-color: var(--main-bg-color);
     color: var(--main-text-color);
 
 }
 
 .offcanvas-header {
-    background-color: var(--main-bg-element);
+    background-color: var(--main-bg-color);
     color: var(--main-text-color);
 }
 
@@ -338,11 +338,12 @@ main#app {
 
 .recommend-recipes-row .card {
     background-color: var(--main-color) !important;
-    min-height: 235px !important;
-    margin: 30px;
-    width: 150px !important;
+    height: 150px !important;
+    margin: 30px 20px;
+    max-width: 230px !important;
     border-radius: 15px;
     overflow: hidden;
+
     box-shadow: 0.3rem 0.125rem 0.34rem rgb(0 0 0 / 20%) !important;
     transition: all 1s ease-in-out;
 
@@ -360,16 +361,6 @@ main#app {
     right: 0;
 }
 
-.recommend-recipes-row .card .card-image-container {
-    position: absolute;
-    right: -5px;
-    top: 15px;
-    height: 125px;
-    width: 125px;
-    border-radius: 9999px;
-    overflow: hidden;
-    box-shadow: 0.35rem 0.125rem 0.34rem rgb(0 0 0 / 60%) !important;
-}
 
 .recommend-recipes-row .card .card-image-container img {
     height: 100%;
@@ -394,6 +385,13 @@ main#app {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     font-weight: 600;
+}
+
+.recommend-recipes-row .card.recipe-card .recipe-item-details {
+    bottom: 0 !important;
+    border-radius: 16px 16px 0 0;
+    width: 100%;
+    margin: 0 !important;
 }
 
 .recommend-recipes-row .card .card-body .recipe-kcal-Time {
@@ -451,7 +449,6 @@ main#app {
     flex-direction: row;
     align-items: center;
     height: 50px;
-    background-color: var(--main-bg-element);
     border-radius: 50px;
     border: 1px solid #5656565c;
     padding: 20px 10px 20px 7px;
@@ -511,10 +508,13 @@ main#app {
 
 .top-recipes-row {
     margin: 15px 15px 25px 40px;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .top-recipe-item {
-    margin: 35px 10px;
+    margin: 25px 10px;
     position: relative;
     background-color: var(--main-bg-element);
     height: 107px;
@@ -524,13 +524,13 @@ main#app {
     box-shadow: 0.3rem 0.125rem 0.34rem rgb(0 0 0 / 8%) !important;
     flex-direction: row;
     text-decoration: none;
-    width: 95%;
+
 }
 
 .top-recipe-item .image-container {
     margin-left: -30px;
-    height: 120px;
-    width: 120px;
+    height: 135px;
+    width: 135px;
     border-radius: 9999px;
     box-shadow: 0.3rem 0.125rem 0.34rem rgb(0 0 0 / 70%) !important;
 
@@ -599,7 +599,7 @@ main#app {
     flex-direction: column;
     max-width: 100%;
     visibility: hidden;
-    background-color: var(--main-bg-color);
+    background-color: var(--main-bg-element);
     background-clip: padding-box;
     outline: 0;
     transition: transform .3s ease-in-out;
@@ -662,7 +662,7 @@ main#app {
     float: right;
 }
 
-.allRecipes-body .row .card {
+.card.recipe-card {
     border: none;
     height: 190px;
     border-radius: 10px;
@@ -671,7 +671,7 @@ main#app {
 
 }
 
-.allRecipes-body .row .card img {
+.card.recipe-card img {
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -679,7 +679,7 @@ main#app {
 
 }
 
-.allRecipes-body .row .card .recipe-item-details {
+.card.recipe-card .recipe-item-details {
     position: absolute;
     background: rgb(24 24 24 / 72%);
     border-radius: 16px;
@@ -699,7 +699,7 @@ main#app {
 
 }
 
-.allRecipes-body .row .card .recipe-item-details .recipe-kcal-Time {
+.card.recipe-card .recipe-item-details .recipe-kcal-Time {
     display: flex;
     justify-content: space-around;
     font-size: 11px;
@@ -781,8 +781,11 @@ main#app {
 .top-recipe-offcanvas .offcanvas-header .back-btn,
 .back-btn,
 .fav-btn {
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
+    background: rgb(24 24 24 / 72%);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11px);
+    -webkit-backdrop-filter: blur(11px);
     width: 35px !important;
     height: 35px !important;
     line-height: 35px;
@@ -1174,7 +1177,6 @@ main#app {
 
 .login-page .login-page-header {
     height: 70%;
-    background-color: black;
 }
 
 .login-page .login-page-header img {
@@ -1270,7 +1272,6 @@ main#app {
 }
 
 .userAuth {
-    background-color: var(--main-bg-element);
     width: 100%;
     overflow-x: hidden;
     padding: 10px;
@@ -1470,7 +1471,7 @@ main#app {
     justify-content: center;
     flex-direction: column;
     min-height: -webkit-fill-available;
-    padding: 10px;
+    padding: 0px 10px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     background-color: var(--main-bg-element);
