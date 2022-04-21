@@ -22,27 +22,21 @@ class Home extends Component
         $recipeCalories,  $recipeInstructions, $recipeIngredients, $recipeId, $recipeDish_types;
 
 
+
     public function render()
     {
-        $this->recommendRecipes =  $this->getAllRecipes($this->getRecommendMeal());
-        $this->categories =  $this->getCategories();
 
         $this->recipes  = $this->getAllRecipes();
+
+        $this->recommendRecipes = $this->getRecommendMeal();
+        $this->categories =  $this->getCategories();
+
         return view('livewire.pages.home')->extends('layouts.app')
             ->section('body');
     }
 
-    public function updated()
-    {
-        $this->searchRecipes();
-    }
 
-    public function searchRecipes()
-    {
-        if ($this->searchValue != "") {
-            $this->recipes = $this->getAllRecipes($this->searchValue);
-        }
-    }
+
     public function getCategories()
     {
         return [
@@ -69,22 +63,21 @@ class Home extends Component
             $this->recipes = $this->getAllRecipes();
             return;
         }
+
         if (!is_null($categoryId)) {
             $this->category =   collect($this->categories)->where("id", $categoryId)->first();
         }
 
-
-
         if (!is_null($this->category)) {
 
-            $this->recipes = $this->getAllRecipes($this->category['name']);
+            $this->searchValue =  $this->category['name'];
         }
     }
 
-    public function getAllRecipes($value = null)
+    public function getAllRecipes()
     {
 
-        $recipes = Recipe::SearchRecipe($value)->inRandomOrder()->take($this->amount)->get();
+        $recipes =  Recipe::SearchRecipe($this->searchValue)->latest()->take($this->amount)->get();
         $this->topRecipes =  $recipes->take(5);
 
         return $recipes;
@@ -119,7 +112,8 @@ class Home extends Component
         if ($timeNow->between($startEvning, $endEvning, true)) {
             $recommendMeal = 'dinner';
         }
-        return  $recommendMeal;
+
+        return Recipe::SearchRecipe($recommendMeal)->latest()->take($this->amount)->get();
     }
 
 
@@ -141,7 +135,7 @@ class Home extends Component
         $this->recipeCarbs = $this->recipe->carbs;
         $this->recipeProtein = $this->recipe->protein;
         $this->recipeCalories = $this->recipe->calories;
-        $this->recipeImage = $this->recipe->image;
+        $this->recipeImage = $this->recipe->image_url;
         $this->recipeIngredients = $this->recipe->ingredients;
         $this->recipeInstructions = $this->recipe->instructions;
         $this->recipeDishTypes = $this->recipe->dish_types;

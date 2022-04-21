@@ -1,4 +1,4 @@
-<div class="allRecipes allRecipes-end show" id="allRecipes" style="visibility: visible">
+<div wire:ignore.self class="allRecipes allRecipes-end show" id="allRecipes" style="visibility: visible">
     <div class="header">
         <a href="{{ route('home') }}" id="closeAllRecipes">
             <i class="fas fa-arrow-left"></i>
@@ -12,7 +12,7 @@
                 <div class="col-6">
                     <a role="button" href="#" class="card "
                         wire:click.prevent='openRecipeModal({{ $recipe['id'] }})'>
-                        <img src="{{ $recipe['image'] }}">
+                        <img src="{{ $recipe['image_url'] }}">
                         <div class="recipe-item-details">
 
                             <div class="title">

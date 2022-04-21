@@ -1,100 +1,94 @@
-<div>
+ <div>
 
 
-    <x-home.header />
+     <x-home.header />
 
 
-    @include('components.home.search')
+     @include('components.home.search')
 
-    @include('components.home.recommend-recipes')
+     @include('components.home.recommend-recipes')
 
-    @include('components.home.categories')
+     @include('components.home.categories')
 
-    @include('components.home.top-recipes')
+     @include('components.home.top-recipes')
 
-    @include('components.home.all-recipes')
-
-
-    @include('components.home.recipe-detail')
+     @include('components.home.all-recipes')
 
 
-    @include('components.layouts.livewire-loading')
+     @include('components.home.recipe-detail')
 
 
 
-</div>
+     {{-- @include('components.layouts.livewire-loading') --}}
 
 
 
-
-
-@push('script')
-    <script>
-        /***********************  all recipes offcanvas  ****************************/
-        let seeAllRecipesBtn = document.getElementById('seeAllRecipes');
-        let closeAllRecipesBtn = document.getElementById('closeAllRecipes');
-
-
-        seeAllRecipesBtn.addEventListener("click", (e) => {
-            let allRecipes = document.getElementById('allRecipes');
-
-            allRecipes.classList.add("show");
-            allRecipes.style.visibility = "visible";
-
-        });
-
-        closeAllRecipesBtn.addEventListener("click", (e) => {
-            let allRecipes = document.getElementById('allRecipes');
-
-            allRecipes.classList.remove("show");
-
-
-        });
-
-
-        /***********************  categoryItems  ****************************/
-        const categoryItems = [...document.querySelectorAll('.category')];
-
-        categoryItems.forEach(current_category => {
-            current_category.addEventListener("click", (e) => {
-
-                if (!current_category.classList.contains("active--category")) {
-                    current_category.classList.add("active--category");
-                } else {
-                    current_category.classList.remove("active--category");
-
-
-
-                }
-
-                categoryItems.forEach(prev_category => {
-                    if (prev_category.getAttribute("id") != current_category.getAttribute("id")) {
-                        prev_category.classList.remove("active--category");
-                    }
-
-                });
-
-            });
-
-        });
+ </div>
 
 
 
 
-        /***********************  recipe detail offcanvas  ****************************/
-        $(document).ready(function() {
-            window.addEventListener("open-recipe-modal", (e) => {
 
-                $('#recipe-detail-' + e.detail.recipeId).offcanvas('show');
+ @push('script')
+     <script>
+         /***********************  all recipes offcanvas  ****************************/
+         let seeAllRecipesBtn = document.getElementById('seeAllRecipesbtn');
+         let closeAllRecipesBtn = document.getElementById('closeAllRecipes');
+         let allRecipes = document.getElementById('allRecipes');
+
+         seeAllRecipesBtn.addEventListener("click", (e) => {
+             allRecipes.classList.add("show");
+             allRecipes.style.visibility = "visible";
+         });
+
+         closeAllRecipesBtn.addEventListener("click", (e) => {
+             allRecipes.classList.remove("show");
+         });
 
 
-            })
-            window.addEventListener("close-recipe-modal", (e) => {
+         /***********************  categoryItems  ****************************/
+         const categoryItems = [...document.querySelectorAll('.category')];
 
-                $('#recipe-detail-' + e.detail.recipeId).offcanvas('hide');
+         categoryItems.forEach(current_category => {
+             current_category.addEventListener("click", (e) => {
+
+                 if (!current_category.classList.contains("active--category")) {
+                     current_category.classList.add("active--category");
+                 } else {
+                     current_category.classList.remove("active--category");
 
 
-            })
-        });
-    </script>
-@endpush
+
+                 }
+
+                 categoryItems.forEach(prev_category => {
+                     if (prev_category.getAttribute("id") != current_category.getAttribute("id")) {
+                         prev_category.classList.remove("active--category");
+                     }
+
+                 });
+
+             });
+
+         });
+
+
+
+
+         /***********************  recipe detail offcanvas  ****************************/
+         $(document).ready(function() {
+             window.addEventListener("open-recipe-modal", (e) => {
+
+                 $('#recipe-detail-' + e.detail.recipeId).offcanvas('show');
+
+
+             })
+             window.addEventListener("close-recipe-modal", (e) => {
+
+                 $('#recipe-detail-' + e.detail.recipeId).offcanvas('hide');
+
+
+             })
+         });
+     </script>
+ @endpush

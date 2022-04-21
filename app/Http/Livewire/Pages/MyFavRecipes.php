@@ -29,7 +29,7 @@ class MyFavRecipes extends Component
         $this->recipeCarbs = $this->recipe->carbs;
         $this->recipeProtein = $this->recipe->protein;
         $this->recipeCalories = $this->recipe->calories;
-        $this->recipeImage = $this->recipe->image;
+        $this->recipeImage = $this->recipe->image_url;
         $this->recipeIngredients = $this->recipe->ingredients;
         $this->recipeInstructions = $this->recipe->instructions;
         $this->recipeDishTypes = $this->recipe->dish_types;

@@ -12,7 +12,7 @@
                     class="fas fa-plus-circle "></i></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="{{ route('myRecipes') }}"> <i class="fa-solid fa-book"></i></a>
+            <a class="nav-link " href="{{ route('myRecipes') }}"> <i class="fa-solid fa-book"></i></a>
         </li>
 
         <li class="nav-item">

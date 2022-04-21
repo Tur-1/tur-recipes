@@ -1,16 +1,16 @@
-<div class="top-recipes">
+<div class="top-recipes d-flex flex-column justify-content-center">
     <div class="header">
         <strong>Top {{ count($topRecipes) > 5 ? 5 : count($topRecipes) }} recipes</strong>
-        <a role="button" href="#" class="border-0 bg-transparent" id="seeAllRecipes">
+        <button type="button" class="border-0 bg-transparent" id="seeAllRecipesbtn">
             <small class="see-all">see All</small>
-        </a>
+        </button>
     </div>
-    <div class="top-recipes-row">
+    <div wire:loading.remove wire:target='getRecipesByCategory' class="top-recipes-row">
         @forelse ($topRecipes as $recipe)
             <a role="button" href="#" class="top-recipe-item"
                 wire:click.prevent='openRecipeModal({{ $recipe['id'] }})'>
                 <div class="image-container">
-                    <img src="{{ $recipe['image'] }}">
+                    <img src="{{ $recipe['image_url'] }}">
                 </div>
                 <div class="top-recipe-item-details">
                     <div class="title">
@@ -33,13 +33,19 @@
             </a>
 
         @empty
-            <div class="card border-0 bg-transparent">
-                <div class="card-body text-center">
-                    <h5 class="card-title">no recipes found</h5>
-                </div>
+
+            <div class="text-center text-white">
+                <h5 class="card-title">no recipes found</h5>
             </div>
         @endforelse
 
 
+
+    </div>
+
+    <div wire:loading wire:target='getRecipesByCategory' class="text-center p-3">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
     </div>
 </div>

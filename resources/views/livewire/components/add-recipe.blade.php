@@ -19,7 +19,7 @@
             <form enctype="multipart/form-data">
                 <div class="imageContainer ">
                     <label wire:loading.class='opacity-3' wire:target='image' for="reipce-image" class="text-center">
-                        <i class="fa fa-plus-circle "></i>
+
                         @if (!is_null($image))
                             <img src="{{ $image->temporaryUrl() }}" alt="">
                         @else

@@ -6,7 +6,7 @@
         @foreach ($recommendRecipes as $recipe)
             <a role="button" href="#" class="card" wire:click.prevent='openRecipeModal({{ $recipe['id'] }})'>
                 <div class="card-image-container">
-                    <img src="{{ $recipe['image'] }}" alt="...">
+                    <img src="{{ $recipe['image_url'] }}" alt="...">
                 </div>
                 <div class="card-body">
                     <div class="card-title">

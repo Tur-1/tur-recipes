@@ -25,6 +25,13 @@
 
 }
 
+.ui-page,
+.ui-panel,
+.ui-panel-wrapper,
+.ui-panel-dismiss {
+    touch-action: none;
+}
+
 body {
     background-color: var(--main-bg-color);
     max-width: 700px !important;
@@ -56,6 +63,11 @@ select,
 
 i {
     color: var(--main-text-color);
+}
+
+.btn {
+    outline: none !important;
+    border: none !important;
 }
 
 .btn-primary {
@@ -102,6 +114,46 @@ i {
 
 .offcanvas-bottom {
     height: 100% !important;
+}
+
+#deleteConfirmModal .modal-content {
+    background-color: var(--main-bg-element);
+    width: 70% !important;
+    border-radius: 15px;
+    color: var(--main-text-color);
+}
+
+#deleteConfirmModal .modal-dialog-centered {
+    justify-content: center !important;
+}
+
+#deleteConfirmModal .modal-footer {
+    padding: 0 !important;
+    display: flex;
+    border: none;
+    flex-direction: row;
+    margin: 0;
+
+}
+
+#deleteConfirmModal .modal-footer button {
+    color: var(--main-text-color);
+    background: transparent;
+    border: 0.3px solid #a4a4a426;
+    width: 50%;
+    margin: 0;
+    padding: 5px;
+    border-bottom: none;
+}
+
+#deleteConfirmModal .modal-footer button:first-child {
+    border-bottom: none;
+    border-left: none
+}
+
+#deleteConfirmModal .modal-footer button:last-child {
+    border-bottom: none;
+    border-right: none;
 }
 
 .card {
@@ -204,7 +256,7 @@ footer {
 footer ul {
     justify-content: space-around;
     align-items: center;
-    padding: 9px 0 19px 0;
+    padding: 9px 0 21px 0;
     font-size: 20px;
 
 }
@@ -580,9 +632,7 @@ main#app {
     padding: 10px 5px;
     overflow-y: scroll;
     overflow-x: hidden !important;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+
 }
 
 #loadMore {
@@ -596,6 +646,20 @@ main#app {
 
 .allRecipes-body .row .col-6 {
     margin: 10px 0px
+}
+
+.my-recipe-card {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.card-action {
+    margin: 10px;
+}
+
+.card-action button {
+    float: right;
 }
 
 .allRecipes-body .row .card {
@@ -617,8 +681,8 @@ main#app {
 
 .allRecipes-body .row .card .recipe-item-details {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(10px);
+    background-color: rgb(40 40 40 / 70%);
+    backdrop-filter: blur(20px);
     border-radius: 10px;
     width: 96%;
     margin: 0 auto;
@@ -652,6 +716,12 @@ main#app {
     margin-left: 16px;
     text-align: left;
 }
+
+
+.my-recipe-card .recipe-item-details .title {
+    text-align: center;
+}
+
 
 /************* top-recipe-offcanvas  **********************/
 
@@ -1182,6 +1252,8 @@ main#app {
 
 .login-register-modal .offcanvas-header {
     justify-content: center !important;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
 }
 
 
@@ -1216,8 +1288,7 @@ main#app {
 
 
 .userAuthHeadingTab--invalid {
-
-    border-color: #c12837 !important;
+    border-bottom: 2px solid #c12837 !important;
 }
 
 .userAuthHeadingTab--invalid button {
@@ -1298,10 +1369,15 @@ main#app {
 
 .account-page-header {
     background-color: var(--main-bg-color);
-    height: 45%;
+    min-height: 45%;
     position: relative;
     display: flex;
     flex-direction: column;
+}
+
+.turbolinks-progress-bar {
+    z-index: 89879897897987987899;
+    height: 5px;
 }
 
 .account-page-header header {
@@ -1389,7 +1465,7 @@ main#app {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    min-height: 55% !important;
+    min-height: -webkit-fill-available;
     padding: 10px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;

@@ -40,13 +40,18 @@ class Recipe extends Model
         $this->attributes['ingredients'] = json_encode($value);
     }
 
-    public function getImageAttribute($value)
+    public function getImageUrlAttribute()
     {
-        if (str_starts_with($value, 'http')) {
-            return $value;
+        if (str_starts_with($this->image, 'http')) {
+            return $this->image;
         } else {
 
-            return asset('storage/images/recipes/' . $value);
+            return asset('storage/images/recipes/' . $this->image);
         }
+    }
+    public function getImagePathAttribute()
+    {
+
+        return 'recipes/' . $this->image;
     }
 }
