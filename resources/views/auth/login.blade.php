@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section('body')
     <div class="offcanvas offcanvas-bottom login-register-modal" id="login-modal" aria-labelledby="offcanvasBottomLabel">
         <div class="offcanvas-header">
             <span class="header-border"></span>

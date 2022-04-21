@@ -49,6 +49,7 @@ class MyRecipes extends Component
     }
     public function render()
     {
-        return view('livewire.pages.my-recipes');
+        return view('livewire.pages.my-recipes')->extends('layouts.app')
+            ->section('body');
     }
 }

@@ -28,7 +28,8 @@ class Home extends Component
         $this->categories =  $this->getCategories();
 
         $this->recipes  = $this->getAllRecipes();
-        return view('livewire.pages.home');
+        return view('livewire.pages.home')->extends('layouts.app')
+            ->section('body');
     }
 
     public function updated()

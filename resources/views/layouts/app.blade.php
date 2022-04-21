@@ -11,7 +11,7 @@
     <x-layouts.loading />
 
     <main id="app">
-        {{ $slot }}
+        @yield('body')
         <x-layouts.alert-message />
     </main>
 

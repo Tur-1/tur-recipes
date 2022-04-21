@@ -52,6 +52,7 @@ class MyFavRecipes extends Component
     public function render()
     {
 
-        return view('livewire.pages.my-fav-recipes');
+        return view('livewire.pages.my-fav-recipes')->extends('layouts.app')
+            ->section('body');
     }
 }

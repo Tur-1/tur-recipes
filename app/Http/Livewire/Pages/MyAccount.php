@@ -62,6 +62,7 @@ class MyAccount extends Component
 
     public function render()
     {
-        return view('livewire.pages.my-account');
+        return view('livewire.pages.my-account')->extends('layouts.app')
+            ->section('body');
     }
 }
