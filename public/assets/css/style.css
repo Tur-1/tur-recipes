@@ -11,7 +11,7 @@
 :root {
     --main-color: #26908C;
     --main-bg-color: #000000;
-    --main-bg-element: #171717;
+    --main-bg-element: #202327;
     --main-text-color: #ccc;
     --main-grey: #939393;
 
@@ -50,13 +50,13 @@ input:focus,
     border-color: inherit;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    background-color: var(--main-bg-element);
+    background-color: var(--main-bg-element) !important;
 }
 
 input,
 select,
 .form-control {
-    background-color: var(--main-bg-element);
+    background-color: var(--main-bg-element) !important;
     color: var(--main-text-color) !important;
     border: none !important;
 }
@@ -336,16 +336,16 @@ main#app {
 }
 
 
-.recommend-recipes-row .card {
+.recommend-recipes-row .card.recipe-card {
     background-color: var(--main-color) !important;
     height: 150px !important;
     margin: 30px 20px;
     max-width: 230px !important;
-    border-radius: 15px;
+    border-radius: 15px !important;
     overflow: hidden;
-
     box-shadow: 0.3rem 0.125rem 0.34rem rgb(0 0 0 / 20%) !important;
     transition: all 1s ease-in-out;
+
 
 }
 
@@ -376,7 +376,7 @@ main#app {
 .recommend-recipes-row .card .card-body .card-title {
     max-height: 42px;
     max-width: 125px;
-    font-size: 13px;
+    font-size: 12px;
     color: white;
     overflow: hidden;
     vertical-align: middle;
@@ -392,6 +392,13 @@ main#app {
     border-radius: 16px 16px 0 0;
     width: 100%;
     margin: 0 !important;
+    padding: 2px !important;
+}
+
+.recommend-recipes-row .card.recipe-card .recipe-item-details .title {
+    font-size: 12px;
+    text-align: center;
+
 }
 
 .recommend-recipes-row .card .card-body .recipe-kcal-Time {
@@ -599,7 +606,7 @@ main#app {
     flex-direction: column;
     max-width: 100%;
     visibility: hidden;
-    background-color: var(--main-bg-element);
+    background-color: var(--main-bg-color);
     background-clip: padding-box;
     outline: 0;
     transition: transform .3s ease-in-out;
@@ -919,7 +926,7 @@ main#app {
 }
 
 .offcanvas-recipe-details .nutrients {
-    margin: 10px 20px 30px 20px;
+    margin: 30px 5px;
 }
 
 .offcanvas-recipe-details .nutrients .nutrition-row {
@@ -928,7 +935,7 @@ main#app {
     align-items: center;
     color: var(--main-text-color);
     justify-content: space-between;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .offcanvas-recipe-details .nutrients .nutrition-row .nutrition-element {
@@ -943,10 +950,8 @@ main#app {
     text-align: center;
     display: flex;
     justify-content: center;
-    align-items: center;
     width: 35px;
     height: 35px;
-    background-color: var(--main-bg-color);
     border-radius: 5px;
 }
 
@@ -1252,8 +1257,11 @@ main#app {
 }
 
 .login-register-modal .offcanvas-body {
+    padding: 10px 30px 45px 30px !important;
+}
 
-    padding: 5px 5px 30px 5px !important;
+.login-register-modal .offcanvas-body form {
+    margin-bottom: 20px;
 }
 
 .login-register-modal .offcanvas-header {
@@ -1271,20 +1279,6 @@ main#app {
     border-radius: 25px;
 }
 
-.userAuth {
-    width: 100%;
-    overflow-x: hidden;
-    padding: 10px;
-    color: var(--main-grey);
-}
-
-.userAuthHeading {
-    margin-top: 40px;
-    width: 100%;
-    position: relative;
-    border-bottom: 1px solid #eee;
-
-}
 
 .userAuthHeadingTab--active,
 .userAuthHeadingTab--invalid {
@@ -1301,17 +1295,12 @@ main#app {
 }
 
 .userAuthHeadingTab {
-
     border-bottom: 2px solid #51c0a9;
-
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
     font-weight: 600;
     font-size: 15px;
-    height: 50px;
-    display: flex;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
+    padding: 10px;
+
 }
 
 .userAuthHeadingTab button {
@@ -1319,18 +1308,8 @@ main#app {
     color: #51c0a9;
 }
 
-.userAuthHeading.register__active:after {
-    transform: translateX(100%);
-}
 
 
-
-
-#login-modal .modal-content,
-#register-modal .modal-content {
-    border: none !important;
-    background: transparent !important;
-}
 
 .social-btns li a {
     margin-top: 15px;

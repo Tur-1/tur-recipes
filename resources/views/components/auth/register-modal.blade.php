@@ -1,80 +1,67 @@
-<div class="userAuth">
+ <form method="POST" action="{{ route('register') }}" id="register-form">
+     @csrf
 
-    <div class="userAuthContent">
+     <div class="form-group mb-3">
+         <label for="register_name" class=" col-form-label text-md-right">{{ __('Name') }}</label>
 
-        <div id="register-form" class="auth-form-content ">
-            <form method="POST" action="{{ route('register') }}" class="p-2">
-                @csrf
+         <div class="">
+             <input id="register_name" type="text" placeholder="name"
+                 class="form-control {{ $errors->register->has('register_name') ? 'is-invalid' : '' }}"
+                 name="register_name" value="{{ old('register_name') }}" autocomplete="name" autofocus>
 
-                <div class="form-group ">
-                    <label for="register_name" class=" col-form-label text-md-right">{{ __('Name') }}</label>
+             @if ($errors->register->has('register_name'))
+                 <span class="invalid-feedback" role="alert">
+                     <strong>{{ $errors->register->first('register_name') }}</strong>
+                 </span>
+             @endif
+         </div>
+     </div>
 
-                    <div class="">
-                        <input id="register_name" type="text"
-                            class="form-control {{ $errors->register->has('register_name') ? 'is-invalid' : '' }}"
-                            name="register_name" value="{{ old('register_name') }}" autocomplete="name" autofocus>
+     <div class="form-group mb-3">
+         <label for="email" class=" col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                        @if ($errors->register->has('register_name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->register->first('register_name') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
+         <div class="">
+             <input id="register_email" type="email"
+                 class="form-control {{ $errors->register->has('register_email') ? 'is-invalid' : '' }}"
+                 name="register_email" value="{{ old('register_email') }}" autocomplete="email" placeholder="email">
 
-                <div class="form-group ">
-                    <label for="email" class=" col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+             @if ($errors->register->has('register_email'))
+                 <span class="invalid-feedback" role="alert">
+                     <strong>{{ $errors->register->first('register_email') }}</strong>
+                 </span>
+             @endif
+         </div>
+     </div>
 
-                    <div class="">
-                        <input id="register_email" type="email"
-                            class="form-control {{ $errors->register->has('register_email') ? 'is-invalid' : '' }}"
-                            name="register_email" value="{{ old('register_email') }}" autocomplete="email">
+     <div class="form-group mb-3">
 
-                        @if ($errors->register->has('register_email'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->register->first('register_email') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
+         <label for="register_password" class=" col-form-label text-md-right">{{ __('Password') }}</label>
+         <input id="register_password" type="password"
+             class="form-control  {{ $errors->register->has('register_password') ? 'is-invalid' : '' }}"
+             name="register_password" autocomplete="new-password" placeholder="password">
 
-                <div class="form-group ">
+         @if ($errors->register->has('register_password'))
+             <span class="invalid-feedback" role="alert">
+                 <strong>{{ $errors->register->first('register_password') }}</strong>
+             </span>
+         @endif
+     </div>
 
-                    <label for="register_password" class=" col-form-label text-md-right">{{ __('Password') }}</label>
-                    <input id="register_password" type="password"
-                        class="form-control  {{ $errors->register->has('register_password') ? 'is-invalid' : '' }}"
-                        name="register_password" autocomplete="new-password">
+     <div class="form-group mb-3">
+         <label for="password-confirm" class=" col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
-                    @if ($errors->register->has('register_password'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->register->first('register_password') }}</strong>
-                        </span>
-                    @endif
-                </div>
+         <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
+             autocomplete="new-password">
 
-                <div class="form-group ">
-                    <label for="password-confirm"
-                        class=" col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                        autocomplete="new-password">
-
-                </div>
+     </div>
 
 
 
-                <div class="userAuthHeading ">
+     <div class="userAuthHeadingTab @if (count($errors->register) > 0) userAuthHeadingTab--invalid @endif">
 
-                    <div
-                        class="userAuthHeadingTab @if (count($errors->register) > 0) userAuthHeadingTab--invalid @endif">
+         <button type="submit" class="btn w-100" name="register">
+             Sign up
+         </button>
+     </div>
 
-                        <button type="submit" class="btn w-100" name="register">
-                            Sign up
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-</div>
+ </form>

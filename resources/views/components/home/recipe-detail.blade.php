@@ -66,8 +66,6 @@
                          </div>
                          <span>{{ $recipeFat ?? '' }} Fat</span>
                      </div>
-                 </div>
-                 <div class="nutrition-row">
                      <div class="nutrition-element">
                          <div class="image-container">
                              <img src="{{ asset('assets/icons/icons8-avocado-48.png') }}">

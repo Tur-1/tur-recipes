@@ -2,9 +2,10 @@
 
 namespace App\Http\Livewire\Pages;
 
-use App\Models\Recipe;
 use Carbon\Carbon;
+use App\Models\Recipe;
 use Livewire\Component;
+use App\services\SpoonacularApiService;
 
 class Home extends Component
 {
@@ -25,7 +26,6 @@ class Home extends Component
 
     public function render()
     {
-
         $this->recipes  = $this->getAllRecipes();
 
         $this->recommendRecipes = $this->getRecommendMeal();

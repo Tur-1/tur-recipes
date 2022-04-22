@@ -33,7 +33,6 @@
                     <p>discover more than 1200 food recipes in your hands and cooking it easily</p>
                 </div>
                 <div class="login-register-btns">
-
                     <button type="button" class="btn btn-primary" id="btn-login">Login</button>
                     <button type="button" class="btn " id="btn-Sign-up"> Sign up </button>
                 </div>
@@ -63,18 +62,18 @@
     <script>
         $('.login-page').click(function(event) {
             var $target = $(event.target);
-            if (!$target.closest('.login-register-modal').length && !$target.closest('.login-page-body-container')
+            if (!$target.closest('.login-page-body-container')
                 .length) {
                 $('.login-register-modal').offcanvas('hide');
-                $('.offcanvas-backdrop ').remove();
-            } else {
-                $('#btn-login').click(function(event) {
-                    $('#login-modal').offcanvas('show');
-                });
-                $('#btn-Sign-up').click(function(event) {
-                    $('#register-modal').offcanvas('show');
-                });
+                // $('.offcanvas-backdrop').remove();
             }
+        });
+
+        $('#btn-login').click(function(event) {
+            $('#login-modal').offcanvas('show');
+        });
+        $('#btn-Sign-up').click(function(event) {
+            $('#register-modal').offcanvas('show');
         });
     </script>
 @endpush
