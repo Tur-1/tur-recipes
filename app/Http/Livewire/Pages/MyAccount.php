@@ -30,6 +30,9 @@ class MyAccount extends Component
 
         if ($this->avatar) {
 
+            $oldImagePath = 'avatars/' . auth()->user()->avatar;
+            $this->deletePreviousImage($oldImagePath);
+
             $newImageName = $this->uploadImageInStorage($this->avatar, 'avatars');
         }
 
