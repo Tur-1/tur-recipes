@@ -75,8 +75,7 @@ class SpoonacularApiService
         return [
 
             'apiKey' => $this->apiKey,
-            'number' => 100,
-            'tags' => ['Sandwiches', 'pizza']
+            'number' => 100
 
 
         ];

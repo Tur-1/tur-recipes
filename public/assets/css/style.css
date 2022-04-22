@@ -793,9 +793,9 @@ main#app {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(11px);
     -webkit-backdrop-filter: blur(11px);
-    width: 35px !important;
-    height: 35px !important;
-    line-height: 35px;
+    width: 40px !important;
+    height: 40px !important;
+    line-height: 40px;
     padding: 0px !important;
     border: none;
     text-align: center;
@@ -926,7 +926,7 @@ main#app {
 }
 
 .offcanvas-recipe-details .nutrients {
-    margin: 30px 5px;
+    margin: 40px 5px;
 }
 
 .offcanvas-recipe-details .nutrients .nutrition-row {
@@ -945,8 +945,8 @@ main#app {
 
 .offcanvas-recipe-details .nutrients .nutrition-row .nutrition-element .image-container {
 
-    margin-right: 10px;
-    margin-bottom: 8px;
+    margin-right: 3px;
+
     text-align: center;
     display: flex;
     justify-content: center;
@@ -1029,7 +1029,7 @@ main#app {
 
 
 .recipe-input {
-    background-color: var(--main-bg-color);
+    background-color: var(--main-bg-color) !important;
     border-radius: 9999px !important;
     border: none;
     color: var(--main-text-color);
@@ -1037,7 +1037,7 @@ main#app {
 }
 
 .recipe-input:focus {
-    background-color: var(--main-bg-color);
+    background-color: var(--main-bg-color) !important;
 
     color: var(--main-text-color);
 
@@ -1075,7 +1075,7 @@ main#app {
 }
 
 .offcanvas-body.new-recipe-body form .card-body select {
-    background-color: var(--main-bg-color);
+    background-color: var(--main-bg-color) !important;
     color: var(--main-text-color);
     border: none;
 }
