@@ -130,7 +130,7 @@
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="new-ingredients" role="tabpanel">
+                            <div class="tab-pane active mb-2" id="new-ingredients" role="tabpanel">
 
                                 @foreach ($ingredients as $field)
                                     <input type="text" placeholder="1 cup"

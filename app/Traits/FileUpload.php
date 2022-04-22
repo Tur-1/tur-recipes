@@ -14,8 +14,13 @@ trait FileUpload
     {
         $newImageName = $this->generateUniqueImageName($ImageRequest);
 
-        $ImageRequest->storeAs('public/images/' . $Folder, $newImageName);
 
+        if (app()->environment('production')) {
+            $path =    $ImageRequest->storeAs('images/' . $Folder, $newImageName, 's3');
+            Storage::disk('s3')->setVisibility($path, 'public');
+        } else {
+            $ImageRequest->storeAs('public/images/' . $Folder, $newImageName);
+        }
         return $newImageName;
     }
 
@@ -29,21 +34,30 @@ trait FileUpload
     public function deletePreviousImage($imagePath)
     {
         if ($this->isImageExists($imagePath)) {
-
-            Storage::disk('local')->delete('public/images/' . $imagePath);
+            if (app()->environment('production')) {
+                Storage::disk('s3')->delete($imagePath);
+            } else {
+                Storage::disk('local')->delete('public/images/' . $imagePath);
+            }
         }
     }
     public function isImageExists($imagePath)
     {
-
-        return Storage::exists('public/images/' . $imagePath);
+        if (app()->environment('production')) {
+            return Storage::disk('s3')->exists($imagePath);
+        } else {
+            return Storage::exists('public/images/' . $imagePath);
+        }
     }
     public function destroyModelWithImage($model, $imagePath)
     {
         $model->delete();
         if (isEmpty($model)) {
-
-            Storage::disk('local')->delete('public/images/' . $imagePath);
+            if (app()->environment('production')) {
+                Storage::disk('s3')->delete($imagePath);
+            } else {
+                Storage::disk('local')->delete('public/images/' . $imagePath);
+            }
         }
     }
 }

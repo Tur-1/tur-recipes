@@ -59,14 +59,6 @@
                 editHeaderCardAccount.slideDown("slow");
             });
 
-            $(window).on('updated_account_info', function() {
-                accountForm.slideUp("slow");
-
-                updateHeaderCardAccount.slideUp("slow");
-                accountFormLabel.slideDown("slow");
-
-                editHeaderCardAccount.slideDown("slow");
-            });
 
 
             openPasswordFormBtn.on('click', function() {
@@ -88,7 +80,13 @@
                 updateHeaderCardPassword.slideUp("slow");
                 editHeaderCardPassword.slideDown("slow");
             });
-            $(window).on('updated_account_password', function() {
+            $(window).on('updated_account_info', function() {
+                accountForm.slideUp("slow");
+
+                updateHeaderCardAccount.slideUp("slow");
+                accountFormLabel.slideDown("slow");
+
+                editHeaderCardAccount.slideDown("slow");
                 passwordForm.slideUp("slow");
                 passwordFormLabel.slideDown("slow");
 

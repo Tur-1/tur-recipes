@@ -7,6 +7,7 @@ use App\Traits\FileUpload;
 use Illuminate\Support\Str;
 use App\Traits\AlertMessages;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Hash;
 
 class MyAccount extends Component
 {
@@ -14,7 +15,9 @@ class MyAccount extends Component
 
     public $name, $email;
     public $avatar;
-
+    public $current_password;
+    public $new_password;
+    public $new_password_confirmation;
 
 
     protected $listeners = ['updated_account_info' => 'mount'];
@@ -53,6 +56,47 @@ class MyAccount extends Component
 
         $this->emit('updated_account_info');
         $this->dispatchBrowserEvent('updated_account_info');
+    }
+    public function changePassword()
+    {
+        $this->validate($this->passwordRules());
+
+        auth()->user()->update(['password' => $this->new_password]);
+
+
+        $this->emit('updated_account_info');
+        $this->dispatchBrowserEvent('updated_account_info');
+        $this->resetFields();
+    }
+    protected function passwordRules()
+    {
+        return  [
+            'current_password' => ['required', function ($attribute, $value, $fail) {
+                if (!Hash::check($value, auth()->user()->password)) {
+                    $fail('current password does not match.');
+                }
+            }],
+            'new_password' => 'required|string|min:1|same:new_password_confirmation|different:current_password',
+            'new_password_confirmation' => 'required',
+        ];
+    }
+    public function resetFields()
+    {
+        $this->resetValidation([
+            'current_password',
+            'new_password',
+            'new_password_confirmation',
+        ]);
+        $this->reset([
+            'current_password',
+            'new_password',
+            'new_password_confirmation',
+        ]);
+    }
+    public function OpenPasswordModal()
+    {
+        $this->ShowModal = true;
+        $this->dispatchBrowserEvent('OpenPasswordModal');
     }
     public function mount()
     {

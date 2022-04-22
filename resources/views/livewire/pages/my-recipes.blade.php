@@ -50,6 +50,10 @@
 
         </div>
     </div>
+
+    @include('components.layouts.livewire-loading', [
+        'targetMethod' => 'deleteRecipe',
+    ])
     @include('components.home.recipe-detail');
 
 
@@ -64,9 +68,10 @@
                     <p>{{ $confirmMessage ?? ' Are you sure ?  ' }} </p>
                 </div>
                 <div class="modal-footer ">
-                    <button type="button" data-dismiss="modal" data-bs-dismiss="modal">cancel</button>
+                    <button type="button" class="p-2" data-dismiss="modal"
+                        data-bs-dismiss="modal">cancel</button>
 
-                    <button type="button" wire:click.prevent="deleteRecipe()" class="delete-btn"
+                    <button type="button" class="p-2" wire:click.prevent="deleteRecipe()"
                         data-bs-dismiss="modal">Yes,
                         Delete</button>
                 </div>

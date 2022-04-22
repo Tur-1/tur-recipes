@@ -10,9 +10,9 @@
         <h6 class=" offcanvas-title text-uppercase" id="offcanvasExampleLabel">My profile</h6>
         <div></div>
     </div>
-    <div class="offcanvas-body p-0 mt-3">
+    <div wire:ignore.self class="offcanvas-body  mt-3">
 
-        <div class="card shadow-sm mb-4 ">
+        <div wire:ignore.self class="card shadow-sm mb-4 ">
             <div class="profile-card-header " id="edit-header-card-account">
                 <h6 class="card-title">ACCOUNT INFO</h6>
                 <button class=" bg-transparent border-0" id="open-account-from-btn">
@@ -75,7 +75,7 @@
 
         </div>
 
-        <div class="card shadow-sm mb-4 w-100 border-0">
+        <div wire:ignore.self class="card shadow-sm mb-4 w-100 border-0">
 
             <div class="profile-card-header " id="edit-header-card-password">
                 <h6 class="card-title">Password</h6>
@@ -87,7 +87,7 @@
             <div class="profile-card-header d-none" id="update-header-card-password">
                 <button class="btn-close btn-close-white" id="close-password-from-btn"> </button>
                 <h6 class="card-title">Password</h6>
-                <a role="button" href="#" class=" font-size-25" wire:click.prevent="submit">
+                <a role="button" href="#" class=" font-size-25" wire:click.prevent="changePassword">
                     <i class="fa-solid fa-check text-primary "></i>
                 </a>
                 </button>

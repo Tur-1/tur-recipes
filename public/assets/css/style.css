@@ -35,7 +35,7 @@
 body {
     background-color: var(--main-bg-color);
     max-width: 700px !important;
-
+    margin: 0 auto;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -119,8 +119,19 @@ i {
 #deleteConfirmModal .modal-content {
     background-color: var(--main-bg-element);
     width: 70% !important;
+    padding: 10px;
     border-radius: 15px;
     color: var(--main-text-color);
+}
+
+#deleteConfirmModal .modal-body {
+
+    padding: 1.5rem !important;
+}
+
+#deleteConfirmModal .modal-footer {
+
+    padding: 1.5rem !important;
 }
 
 #deleteConfirmModal .modal-dialog-centered {
@@ -243,9 +254,11 @@ a {
 /************* footer  **********************/
 footer {
     position: fixed;
-    align-items: center;
     bottom: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
+    max-width: 700px;
+    margin: 0 auto;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     background-color: var(--main-bg-element) !important;
@@ -256,7 +269,7 @@ footer {
 footer ul {
     justify-content: space-around;
     align-items: center;
-    padding: 9px 0 23px 0;
+    padding: 9px 0 25px 0;
     font-size: 20px;
 
 }
@@ -662,7 +675,7 @@ main#app {
 }
 
 .card-action {
-    margin: 10px;
+    margin: 15px 10px;
 }
 
 .card-action button {
@@ -969,8 +982,19 @@ main#app {
     background-color: var(--main-bg-color);
     border-radius: 50px;
     width: 100%;
+    margin-bottom: 20px;
 
 }
+
+.account-form input,
+.password-form input,
+.account-form input:focus,
+.password-form input:focus {
+    background-color: var(--main-bg-color) !important;
+
+}
+
+
 
 .ingredients .nav .nav-item {
     width: 50%;
@@ -994,7 +1018,7 @@ main#app {
 
 .ingredients .ingredients-card {
     margin-top: 10px;
-    background-color: var(--main-bg-color);
+    background-color: var(--main-bg-color) !important;
     color: var(--main-text-color);
     border-radius: 15px;
     border: none;
