@@ -4,10 +4,9 @@
         <div class="offcanvas-header">
 
 
-            <button type="button" class=" back-btn" data-bs-dismiss="offcanvas" data-bs-target="#addRecipe"
-                aria-label="Close">
-                <i class="fas fa-chevron-down"></i>
-            </button>
+            <a href="{{ route('home') }}" id="closeAllRecipes">
+                <i class="fas fa-arrow-left"></i>
+            </a>
             <a role="button" href="#" class=" form-submit-icon" wire:click.prevent="submit">
                 <i class="fa-solid fa-check"></i>
             </a>
@@ -139,15 +138,21 @@
 
 
 
-                                <a role="button" class="icon-primary" href="#" wire:click.prevent='addNewFields'>
-                                    <i class="fas fa-plus-circle "> </i>
+                                <a role="button" class="btn btn-primary mb-5 ms-3 mt-5" href="#"
+                                    wire:click.prevent='addNewFields'>
+
+                                    <span wire:loading wire:target='addNewFields'
+                                        class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    <span class=""> new ingredient</span>
                                 </a>
                             </div>
                             <div class="tab-pane" id="new-instructions" role="tabpanel"
                                 aria-labelledby="new-instructions">
 
                                 <div class="mb-3">
-                                    <textarea class=" form-control ingredients-card" id="instructions-text-area" rows="6"></textarea>
+                                    <textarea class=" form-control ingredients-card" rows="9" id="instructions-text-area"
+                                        wire:model.lazy='instructions'></textarea>
                                 </div>
 
 

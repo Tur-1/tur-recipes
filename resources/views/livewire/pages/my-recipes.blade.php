@@ -9,7 +9,7 @@
     <div class="allRecipes-body">
         <div class="row">
             @forelse ($myRecipes as $recipe)
-                <div class="my-recipe-card">
+                <div class="my-recipe-card ">
                     <div class="card-action ">
                         <button type="button" class="btn-close btn-close-white" aria-label="Close"
                             wire:click.prevent="openDeleteConfirmModal({{ $recipe['id'] }})"></button>

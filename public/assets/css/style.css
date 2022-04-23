@@ -635,10 +635,10 @@ main#app {
     color: var(--main-text-color);
 }
 
-.allRecipes .header #closeAllRecipes {
+#closeAllRecipes {
     background: transparent;
-    width: 37px;
-    height: 31px;
+
+    font-size: 23px;
     border: none;
     color: var(--main-text-color);
 }
@@ -671,7 +671,7 @@ main#app {
 .my-recipe-card {
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .card-action {
@@ -1046,7 +1046,7 @@ main#app {
 }
 
 .new-recipe-offcanvas .offcanvas-header {
-    padding: 11px;
+    padding: 15px;
     background-color: var(--main-bg-color) !important;
 }
 
@@ -1062,7 +1062,10 @@ main#app {
     border-radius: 9999px !important;
     border: none;
     color: var(--main-text-color);
-
+    -webkit-border-radius: 9999px !important;
+    -moz-border-radius: 9999px !important;
+    -ms-border-radius: 9999px !important;
+    -o-border-radius: 9999px !important;
 }
 
 .recipe-input:focus {

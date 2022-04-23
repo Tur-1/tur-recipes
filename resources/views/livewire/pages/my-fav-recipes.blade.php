@@ -42,6 +42,9 @@
             @endforelse
         </div>
     </div>
+    @include('components.layouts.livewire-loading', [
+        'targetMethod' => 'openRecipeModal',
+    ])
     @include('components.home.recipe-detail');
 </div>
 @push('script')
