@@ -22,7 +22,7 @@ class Home extends Component
     public $recipeTitle, $recipeFat, $recipeCarbs, $recipeProtein, $recipeReadyInMinutes, $recipeImage,
         $recipeCalories,  $recipeInstructions, $recipeIngredients, $recipeId, $recipeDish_types;
 
-    protected $listeners = ['update_recipes' => 'render'];
+
 
     public function render()
     {

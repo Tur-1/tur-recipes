@@ -35,7 +35,7 @@ class AddRecipe extends Component
         'ready_in_minutes' => 'required',
         'calories' => 'required',
         'dish_types' => 'required',
-        'image' => ['required'],
+        'image' => ['required', 'file'],
     ];
 
     public function submit()
