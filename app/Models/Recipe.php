@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Recipe extends Model
 {
@@ -45,13 +46,11 @@ class Recipe extends Model
         if (str_starts_with($this->image, 'http')) {
             return $this->image;
         } else {
-
-            return asset('storage/images/recipes/' . $this->image);
+            if (app()->environment('production')) {
+                return $this->image ? Storage::disk('s3')->url('images/recipes/' . $this->image) : null;
+            } else {
+                return $this->image ? asset('storage/images/recipes/' . $this->image) : null;
+            }
         }
-    }
-    public function getImagePathAttribute()
-    {
-
-        return 'recipes/' . $this->image;
     }
 }

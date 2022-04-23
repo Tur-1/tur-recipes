@@ -71,6 +71,7 @@ class User extends Authenticatable
             return asset('assets/images/avatar_male.png');
         } else {
 
+
             if (app()->environment('production')) {
                 return $this->avatar ? Storage::disk('s3')->url('images/avatars/' . $this->avatar) : null;
             } else {

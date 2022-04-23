@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use function PHPUnit\Framework\isEmpty;
+
 use Illuminate\Support\Facades\Storage;
 
 trait FileUpload
@@ -33,30 +34,34 @@ trait FileUpload
 
     public function deletePreviousImage($imagePath)
     {
-        if ($this->isImageExists($imagePath)) {
+
+        $fullPath = 'images/' . $imagePath;
+
+        if ($this->isImageExists($fullPath)) {
             if (app()->environment('production')) {
-                Storage::disk('s3')->delete($imagePath);
+                Storage::disk('s3')->delete($fullPath);
             } else {
-                Storage::disk('local')->delete('public/images/' . $imagePath);
+                Storage::disk('local')->delete('public/' . $fullPath);
             }
         }
     }
-    public function isImageExists($imagePath)
+    public function isImageExists($fullPath)
     {
         if (app()->environment('production')) {
-            return Storage::disk('s3')->exists($imagePath);
+            return Storage::disk('s3')->exists($fullPath);
         } else {
-            return Storage::exists('public/images/' . $imagePath);
+            return Storage::exists('public/' . $fullPath);
         }
     }
     public function destroyModelWithImage($model, $imagePath)
     {
+        $fullPath = 'images/' . $imagePath;
         $model->delete();
         if (isEmpty($model)) {
             if (app()->environment('production')) {
-                Storage::disk('s3')->delete($imagePath);
+                Storage::disk('s3')->delete($fullPath);
             } else {
-                Storage::disk('local')->delete('public/images/' . $imagePath);
+                Storage::disk('local')->delete('public/' . $fullPath);
             }
         }
     }
