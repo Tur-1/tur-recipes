@@ -74,7 +74,7 @@ class AddRecipe extends Component
         auth()->user()->myRecipes()->create($validated);
 
         $this->reset();
-        $this->RedirectWithSuccessMsg('home', 'recipe was successfully added');
+        $this->RedirectWithSuccessMsg('home', ' recipe was successfully added');
     }
 
     public function getCategories()

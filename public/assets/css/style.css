@@ -1066,6 +1066,7 @@ main#app {
     -moz-border-radius: 9999px !important;
     -ms-border-radius: 9999px !important;
     -o-border-radius: 9999px !important;
+    padding: 0.5rem !important;
 }
 
 .recipe-input:focus {
