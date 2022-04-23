@@ -57,12 +57,11 @@ trait FileUpload
     {
         $fullPath = 'images/' . $imagePath;
         $model->delete();
-        if (isEmpty($model)) {
-            if (app()->environment('production')) {
-                Storage::disk('s3')->delete($fullPath);
-            } else {
-                Storage::disk('local')->delete('public/' . $fullPath);
-            }
+
+        if (app()->environment('production')) {
+            Storage::disk('s3')->delete($fullPath);
+        } else {
+            Storage::disk('local')->delete('public/' . $fullPath);
         }
     }
 }

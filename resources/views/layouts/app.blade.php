@@ -16,12 +16,12 @@
     </main>
 
 
-    <livewire:components.add-recipe>
-        <x-layouts.footer />
+
+    <x-layouts.footer />
 
 
 
-        <x-layouts.scripts />
+    <x-layouts.scripts />
 </body>
 
 </html>

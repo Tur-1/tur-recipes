@@ -1,7 +1,6 @@
 <div>
 
-    <div wire:ignore.self class="offcanvas offcanvas-bottom new-recipe-offcanvas" tabindex="-1" data-bs-backdrop="false"
-        id="addRecipe">
+    <div wire:ignore.self class="offcanvas offcanvas-bottom new-recipe-offcanvas show" id="addRecipe">
         <div class="offcanvas-header">
 
 
@@ -160,6 +159,11 @@
             </form>
         </div>
     </div>
+
+    @include('components.layouts.livewire-loading', [
+        'targetMethod' => 'submit',
+    ])
+
 
 
 </div>

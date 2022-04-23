@@ -1050,6 +1050,11 @@ main#app {
     background-color: var(--main-bg-color) !important;
 }
 
+.new-recipe-offcanvas .offcanvas {
+    z-index: 98989898989 !important;
+    visibility: visible !important;
+
+}
 
 
 .recipe-input {
@@ -1416,6 +1421,7 @@ main#app {
     transform: translate(-55%, -50%);
     display: flex;
     flex-direction: column;
+
     align-items: center;
 
 
@@ -1423,6 +1429,11 @@ main#app {
 
 .opacity-3 {
     opacity: 0.3;
+    background: rgb(24 24 24 / 72%);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11px);
+    -webkit-backdrop-filter: blur(11px);
 
 }
 

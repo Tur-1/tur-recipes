@@ -6,6 +6,7 @@ namespace App\Traits;
 trait AlertMessages
 {
 
+
     public function showTostSuccessMessage($message)
     {
         $this->dispatchBrowserEvent('show-alert-message', ['message' => $message, 'background' => "bg-primary"]);
@@ -17,7 +18,7 @@ trait AlertMessages
     }
     public function RedirectWithSuccessMsg($RouteName, $message)
     {
-        return redirect()->route($RouteName)->with('message', $message);
+        return redirect()->route($RouteName)->with(['message' => $message, 'background' => "bg-primary"]);
     }
     public function RedirectToUrlWithSuccessMsg($url, $message)
     {

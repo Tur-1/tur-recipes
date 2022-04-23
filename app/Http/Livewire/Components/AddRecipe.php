@@ -42,8 +42,12 @@ class AddRecipe extends Component
     {
 
 
+        $this->ingredients = array_filter($this->ingredients);
+
+
         $str =  collect($this->dish_types)->__toString();
         $this->dish_types = str_replace(['"', '[', ']'], ' ', $str);
+
 
 
         $this->validate();
@@ -69,9 +73,8 @@ class AddRecipe extends Component
         ];
         auth()->user()->myRecipes()->create($validated);
 
-
-        $this->showTostSuccessMessage('recipe was successfully added');
-        $this->dispatchBrowserEvent('close-form-recipe-modal');
+        $this->reset();
+        $this->RedirectWithSuccessMsg('home', 'recipe was successfully added');
     }
 
     public function getCategories()
@@ -102,6 +105,7 @@ class AddRecipe extends Component
     }
     public function render()
     {
-        return view('livewire.components.add-recipe');
+        return view('livewire.components.add-recipe')->extends('layouts.app')
+            ->section('body');
     }
 }
