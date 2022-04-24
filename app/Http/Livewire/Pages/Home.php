@@ -22,7 +22,17 @@ class Home extends Component
     public $recipeTitle, $recipeFat, $recipeCarbs, $recipeProtein, $recipeReadyInMinutes, $recipeImage,
         $recipeCalories,  $recipeInstructions, $recipeIngredients, $recipeId, $recipeDish_types;
 
+    public function updatedSearchValue()
+    {
+        $this->searchRecipes();
+    }
 
+    public function searchRecipes()
+    {
+        if ($this->searchValue != "") {
+            $this->searchValue = $this->searchValue;
+        }
+    }
 
     public function render()
     {

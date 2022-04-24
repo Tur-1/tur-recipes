@@ -130,12 +130,14 @@
                         <div class="tab-content">
                             <div class="tab-pane active mb-2" id="new-ingredients" role="tabpanel">
 
-                                @foreach ($ingredients as $field)
-                                    <input type="text" placeholder="1 cup"
-                                        class="input-ingredients form-control ingredients-card " id=" ingredients-card"
-                                        wire:model.lazy='ingredients.{{ $loop->index }}'>
-                                @endforeach
+                                <div id="ingredients-row">
+                                    @foreach ($ingredients as $field)
+                                        <input type="text" placeholder="1 cup"
+                                            class="input-ingredients form-control ingredients-card "
+                                            id=" ingredients-card" wire:model.lazy='ingredients.{{ $loop->index }}'>
+                                    @endforeach
 
+                                </div>
 
 
                                 <a role="button" class="btn btn-primary mb-5 ms-3 mt-5" href="#"
