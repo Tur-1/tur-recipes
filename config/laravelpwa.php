@@ -55,22 +55,22 @@ return [
             '1536x2048' => '/images/icons/Screenshotsplash.png',
             '1668x2224' => '/images/icons/Screenshotsplash.png',
             '1668x2388' => '/images/icons/Screenshotsplash.png',
-            '2048x2732' => '/images/icons/Screenshotsplash.png',
+            '2048x2732' => 'images/icons/Screenshotsplash.png',
         ],
         'shortcuts' => [
             [
                 'name' => 'Shortcut Link 1',
                 'description' => 'Shortcut Link 1 Description',
-                'url' => '/shortcutlink1',
+                'url' => '/',
                 'icons' => [
-                    "src" => "/images/icons/icon-72x72.png",
+                    "src" => "/images/icons/main.png",
                     "purpose" => "any"
                 ]
             ],
             [
                 'name' => 'Shortcut Link 2',
                 'description' => 'Shortcut Link 2 Description',
-                'url' => '/shortcutlink2'
+                'url' => '/'
             ]
         ],
         'custom' => []
