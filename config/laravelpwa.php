@@ -10,7 +10,7 @@ return [
         'theme_color' => '#000000',
         'display' => 'standalone',
         'orientation' => 'any',
-        'status_bar' => 'black',
+        'status_bar' => '#26908C',
         'icons' => [
             '72x72' => [
                 'path' => '/images/icons/main.png',
