@@ -32,12 +32,16 @@
     touch-action: none;
 }
 
+
+
 body {
     background-color: var(--main-bg-color);
-    max-width: 700px !important;
-    margin: 0 auto;
+
+    margin: 0 auto !important;
+
+    max-width: 600px !important;
     overflow-y: scroll;
-    overflow-x: hidden;
+
 }
 
 
@@ -98,7 +102,12 @@ i {
 .offcanvas {
     border: none !important;
     background-color: var(--main-bg-color);
-    width: 100%;
+    left: 0;
+    right: 0;
+    width: unset !important;
+
+    max-width: 600px !important;
+    margin: 0 auto;
 }
 
 .offcanvas-body {
@@ -257,7 +266,7 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    max-width: 700px;
+    max-width: 600px;
     margin: 0 auto;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
@@ -1202,12 +1211,15 @@ main#app {
 .login-page {
     position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 600px;
+    margin: 0 auto;
     z-index: 10;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    background-color: #fff;
-    background-clip: padding-box;
+
+    background-color: #0000;
     outline: 0;
     height: 100%;
 
@@ -1370,14 +1382,17 @@ main#app {
 /************* account page *********************/
 .account-page {
     position: fixed;
-    bottom: 0;
     top: 0;
+    bottom: 0;
+    left: 0;
     right: 0;
+    max-width: 600px;
+    margin: 0 auto;
     z-index: 1050;
     visibility: visible;
     display: flex;
     flex-direction: column;
-    width: 100%;
+
     background-color: #fff;
     outline: 0;
     border: none;

@@ -55,7 +55,7 @@ return [
             '1536x2048' => '/images/icons/Screenshotsplash.png',
             '1668x2224' => '/images/icons/Screenshotsplash.png',
             '1668x2388' => '/images/icons/Screenshotsplash.png',
-            '2048x2732' => 'images/icons/Screenshotsplash.png',
+            '2048x2732' => '/images/icons/Screenshotsplash.png',
         ],
         'shortcuts' => [
             [
