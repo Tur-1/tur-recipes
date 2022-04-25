@@ -98,9 +98,19 @@
 
                     </div>
                     <div class="row">
+                        <div class="form-group mb-3">
+                            <label for="mealTypes" class="form-label">meal types</label>
+                            <select multiple wire:model.lazy='meal_types' id="mealTypes"
+                                class="form-select form-select-sm rounded-1  @error('mealTypes') is-invalid @enderror">
+                                @foreach ($mealTypes as $type)
+                                    <option value="{{ $type }}"> {{ $type }}</option>
+                                @endforeach
 
-                        <div class="form-group">
-                            <label for="dish_types" class="form-label">Categories</label>
+
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="dish_types" class="form-label">Categories ( optional )</label>
                             <select multiple wire:model.lazy='dish_types' id="dish_types"
                                 class="form-select form-select-sm rounded-1  @error('dish_types') is-invalid @enderror">
                                 @foreach ($categories as $category)
@@ -112,7 +122,7 @@
                         </div>
                     </div>
                     <div class="ingredients  mt-4">
-                        <ul class="nav nav-tabs|pills" id="myTab" role="tablist">
+                        <ul wire:ignore.self class="nav nav-tabs|pills" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="new-ingredients-tab" data-bs-toggle="tab"
                                     data-bs-target="#new-ingredients" type="button" role="tab"
@@ -120,7 +130,7 @@
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="new-instructions-tab" data-bs-toggle="tab"
-                                    data-bs-target="#new-instructions" type="button" role="tab">instructions
+                                    data-bs-target="#instr-new-instructions" type="button" role="tab">instructions
                                 </button>
                             </li>
 
@@ -140,7 +150,7 @@
                                 </div>
 
 
-                                <a role="button" class="btn btn-primary mb-5 ms-3 mt-5" href="#"
+                                <a role="button" class="btn btn-primary mb-5 ms-1 mt-5" href="#"
                                     wire:click.prevent='addNewFields'>
 
                                     <span wire:loading wire:target='addNewFields'
@@ -149,7 +159,7 @@
                                     <span class=""> new ingredient</span>
                                 </a>
                             </div>
-                            <div class="tab-pane" id="new-instructions" role="tabpanel"
+                            <div class="tab-pane" id="instr-new-instructions" role="tabpanel"
                                 aria-labelledby="new-instructions">
 
                                 <div class="mb-3">

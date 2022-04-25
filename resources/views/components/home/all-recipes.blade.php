@@ -40,13 +40,16 @@
 
 
          <div class="row mt-3 d-flex justify-content-center">
+
              <div class="text-center">
                  <button class="btn btn-primary " id="loadMore" wire:click='loadMore'>
                      <span wire:loading wire:target='loadMore' class="spinner-border spinner-border-sm" role="status"
                          aria-hidden="true"></span>
-                     <span class=""> load more...</span>
+                     <span class=""> load more</span>
                  </button>
              </div>
+
+
 
 
          </div>

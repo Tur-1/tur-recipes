@@ -69,6 +69,12 @@ i {
     color: var(--main-text-color);
 }
 
+
+a:active {
+    transform: scale(1.2);
+
+}
+
 .btn {
     outline: none !important;
     border: none !important;
@@ -126,7 +132,9 @@ i {
 }
 
 #deleteConfirmModal .modal-content {
-    background-color: var(--main-bg-element);
+    background: rgb(41 41 41 / 83%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     width: 70% !important;
     padding: 10px;
     border-radius: 15px;
@@ -467,7 +475,7 @@ main#app {
     display: flex;
     align-items: center;
     overflow: scroll;
-    padding: 10px 0px;
+    padding: 10px 7px 10px 0;
 }
 
 
@@ -489,10 +497,6 @@ main#app {
 
 }
 
-.categories .category:last-child {
-    margin-right: 15px;
-
-}
 
 .categories .category .image-container {
     text-align: center;
@@ -1218,7 +1222,6 @@ main#app {
     z-index: 10;
     display: flex;
     flex-direction: column;
-
     background-color: #0000;
     outline: 0;
     height: 100%;
@@ -1274,6 +1277,7 @@ main#app {
 .login-page .login-page-body .login-register-btns {
     display: flex;
     flex-direction: column;
+    padding-bottom: 10px;
     margin: 5px 19px 20px 19px;
     gap: 1rem;
 

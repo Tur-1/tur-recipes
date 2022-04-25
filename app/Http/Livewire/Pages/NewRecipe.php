@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Components;
+namespace App\Http\Livewire\Pages;
 
 use App\Traits\AlertMessages;
 use Livewire\Component;
@@ -8,12 +8,12 @@ use Livewire\Component;
 use App\Traits\FileUpload;
 use Livewire\WithFileUploads;
 
-class AddRecipe extends Component
+class NewRecipe extends Component
 {
     use WithFileUploads, FileUpload, AlertMessages;
 
     public $ingredients = [];
-    public $categories = [];
+    public $meal_types;
     public $dish_types = [];
     public $title;
     public $fat;
@@ -34,7 +34,8 @@ class AddRecipe extends Component
         'protein' => 'required',
         'ready_in_minutes' => 'required',
         'calories' => 'required',
-        'dish_types' => 'required',
+        'meal_types' => 'required',
+        'dish_types' => 'nullable',
         'image' => ['required', 'file'],
     ];
 
@@ -43,11 +44,6 @@ class AddRecipe extends Component
 
 
         $this->ingredients = array_filter($this->ingredients);
-
-
-        $str =  collect($this->dish_types)->__toString();
-        $this->dish_types = str_replace(['"', '[', ']'], ' ', $str);
-
 
 
         $this->validate();
@@ -69,7 +65,8 @@ class AddRecipe extends Component
             'carbs' =>  $this->carbs,
             'fat' =>  $this->fat,
             'protein' => $this->protein,
-            'dish_types' => $this->dish_types,
+            'meal_types' => $this->meal_types,
+            'categories' => $this->dish_types,
         ];
         auth()->user()->myRecipes()->create($validated);
 
@@ -81,22 +78,28 @@ class AddRecipe extends Component
     {
         return [
             ['id' => 1, 'name' => 'pizza', 'imageUrl' => asset('assets/images/pizza-clip-art-15.png')],
-            ['id' => 2, 'name' => 'burger ', 'imageUrl' => asset('assets/images/burgur.png')],
+            ['id' => 2, 'name' => 'burger', 'imageUrl' => asset('assets/images/burgur.png')],
             ['id' => 3, 'name' => 'dessert', 'imageUrl' => asset('assets/images/8-86854_food-dessert-cupcake-muffin-clipart-hd-png-download.png')],
             ['id' => 4, 'name' => 'drinks', 'imageUrl' => asset('assets/images/drinks2.jpg')],
             ['id' => 5, 'name' => 'steak', 'imageUrl' => asset('assets/images/steak.png')],
             ['id' => 7, 'name' => 'pasta', 'imageUrl' => asset('assets/images/5-57766_pasta-png-spaghetti-png.png')],
             ['id' => 8, 'name' => 'Sandwiches', 'imageUrl' => asset('assets/images/sandow.jpg')],
             ['id' => 9, 'name' => 'Muffins', 'imageUrl' => asset('assets/images/Muffins.jpg')],
-            ['id' => 10, 'name' => 'Coolkies', 'imageUrl' => asset('assets/images/coolkie.jpg')],
+        ];
+    }
 
-
+    public function getMealTypes()
+    {
+        return [
+            'breakfast',
+            'lunch',
+            'dinner',
+            'snack'
         ];
     }
     public function mount()
     {
         $this->ingredients[] = [];
-        $this->categories =  $this->getCategories();
     }
     public function addNewFields()
     {
@@ -105,7 +108,9 @@ class AddRecipe extends Component
     }
     public function render()
     {
-        return view('livewire.components.add-recipe')->extends('layouts.app')
+        $categories =  $this->getCategories();
+        $mealTypes =  $this->getMealTypes();
+        return view('livewire.pages.new-recipe', compact('categories', 'mealTypes'))->extends('layouts.app')
             ->section('body');
     }
 }

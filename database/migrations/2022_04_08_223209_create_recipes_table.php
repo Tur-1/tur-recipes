@@ -25,9 +25,8 @@ return new class extends Migration
             $table->string('image');
             $table->longText('instructions')->nullable();
             $table->json('ingredients')->nullable();
-            $table->string('meal_types');
+            $table->json('meal_types')->nullable();
             $table->json('categories')->nullable();
-
             $table->timestamps();
         });
     }

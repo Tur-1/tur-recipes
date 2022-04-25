@@ -11,7 +11,9 @@ class Recipe extends Model
     use HasFactory;
 
     protected $casts = [
-        'ingredients' => 'array'
+        'ingredients' => 'array',
+        'categories' => 'array',
+        'meal_types' => 'array'
     ];
 
     protected $fillable = [
@@ -25,7 +27,8 @@ class Recipe extends Model
         'ready_in_minutes',
         'instructions',
         'ingredients',
-        'dish_types'
+        'categories',
+        'meal_types'
 
     ];
 
@@ -33,14 +36,22 @@ class Recipe extends Model
     {
         return $query->when(!is_null($value), function ($query) use ($value) {
             $query->where('title', 'like', '%' . $value . '%')
-                ->orWhere('dish_types', 'like', '%' . $value . '%');
+                ->orWhere('meal_types', 'like', '%' . $value . '%')
+                ->orWhere('categories', 'like', '%' . $value . '%');
         });
     }
     public function setIngredientsAttribute($value)
     {
         $this->attributes['ingredients'] = json_encode($value);
     }
-
+    public function setCategoriesAttribute($value)
+    {
+        $this->attributes['categories'] = json_encode($value);
+    }
+    public function setMealTypesAttribute($value)
+    {
+        $this->attributes['meal_types'] = json_encode($value);
+    }
     public function getImageUrlAttribute()
     {
         if (str_starts_with($this->image, 'http')) {

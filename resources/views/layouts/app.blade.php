@@ -5,6 +5,7 @@
 <x-layouts.head />
 
 @laravelPWA
+
 <body>
 
 

@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
                         'carbs' => intval($recipe['carbs']),
                         'fat' => intval($recipe['fat']),
                         'protein' => intval($recipe['protein']),
-                        'dish_types' => $recipe['dish_types'],
+                        'meal_types' => $recipe['meal_types'],
                     ]
                 );
             }

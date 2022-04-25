@@ -8,7 +8,7 @@ use App\Exceptions\RecipeResponseException;
 
 class SpoonacularApiService
 {
-    private $apiKey = '7350491a91294273abe4924f7c21d0ea';
+    private $apiKey = '4f983cf763974d19aa58c0c4333b68e8';
     private $baseUrl = 'https://api.spoonacular.com/recipes';
 
 
@@ -23,6 +23,9 @@ class SpoonacularApiService
             ->get($randomRecipesAccessPoint, $this->getRecipesQuery());
 
 
+        if ($response->failed()) {
+            dd('response failed');
+        }
 
         $ids = collect($response['recipes'])->pluck('id');
         $ids = $ids->toJson();
@@ -45,8 +48,6 @@ class SpoonacularApiService
                 return  $inr['original'];
             })->toArray();
 
-            $str =  collect($recipe['dishTypes'])->__toString();
-            $dish_types = str_replace(['"', '[', ']'], ' ', $str);
 
             return [
                 'idd' => $recipe['id'],
@@ -59,7 +60,7 @@ class SpoonacularApiService
                 'carbs' => intval($recipe['nutrition']['nutrients'][3]['amount']),
                 'fat' => intval($recipe['nutrition']['nutrients'][1]['amount']),
                 'protein' => intval($recipe['nutrition']['nutrients'][8]['amount']),
-                'dish_types' => $dish_types,
+                'meal_types' => $recipe['dishTypes'],
             ];
         })->toArray();
 
@@ -73,11 +74,8 @@ class SpoonacularApiService
 
 
         return [
-
             'apiKey' => $this->apiKey,
             'number' => 100
-
-
         ];
     }
 }

@@ -8,7 +8,7 @@
             <a class="nav-link active" href="{{ route('myFavRecipes') }}"><i class="  far fa-heart"></i></a>
         </li>
         <li class="nav-item add-recipe-icon">
-            <a href="{{ route('addRecipe') }}" class="nav-link"><i class="fas fa-plus-circle "></i></a>
+            <a href="{{ route('newRecipe') }}" class="nav-link"><i class="fas fa-plus-circle "></i></a>
         </li>
         <li class="nav-item">
             <a class="nav-link " href="{{ route('myRecipes') }}"> <i class="fa-solid fa-book"></i></a>

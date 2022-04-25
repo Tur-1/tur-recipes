@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Livewire\Components\AddRecipe;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Pages\Home;
 use App\Http\Livewire\Pages\MyAccount;
 use App\Http\Livewire\Pages\MyRecipes;
 use App\Http\Livewire\Pages\MyFavRecipes;
+use App\Http\Livewire\Pages\NewRecipe;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,5 +26,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/my-account', MyAccount::class)->name('myAccount');
     Route::get('/my-fav-recipes', MyFavRecipes::class)->name('myFavRecipes');
     Route::get('/my-recipes', MyRecipes::class)->name('myRecipes');
-    Route::get('/new-recipe', AddRecipe::class)->name('addRecipe');
+    Route::get('/new-recipe', NewRecipe::class)->name('newRecipe');
 });
