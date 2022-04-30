@@ -87,7 +87,7 @@ class Home extends Component
     public function getAllRecipes()
     {
 
-        $recipes =  Recipe::SearchRecipe($this->searchValue)->latest()->take($this->amount)->get();
+        $recipes =  Recipe::SearchRecipe($this->searchValue)->latest()->take(20)->get();
         $this->topRecipes =  $recipes->take(5);
 
         return $recipes;
