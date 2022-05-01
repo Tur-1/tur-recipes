@@ -37,6 +37,7 @@ class Home extends Component
     public function render()
     {
 
+
         $this->recipes  = $this->getAllRecipes();
 
         $this->recommendRecipes = $this->getRecommendMeal();

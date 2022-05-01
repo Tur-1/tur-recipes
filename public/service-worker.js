@@ -4,13 +4,8 @@ var filesToCache = [
     '/css/app.css',
     '/js/app.js',
     '/images/icons/main.png',
-    '/images/icons/main.png',
-    '/images/icons/main.png',
-    '/images/icons/main.png',
-    '/images/icons/main.png',
-    '/images/icons/main.png',
-    '/images/icons/main.png',
-    '/images/icons/main.png',
+    '/images/icons/splash.jpg'
+
 ];
 
 // Cache on install

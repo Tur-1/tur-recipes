@@ -404,7 +404,7 @@ main#app {
 
 
 .recommend-recipes-row .card .card-body .card-title {
-    max-height: 42px;
+    max-height: 41px;
     max-width: 125px;
     font-size: 12px;
     color: white;
@@ -714,7 +714,7 @@ main#app {
 
 .card.recipe-card .recipe-item-details {
     position: absolute;
-    background: rgb(24 24 24 / 72%);
+    background: rgb(72 72 72 / 72%);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(11px);

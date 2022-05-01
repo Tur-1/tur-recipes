@@ -24,6 +24,8 @@ class Header extends Component
      */
     public function render()
     {
+
+
         $startMorning = Carbon::createFromTime(0, 0, 0, 'GMT+3');
         $endMorning = Carbon::createFromTime(12, 0, 0, 'GMT+3');
 
