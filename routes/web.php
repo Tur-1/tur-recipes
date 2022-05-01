@@ -21,6 +21,7 @@ use App\Http\Livewire\Pages\NewRecipe;
 
 
 Auth::routes();
+Route::view('/offline', 'vendor.laravelpwa.offline');
 Route::middleware('auth')->group(function () {
     Route::get('/', Home::class)->name('home');
     Route::get('/my-account', MyAccount::class)->name('myAccount');

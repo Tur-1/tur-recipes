@@ -29,5 +29,5 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css?v=') . time() }}">
 
     <livewire:styles />
-
+    @laravelPWA
 </head>
