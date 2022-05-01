@@ -1,4 +1,5 @@
 {
+    "display": "standalone",
     "name": "Tur Recipes",
     "short_name": "t-Recipes",
     "start_url":"/",
@@ -29,9 +30,9 @@
         }
       ]
       ,
-    "background_color" : "#000000",
+ 
     "theme_color" : "#000000",
-    "display" : "standalone",
-    "orientation" : "any",
+    
+    "orientation" : "portrait",
     "status_bar" : "#26908C"
 }

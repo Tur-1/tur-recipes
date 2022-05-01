@@ -35,11 +35,13 @@
 
 
 body {
+    -webkit-tap-highlight-color: transparent;
     background-color: var(--main-bg-color);
 
     margin: 0 auto !important;
 
     max-width: 600px !important;
+    height: 100vh;
     overflow-y: scroll;
 
 }
@@ -311,6 +313,7 @@ footer ul li a i {
 
 main#app {
     margin-bottom: 100px;
+    height: 100%;
 }
 
 
@@ -1225,7 +1228,7 @@ main#app {
     flex-direction: column;
     background-color: #0000;
     outline: 0;
-    height: 100vh;
+    height: 100%;
 
 }
 
