@@ -48,6 +48,7 @@
         <script>
             $(document).ready(function() {
                 $('#register-modal').offcanvas('show');
+
             });
         </script>
     @endif
@@ -65,12 +66,13 @@
             if (!$target.closest('.login-page-body-container')
                 .length) {
                 $('.login-register-modal').offcanvas('hide');
-                // $('.offcanvas-backdrop').remove();
+
             }
         });
 
         $('#btn-login').click(function(event) {
             $('#login-modal').offcanvas('show');
+
         });
         $('#btn-Sign-up').click(function(event) {
             $('#register-modal').offcanvas('show');

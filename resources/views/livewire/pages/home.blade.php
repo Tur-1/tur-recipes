@@ -17,7 +17,7 @@
 
      @include('components.home.recipe-detail')
 
-
+     <x-layouts.footer />
 
      @include('components.layouts.livewire-loading', [
          'targetMethod' => 'openRecipeModal',
