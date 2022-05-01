@@ -1217,10 +1217,7 @@ main#app {
 
 .login-page {
     position: relative;
-    /* position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0; */
+
     max-width: 600px;
     margin: 0 auto;
     z-index: 10;
@@ -1244,8 +1241,9 @@ main#app {
 
 
 .login-page .login-page-body {
+    height: 30%;
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     left: 0;
     right: 0;
     background-color: black;
