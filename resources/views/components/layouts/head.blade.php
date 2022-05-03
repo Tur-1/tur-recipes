@@ -92,11 +92,11 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
 
-
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
 
     <livewire:styles />
     @stack('head')
-    <script type="text/javascript" defer>
+    <script type="text/javascript">
         // Initialize the service worker
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/service-worker.js');

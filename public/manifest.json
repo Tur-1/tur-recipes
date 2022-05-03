@@ -7,7 +7,6 @@
     "background_color": "#000000",
     "orientation" : "portrait",
     "status_bar" : "#26908C",
- 
     "icons":[
       {
         "src": "/images/icons/manifest-icon-192.maskable.png",
