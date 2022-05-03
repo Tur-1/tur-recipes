@@ -10,26 +10,13 @@ crossorigin="anonymous"></script>
 integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 <script type="text/javascript">
     $(window).on('load', () => {
 
         $("#loading").fadeOut(1000);
 
         $("#app").fadeIn(1000);
-    });
-
-    $('.recommend-recipes-row').slick({
-        centerMode: true,
-        slidesToShow: 1,
-        infinite: true,
-        autoplay: true,
-        swipe: true,
-        speed: 1000,
-        arrows: false,
-        variableWidth: true,
-
-
     });
 </script>
 

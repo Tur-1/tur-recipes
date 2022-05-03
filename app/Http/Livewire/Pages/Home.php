@@ -124,7 +124,7 @@ class Home extends Component
             $recommendMeal = 'dinner';
         }
 
-        return Recipe::SearchRecipe($recommendMeal)->latest()->take($this->amount)->get();
+        return Recipe::SearchRecipe($recommendMeal)->inRandomOrder()->take(20)->get();
     }
 
 

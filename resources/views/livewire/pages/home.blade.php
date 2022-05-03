@@ -1,4 +1,4 @@
- <div>
+ <div class="home-page">
 
 
      <x-home.header />
@@ -31,7 +31,21 @@
 
 
  @push('script')
+     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
      <script>
+         $('.recommend-recipes-row').slick({
+             centerMode: true,
+             slidesToShow: 1,
+             infinite: true,
+             autoplay: true,
+             swipe: true,
+             speed: 1000,
+             arrows: false,
+             variableWidth: true,
+
+
+         });
          /***********************  all recipes offcanvas  ****************************/
          let seeAllRecipesBtn = document.getElementById('seeAllRecipesbtn');
          let closeAllRecipesBtn = document.getElementById('closeAllRecipes');
@@ -89,7 +103,9 @@
                  $('#recipe-detail-' + e.detail.recipeId).offcanvas('hide');
 
 
-             })
+             });
+
+
          });
      </script>
  @endpush

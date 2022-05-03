@@ -233,7 +233,8 @@ a {
 
 /************* navbar  **********************/
 .navbar {
-    padding: 15px 5px;
+    padding: 10px 5px;
+
     background-color: var(--main-bg-color) !important;
 }
 
@@ -316,6 +317,11 @@ main#app {
     height: 100%;
 }
 
+.home-page {
+    height: 100%;
+
+
+}
 
 /************* search  **********************/
 .search-field {
@@ -536,9 +542,13 @@ main#app {
 
 
 /************* top Recipes  **********************/
-.top-recipes .header {
-    color: var(--main-text-color);
+.top-recipes {
+    padding-bottom: 75px;
+}
 
+.top-recipes .header {
+
+    color: var(--main-text-color);
     margin: 10px;
 }
 
@@ -1216,17 +1226,12 @@ main#app {
 /************* login page  **********************/
 
 .login-page {
-    position: relative;
-
     max-width: 600px;
     margin: 0 auto;
     z-index: 10;
-    display: flex;
-    flex-direction: column;
     background-color: #0000;
     outline: 0;
     height: 100%;
-
 }
 
 .login-page .login-page-header {
@@ -1242,10 +1247,7 @@ main#app {
 
 .login-page .login-page-body {
     height: 30%;
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
+
     background-color: black;
     background-image: linear-gradient(to bottom, rgb(24 23 24) 5%, black);
 
@@ -1282,7 +1284,7 @@ main#app {
     display: flex;
     flex-direction: column;
     padding-bottom: 10px;
-    margin: 5px 19px 20px 19px;
+    margin: 5px 19px 26px 19px;
     gap: 1rem;
 
 
@@ -1409,7 +1411,7 @@ main#app {
 
 .account-page-header {
     background-color: var(--main-bg-color);
-    min-height: 45%;
+    min-height: 55%;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -1554,4 +1556,10 @@ main#app {
     margin-bottom: 0;
     border-bottom: 1px solid rgba(0, 0, 0, .125);
 
+}
+
+@media screen and (display-mode: standalone) {
+    .navbar {
+        padding-top: 40px !important;
+    }
 }
