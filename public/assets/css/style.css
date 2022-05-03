@@ -35,12 +35,11 @@
 
 
 body {
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: grey;
+
     background-color: var(--main-bg-color);
-
     margin: 0 auto !important;
-
-    max-width: 600px !important;
+    max-width: 550px !important;
     height: 100vh;
     overflow-y: scroll;
 
@@ -113,8 +112,7 @@ a:active {
     left: 0;
     right: 0;
     width: unset !important;
-
-    max-width: 600px !important;
+    max-width: 550px !important;
     margin: 0 auto;
 }
 
@@ -278,7 +276,7 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    max-width: 600px;
+    max-width: 550px;
     margin: 0 auto;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
@@ -316,6 +314,7 @@ footer ul li a i {
 main#app {
     margin-bottom: 100px;
     height: 100%;
+    width: 100%;
 }
 
 .home-page {
@@ -645,10 +644,14 @@ main#app {
 .allRecipes {
     position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 0 auto;
     z-index: 1050;
     display: flex;
     flex-direction: column;
-    max-width: 100%;
+    max-width: 550px;
     visibility: hidden;
     background-color: var(--main-bg-color);
     background-clip: padding-box;
@@ -1231,7 +1234,7 @@ main#app {
 /************* login page  **********************/
 
 .login-page {
-    max-width: 600px;
+    width: 100%;
     margin: 0 auto;
     z-index: 10;
     background-color: #0000;
@@ -1253,6 +1256,7 @@ main#app {
 
 
 .login-page .login-page-body {
+    position: relative;
     height: 30%;
     background-color: black;
     background-image: linear-gradient(to bottom, rgb(24 23 24) 5%, black);
@@ -1402,7 +1406,7 @@ main#app {
     bottom: 0;
     left: 0;
     right: 0;
-    max-width: 600px;
+    max-width: 550px;
     margin: 0 auto;
     z-index: 1050;
     visibility: visible;

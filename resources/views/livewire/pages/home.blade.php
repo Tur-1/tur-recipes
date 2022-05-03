@@ -37,64 +37,73 @@
      <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
      <script>
-         $('.recommend-recipes-row').slick({
-             centerMode: true,
-             slidesToShow: 1,
-             infinite: true,
-             autoplay: true,
-             swipe: true,
-             speed: 1000,
-             arrows: false,
-             variableWidth: true,
+         $(document).ready(function() {
+             $('.recommend-recipes-row').slick({
+                 centerMode: true,
+                 slidesToShow: 1,
+                 infinite: true,
+                 autoplay: true,
+                 swipe: true,
+                 speed: 1000,
+                 arrows: false,
+                 variableWidth: true,
 
 
-         });
-         /***********************  all recipes offcanvas  ****************************/
-         let seeAllRecipesBtn = document.getElementById('seeAllRecipesbtn');
-         let closeAllRecipesBtn = document.getElementById('closeAllRecipes');
-         let allRecipes = document.getElementById('allRecipes');
-
-         seeAllRecipesBtn.addEventListener("click", (e) => {
-             allRecipes.classList.add("show");
-             allRecipes.style.visibility = "visible";
-         });
-
-         closeAllRecipesBtn.addEventListener("click", (e) => {
-             allRecipes.classList.remove("show");
-         });
+             });
 
 
-         /***********************  categoryItems  ****************************/
-         const categoryItems = [...document.querySelectorAll('.category')];
+             /***********************  all recipes offcanvas  ****************************/
+             let seeAllRecipesBtn = document.getElementById('seeAllRecipesbtn');
+             let closeAllRecipesBtn = document.getElementById('closeAllRecipes');
+             let allRecipes = document.getElementById('allRecipes');
 
-         categoryItems.forEach(current_category => {
-             current_category.addEventListener("click", (e) => {
+             seeAllRecipesBtn.addEventListener("click", (e) => {
+                 allRecipes.classList.add("show");
+                 allRecipes.style.visibility = "visible";
 
-                 if (!current_category.classList.contains("active--category")) {
-                     current_category.classList.add("active--category");
-                 } else {
-                     current_category.classList.remove("active--category");
+             });
+
+             closeAllRecipesBtn.addEventListener("click", (e) => {
+                 allRecipes.classList.remove("show");
+                 setTimeout(() => {
+                     allRecipes.style.visibility = "hidden";
+                 }, 400);
+
+             });
+
+
+             /***********************  categoryItems  ****************************/
+             const categoryItems = [...document.querySelectorAll('.category')];
+
+             categoryItems.forEach(current_category => {
+                 current_category.addEventListener("click", (e) => {
+
+                     if (!current_category.classList.contains("active--category")) {
+                         current_category.classList.add("active--category");
+                     } else {
+                         current_category.classList.remove("active--category");
 
 
 
-                 }
-
-                 categoryItems.forEach(prev_category => {
-                     if (prev_category.getAttribute("id") != current_category.getAttribute("id")) {
-                         prev_category.classList.remove("active--category");
                      }
+
+                     categoryItems.forEach(prev_category => {
+                         if (prev_category.getAttribute("id") != current_category
+                             .getAttribute("id")) {
+                             prev_category.classList.remove("active--category");
+                         }
+
+                     });
 
                  });
 
              });
 
-         });
 
 
 
+             /***********************  recipe detail offcanvas  ****************************/
 
-         /***********************  recipe detail offcanvas  ****************************/
-         $(document).ready(function() {
              window.addEventListener("open-recipe-modal", (e) => {
 
                  $('#recipe-detail-' + e.detail.recipeId).offcanvas('show');

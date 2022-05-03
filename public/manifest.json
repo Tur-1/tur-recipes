@@ -3,6 +3,11 @@
     "name": "Tur Recipes",
     "short_name": "t-Recipes",
     "start_url":"/",
+    "theme_color" : "#000000", 
+    "background_color": "#000000",
+    "orientation" : "portrait",
+    "status_bar" : "#26908C",
+ 
     "icons":[
         {
           "src": "/images/icons/manifest-icon-192.maskable.png",
@@ -28,10 +33,6 @@
           "type": "image/png",
           "purpose": "maskable"
         }
-      ]
-      ,
- 
-    "theme_color" : "#000000", 
-    "orientation" : "portrait",
-    "status_bar" : "#26908C"
+      ] 
+
 }
