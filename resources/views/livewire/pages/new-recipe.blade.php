@@ -12,7 +12,6 @@
     </div>
 
     <div class="new-recipe-body">
-
         <form enctype="multipart/form-data">
             <div class="imageContainer ">
                 <label wire:loading.class='opacity-3' wire:target='image' for="reipce-image" class="text-center">

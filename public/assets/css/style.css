@@ -1115,6 +1115,7 @@ main#app {
 
 
 .new-recipe-body {
+    margin-top: 30px;
     padding: 0 !important;
     background-color: var(--main-bg-color);
 }
