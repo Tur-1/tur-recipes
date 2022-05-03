@@ -1253,7 +1253,6 @@ main#app {
 
 
 .login-page .login-page-body {
-
     height: 30%;
     background-image: linear-gradient(to bottom, rgb(24 23 24 / 0%) 5%, black);
 }
@@ -1276,7 +1275,7 @@ main#app {
 
 .login-page .login-page-body .container {
     position: absolute;
-    bottom: 40px;
+    bottom: 10px;
     left: 0;
     right: 0;
 }
