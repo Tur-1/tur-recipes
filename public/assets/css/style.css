@@ -58,9 +58,6 @@ input:focus,
     background-color: var(--main-bg-element) !important;
 }
 
-a {
-    -webkit-tap-highlight-color: grey;
-}
 
 input,
 select,
@@ -115,7 +112,6 @@ a:active {
     background-color: var(--main-bg-color);
     left: 0;
     right: 0;
-    width: unset !important;
     max-width: 550px !important;
     margin: 0 auto;
 }
@@ -131,9 +127,7 @@ a:active {
     color: var(--main-text-color);
 }
 
-.offcanvas-bottom {
-    height: 100% !important;
-}
+
 
 #deleteConfirmModal .modal-content {
     background: rgb(41 41 41 / 83%);
@@ -1259,15 +1253,12 @@ main#app {
 
 
 .login-page .login-page-body {
-    margin-top: -90px;
+
     height: 30%;
     background-image: linear-gradient(to bottom, rgb(24 23 24 / 0%) 5%, black);
 }
 
-.login-page .login-page-body .label {
-    margin-left: 20px;
 
-}
 
 .login-page .login-page-body .label h2 {
     max-width: 50%;
@@ -1283,11 +1274,16 @@ main#app {
     font-size: 15px;
 }
 
+.login-page .login-page-body .container {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+}
+
 .login-page .login-page-body .login-register-btns {
     display: flex;
     flex-direction: column;
-
-    margin: 5px 19px 26px 19px;
     gap: 1rem;
 
 
@@ -1308,6 +1304,7 @@ main#app {
 
 
 .login-register-modal {
+    z-index: 99999999;
     height: auto !important;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
