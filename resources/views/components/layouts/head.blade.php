@@ -1,6 +1,8 @@
 <head>
 
     <meta charset="utf-8">
+    <title>{{ config('app.name', 'Tur Recipes') }}</title>
+
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="initial-scale=1, viewport-fit=cover, user-scalable=no" />
     <!-- CSRF Token -->
@@ -39,8 +41,7 @@
         media="(prefers-color-scheme: dark) and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
     <link rel="apple-touch-startup-image" href="{{ asset('images/icons/apple-splash-dark-640-1136.jpg') }}"
         media="(prefers-color-scheme: dark) and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-
-    <title>{{ config('app.name', 'Tur Recipes') }}</title>
+    <link rel="manifest" href="{{ asset('manifest.json') }}" />
 
 
     <!-- Scripts -->
@@ -60,13 +61,22 @@
         integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
 
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css?v=') . time() }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
-    <link rel="manifest" href="{{ asset('manifest.json') }}" />
+
+
 
     <livewire:styles />
-
+    @stack('head')
+    <script type="text/javascript" defer>
+        // Initialize the service worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js');
+            console.log('Laravel PWA: ServiceWorker registration success:');
+        } else {
+            console.log('Laravel PWA: ServiceWorker registration failed:');
+        }
+    </script>
 </head>

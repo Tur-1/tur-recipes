@@ -22,15 +22,6 @@ integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+
 
 
 
-<script type="text/javascript" defer>
-    // Initialize the service worker
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js');
-        console.log('Laravel PWA: ServiceWorker registration success:');
-    } else {
-        console.log('Laravel PWA: ServiceWorker registration failed:');
-    }
-</script>
 
 
 @stack('script')
