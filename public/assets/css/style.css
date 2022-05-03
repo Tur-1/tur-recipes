@@ -35,7 +35,7 @@
 
 
 body {
-    -webkit-tap-highlight-color: grey;
+
 
     background-color: var(--main-bg-color);
     margin: 0 auto !important;
@@ -56,6 +56,10 @@ input:focus,
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
     background-color: var(--main-bg-element) !important;
+}
+
+a {
+    -webkit-tap-highlight-color: grey;
 }
 
 input,
@@ -123,7 +127,6 @@ a:active {
 }
 
 .offcanvas-header {
-
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
 }
@@ -1237,7 +1240,7 @@ main#app {
     width: 100%;
     margin: 0 auto;
     z-index: 10;
-    background-color: #0000;
+    background-color: var(--main-bg-color);
     outline: 0;
     height: 100%;
     display: flex;
@@ -1256,24 +1259,14 @@ main#app {
 
 
 .login-page .login-page-body {
-    position: relative;
+    margin-top: -90px;
     height: 30%;
-    background-color: black;
-    background-image: linear-gradient(to bottom, rgb(24 23 24) 5%, black);
-
+    background-image: linear-gradient(to bottom, rgb(24 23 24 / 0%) 5%, black);
 }
-
-.login-page-body-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
 
 .login-page .login-page-body .label {
     margin-left: 20px;
-    margin-top: -100px;
+
 }
 
 .login-page .login-page-body .label h2 {
@@ -1293,7 +1286,7 @@ main#app {
 .login-page .login-page-body .login-register-btns {
     display: flex;
     flex-direction: column;
-    padding-bottom: 10px;
+
     margin: 5px 19px 26px 19px;
     gap: 1rem;
 
@@ -1330,6 +1323,7 @@ main#app {
 }
 
 .login-register-modal .offcanvas-header {
+
     justify-content: center !important;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
@@ -1575,5 +1569,9 @@ main#app {
     .offcanvas,
     .account-page {
         padding-top: 40px !important;
+    }
+
+    .offcanvas.login-register-modal {
+        padding-top: unset !important;
     }
 }

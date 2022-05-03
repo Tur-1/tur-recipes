@@ -3,48 +3,44 @@
     <meta charset="utf-8">
     <title>{{ config('app.name', 'Tur Recipes') }}</title>
 
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-touch-fullscreen" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="initial-scale=1, viewport-fit=cover, user-scalable=no" />
 
-    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="apple-touch-icon" href="{{ asset('images/icons/apple-icon-180.png') }}">
     <link rel="shortcut icon" href="{{ asset('images/icons/apple-icon-180.png') }}" type="image/x-icon">
 
-
+    <meta name="apple-mobile-web-app-capable" content="yes">
 
     <link rel="apple-touch-startup-image" href="{{ asset('images/icons/apple-splash-dark-2048-2732.jpg') }}"
-        media="(device-width: 1024px) and (device-height: 1366px) ">
+        media="(prefers-color-scheme: dark) and (device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
 
     <link rel="apple-touch-startup-image" href="{{ asset('images/icons/apple-splash-dark-1668-2388.jpg') }}"
-        media="(device-width: 834px) and (device-height: 1194px) ">
+        media="(prefers-color-scheme: dark) and (device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
     <link rel="apple-touch-startup-image" href="{{ asset('images/icons/apple-splash-dark-1536-2048.jpg') }}"
-        media="(device-width: 768px) and (device-height: 1024px) ">
+        media="(prefers-color-scheme: dark) and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
     <link rel="apple-touch-startup-image" href="{{ asset('images/icons/apple-splash-dark-1668-2224.jpg') }}"
-        media="(device-width: 834px) and (device-height: 1112px) ">
+        media="(prefers-color-scheme: dark) and (device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
     <link rel="apple-touch-startup-image" href="{{ asset('images/icons/apple-splash-dark-1620-2160.jpg') }}"
-        media="(device-width: 810px) and (device-height: 1080px) ">
+        media="(prefers-color-scheme: dark) and (device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
     <link rel="apple-touch-startup-image" href="{{ asset('images/icons/apple-splash-dark-1284-2778.jpg') }}"
-        media="(device-width: 428px) and (device-height: 926px) ">
+        media="(prefers-color-scheme: dark) and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
     <link rel="apple-touch-startup-image" href="{{ asset('images/icons/apple-splash-dark-1170-2532.jpg') }}"
-        media="(device-width: 390px) and (device-height: 844px) ">
+        media="(prefers-color-scheme: dark) and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
     <link rel="apple-touch-startup-image" href="{{ asset('images/icons/apple-splash-dark-1125-2436.jpg') }}"
-        media="(device-width: 375px) and (device-height: 812px) ">
+        media="(prefers-color-scheme: dark) and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
     <link rel="apple-touch-startup-image" href="{{ asset('images/icons/apple-splash-dark-1242-2688.jpg') }}"
-        media="(device-width: 414px) and (device-height: 896px) ">
+        media="(prefers-color-scheme: dark) and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
     <link rel="apple-touch-startup-image" href="{{ asset('images/icons/apple-splash-dark-828-1792.jpg') }}"
-        media="(device-width: 414px) and (device-height: 896px) ">
+        media="(prefers-color-scheme: dark) and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
     <link rel="apple-touch-startup-image" href="{{ asset('images/icons/apple-splash-dark-1242-2208.jpg') }}"
-        media="(device-width: 414px) and (device-height: 736px) ">
+        media="(prefers-color-scheme: dark) and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
     <link rel="apple-touch-startup-image" href="{{ asset('images/icons/apple-splash-dark-750-1334.jpg') }}"
-        media="(device-width: 375px) and (device-height: 667px) ">
+        media="(prefers-color-scheme: dark) and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
     <link rel="apple-touch-startup-image" href="{{ asset('images/icons/apple-splash-dark-640-1136.jpg') }}"
-        media="(device-width: 320px) and (device-height: 568px) ">
-
+        media="(prefers-color-scheme: dark) and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="manifest" href="{{ asset('manifest.json') }}" />
 
 
     <!-- Scripts -->
@@ -67,7 +63,7 @@
 
 
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="manifest" href="{{ asset('manifest.json') }}" />
+
 
 
 
@@ -77,7 +73,6 @@
         // Initialize the service worker
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/service-worker.js');
-
             console.log('Laravel PWA: ServiceWorker registration success:');
         } else {
             console.log('Laravel PWA: ServiceWorker registration failed:');
