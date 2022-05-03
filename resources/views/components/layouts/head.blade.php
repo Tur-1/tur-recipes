@@ -68,7 +68,7 @@
         media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
     <link rel="apple-touch-startup-image" href="/images/icons/apple-splash-1136-640.jpg"
         media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
-
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -92,17 +92,23 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
 
-    {{-- <link rel="manifest" href="{{ asset('manifest.json') }}"> --}}
+
 
     <livewire:styles />
     @stack('head')
     <script type="text/javascript">
         // Initialize the service worker
+
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js');
-            console.log('Laravel PWA: ServiceWorker registration success:');
-        } else {
-            console.log('Laravel PWA: ServiceWorker registration failed:');
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+                    // Registration was successful
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                    // registration failed.
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
         }
     </script>
 </head>
