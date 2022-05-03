@@ -92,7 +92,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
 
-    <link rel="manifest" href="{{ asset('manifest.json') }}">
+    {{-- <link rel="manifest" href="{{ asset('manifest.json') }}"> --}}
 
     <livewire:styles />
     @stack('head')
