@@ -5,7 +5,6 @@
 <x-layouts.head />
 
 
-
 <body>
 
 
@@ -18,7 +17,7 @@
 
 
 
-    <x-layouts.footer />
+
 
 
 

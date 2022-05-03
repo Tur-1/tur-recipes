@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "854e20e6afd0ab4532ffab9b61d02596",
+    "content-hash": "5503f4b6c509a23b17cc06449edc3cc1",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -58,16 +58,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.222.2",
+            "version": "3.222.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "17db4851c065b92e76466d8e6ddef0a7e8367416"
+                "reference": "52b493b7b27de55e300afd26eff0be58d3689033"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/17db4851c065b92e76466d8e6ddef0a7e8367416",
-                "reference": "17db4851c065b92e76466d8e6ddef0a7e8367416",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/52b493b7b27de55e300afd26eff0be58d3689033",
+                "reference": "52b493b7b27de55e300afd26eff0be58d3689033",
                 "shasum": ""
             },
             "require": {
@@ -143,9 +143,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.222.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.222.3"
             },
-            "time": "2022-04-29T18:14:00+00:00"
+            "time": "2022-05-02T18:16:06+00:00"
         },
         {
             "name": "brick/math",
@@ -1033,63 +1033,6 @@
                 }
             ],
             "time": "2022-03-20T21:55:58+00:00"
-        },
-        {
-            "name": "ladumor/laravel-pwa",
-            "version": "v0.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/shailesh-ladumor/laravel-pwa.git",
-                "reference": "8256db4b88554e69d8c0691ea8880efe29845411"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/shailesh-ladumor/laravel-pwa/zipball/8256db4b88554e69d8c0691ea8880efe29845411",
-                "reference": "8256db4b88554e69d8c0691ea8880efe29845411",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": ">=5.4",
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "\\Ladumor\\LaravelPwa\\PWAServiceProvider"
-                    ],
-                    "aliases": {
-                        "LaravelPwa": "Ladumor\\LaravelPwa\\LaravelPwa"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Ladumor\\LaravelPwa\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Shailesh Ladumor",
-                    "email": "shaileshmladumor@gmail.com"
-                }
-            ],
-            "description": "this package used for the make pwa website.",
-            "keywords": [
-                "laravel",
-                "laravel-pwa",
-                "php",
-                "pwa-laravel"
-            ],
-            "support": {
-                "issues": "https://github.com/shailesh-ladumor/laravel-pwa/issues",
-                "source": "https://github.com/shailesh-ladumor/laravel-pwa/tree/v0.0.3"
-            },
-            "time": "2022-04-24T06:31:02+00:00"
         },
         {
             "name": "laravel/framework",

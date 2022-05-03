@@ -35,11 +35,12 @@
 
 
 body {
+
+
     background-color: var(--main-bg-color);
-
     margin: 0 auto !important;
-
-    max-width: 600px !important;
+    max-width: 550px !important;
+    height: 100vh;
     overflow-y: scroll;
 
 }
@@ -56,6 +57,7 @@ input:focus,
     box-shadow: none !important;
     background-color: var(--main-bg-element) !important;
 }
+
 
 input,
 select,
@@ -110,9 +112,7 @@ a:active {
     background-color: var(--main-bg-color);
     left: 0;
     right: 0;
-    width: unset !important;
-
-    max-width: 600px !important;
+    max-width: 550px !important;
     margin: 0 auto;
 }
 
@@ -127,9 +127,7 @@ a:active {
     color: var(--main-text-color);
 }
 
-.offcanvas-bottom {
-    height: 100% !important;
-}
+
 
 #deleteConfirmModal .modal-content {
     background: rgb(41 41 41 / 83%);
@@ -231,7 +229,8 @@ a {
 
 /************* navbar  **********************/
 .navbar {
-    padding: 15px 5px;
+    padding: 10px 5px;
+
     background-color: var(--main-bg-color) !important;
 }
 
@@ -274,7 +273,7 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    max-width: 600px;
+    max-width: 550px;
     margin: 0 auto;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
@@ -311,8 +310,15 @@ footer ul li a i {
 
 main#app {
     margin-bottom: 100px;
+    height: 100%;
+    width: 100%;
 }
 
+.home-page {
+    height: 100%;
+
+
+}
 
 /************* search  **********************/
 .search-field {
@@ -391,11 +397,15 @@ main#app {
     right: 0;
 }
 
+.recommend-recipes-row .card .card-image-container {
+    border-radius: 15px !important;
+}
 
 .recommend-recipes-row .card .card-image-container img {
     height: 100%;
     width: 100%;
     object-fit: cover;
+    border-radius: 15px !important;
 }
 
 
@@ -404,7 +414,7 @@ main#app {
 
 
 .recommend-recipes-row .card .card-body .card-title {
-    max-height: 42px;
+    max-height: 41px;
     max-width: 125px;
     font-size: 12px;
     color: white;
@@ -533,9 +543,13 @@ main#app {
 
 
 /************* top Recipes  **********************/
-.top-recipes .header {
-    color: var(--main-text-color);
+.top-recipes {
+    padding-bottom: 75px;
+}
 
+.top-recipes .header {
+
+    color: var(--main-text-color);
     margin: 10px;
 }
 
@@ -627,10 +641,14 @@ main#app {
 .allRecipes {
     position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 0 auto;
     z-index: 1050;
     display: flex;
     flex-direction: column;
-    max-width: 100%;
+    max-width: 550px;
     visibility: hidden;
     background-color: var(--main-bg-color);
     background-clip: padding-box;
@@ -714,7 +732,7 @@ main#app {
 
 .card.recipe-card .recipe-item-details {
     position: absolute;
-    background: rgb(24 24 24 / 72%);
+    background: rgb(72 72 72 / 72%);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(11px);
@@ -1058,17 +1076,23 @@ main#app {
     width: 230px !important;
 }
 
-.new-recipe-offcanvas .offcanvas-header {
+.new-recipes-page {
+    height: 100%;
+    width: 100%;
+}
+
+.new-recipes-page .header {
+    max-width: 550px;
     padding: 15px;
+
+    z-index: 999999999999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     background-color: var(--main-bg-color) !important;
 }
-
-.new-recipe-offcanvas .offcanvas {
-    z-index: 98989898989 !important;
-    visibility: visible !important;
-
-}
-
 
 .recipe-input {
     background-color: var(--main-bg-color) !important;
@@ -1097,13 +1121,13 @@ main#app {
 
 
 
-.offcanvas-body.new-recipe-body form {
+.new-recipe-body form {
     overflow-x: hidden !important;
 }
 
 
 
-.offcanvas-body.new-recipe-body form .card-body {
+.new-recipe-body form .card-body {
     margin-top: 20px;
     background-color: var(--main-bg-element);
     padding: 25px;
@@ -1116,17 +1140,17 @@ main#app {
 }
 
 
-.offcanvas-body.new-recipe-body form .card-body label {
+.new-recipe-body form .card-body label {
     color: var(--main-text-color);
 }
 
-.offcanvas-body.new-recipe-body form .card-body select {
+.new-recipe-body form .card-body select {
     background-color: var(--main-bg-color) !important;
     color: var(--main-text-color);
     border: none;
 }
 
-.offcanvas-body.new-recipe-body form .card-body input {
+.new-recipe-body form .card-body input {
     background-color: var(--main-bg-color);
     color: var(--main-text-color) !important;
 
@@ -1213,19 +1237,14 @@ main#app {
 /************* login page  **********************/
 
 .login-page {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    max-width: 600px;
+    width: 100%;
     margin: 0 auto;
     z-index: 10;
-    display: flex;
-    flex-direction: column;
-    background-color: #0000;
+    background-color: var(--main-bg-color);
     outline: 0;
     height: 100%;
-
+    display: flex;
+    flex-direction: column;
 }
 
 .login-page .login-page-header {
@@ -1240,25 +1259,12 @@ main#app {
 
 
 .login-page .login-page-body {
+    height: 30%;
+    background-image: linear-gradient(to bottom, rgb(26 26 26 / 79%) 5%, black);
     position: relative;
-    height: 30% !important;
-    background-color: black;
-    background-image: linear-gradient(to bottom, rgb(24 23 24) 5%, black);
-
-}
-
-.login-page-body-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
 }
 
 
-.login-page .login-page-body .label {
-    margin-left: 20px;
-    margin-top: -100px;
-}
 
 .login-page .login-page-body .label h2 {
     max-width: 50%;
@@ -1274,11 +1280,17 @@ main#app {
     font-size: 15px;
 }
 
+.login-page .login-page-body .container {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+
+}
+
 .login-page .login-page-body .login-register-btns {
     display: flex;
     flex-direction: column;
-    padding-bottom: 10px;
-    margin: 5px 19px 20px 19px;
     gap: 1rem;
 
 
@@ -1299,6 +1311,7 @@ main#app {
 
 
 .login-register-modal {
+    z-index: 99999999;
     height: auto !important;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
@@ -1314,6 +1327,7 @@ main#app {
 }
 
 .login-register-modal .offcanvas-header {
+
     justify-content: center !important;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
@@ -1390,7 +1404,7 @@ main#app {
     bottom: 0;
     left: 0;
     right: 0;
-    max-width: 600px;
+    max-width: 550px;
     margin: 0 auto;
     z-index: 1050;
     visibility: visible;
@@ -1405,7 +1419,7 @@ main#app {
 
 .account-page-header {
     background-color: var(--main-bg-color);
-    min-height: 45%;
+    min-height: 55%;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -1550,4 +1564,19 @@ main#app {
     margin-bottom: 0;
     border-bottom: 1px solid rgba(0, 0, 0, .125);
 
+}
+
+@media screen and (display-mode: standalone) {
+
+    .navbar,
+    .allRecipes .header,
+    .offcanvas,
+    .account-page,
+    .new-recipes-page .header {
+        padding-top: 40px !important;
+    }
+
+    .offcanvas.login-register-modal {
+        padding-top: unset !important;
+    }
 }

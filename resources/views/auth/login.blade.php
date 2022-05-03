@@ -1,33 +1,12 @@
 @extends('layouts.app')
 
 @section('body')
-    <div class="offcanvas offcanvas-bottom login-register-modal" id="login-modal" aria-labelledby="offcanvasBottomLabel">
-        <div class="offcanvas-header">
-            <span class="header-border"></span>
-        </div>
-        <div class="offcanvas-body small">
-            <x-auth.login-modal />
-        </div>
-    </div>
-
-    <div class="offcanvas offcanvas-bottom login-register-modal " id="register-modal" aria-labelledby="offcanvasBottomLabel">
-        <div class="offcanvas-header">
-            <span class="header-border"></span>
-
-
-        </div>
-        <div class="offcanvas-body small">
-            <x-auth.register-modal />
-
-        </div>
-    </div>
-
     <div class="login-page">
         <div class="login-page-header">
             <img src="{{ asset('assets/images/loginBackgound.jpg') }}" alt="">
         </div>
         <div class="login-page-body">
-            <div class="login-page-body-container ">
+            <div class="container">
                 <div class="label">
                     <h2>Cooking a Delicious Food Easily </h2>
                     <p>discover more than 1200 food recipes in your hands and cooking it easily</p>
@@ -40,6 +19,9 @@
 
         </div>
     </div>
+
+    @include('components.auth.login-modal')
+    @include('components.auth.register-modal')
 @endsection
 
 
@@ -48,6 +30,7 @@
         <script>
             $(document).ready(function() {
                 $('#register-modal').offcanvas('show');
+
             });
         </script>
     @endif
@@ -60,20 +43,23 @@
     @endif
 
     <script>
-        $('.login-page').click(function(event) {
-            var $target = $(event.target);
-            if (!$target.closest('.login-page-body-container')
-                .length) {
-                $('.login-register-modal').offcanvas('hide');
-                // $('.offcanvas-backdrop').remove();
-            }
-        });
+        $(document).ready(function() {
+            $('.login-page').click(function(event) {
+                var $target = $(event.target);
+                if (!$target.closest('.login-page')
+                    .length) {
+                    $('.login-register-modal').offcanvas('hide');
 
-        $('#btn-login').click(function(event) {
-            $('#login-modal').offcanvas('show');
-        });
-        $('#btn-Sign-up').click(function(event) {
-            $('#register-modal').offcanvas('show');
+                }
+            });
+
+            $('#btn-login').click(function(event) {
+                $('#login-modal').offcanvas('show');
+
+            });
+            $('#btn-Sign-up').click(function(event) {
+                $('#register-modal').offcanvas('show');
+            });
         });
     </script>
 @endpush

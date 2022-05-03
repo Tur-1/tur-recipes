@@ -1,4 +1,4 @@
-<div class="top-recipes d-flex flex-column justify-content-center">
+<div class="top-recipes  ">
     <div class="header">
         <strong>Top {{ count($topRecipes) > 5 ? 5 : count($topRecipes) }} recipes</strong>
         <button type="button" class="border-0 bg-transparent" id="seeAllRecipesbtn">
