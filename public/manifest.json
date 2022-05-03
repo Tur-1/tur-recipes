@@ -2,7 +2,7 @@
     "display": "standalone",
     "name": "Tur Recipes",
     "short_name": "t-Recipes",
-    "start_url":"/login",
+    "start_url":"/",
     "icons":[
         {
           "src": "/images/icons/manifest-icon-192.maskable.png",

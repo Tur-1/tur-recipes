@@ -1567,7 +1567,7 @@ main#app {
 
     .navbar,
     .allRecipes .header,
-    .offcanvas-header {
+    .offcanvas {
         padding-top: 40px !important;
     }
 }
