@@ -4,6 +4,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="initial-scale=1, viewport-fit=cover, user-scalable=no" />
     <!-- CSRF Token -->
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="apple-touch-icon" href="{{ asset('images/icons/apple-icon-180.png') }}">
     <link rel="shortcut icon" href="{{ asset('images/icons/apple-icon-180.png') }}" type="image/x-icon">
