@@ -125,6 +125,7 @@ a:active {
 }
 
 .offcanvas-header {
+
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
 }
@@ -400,11 +401,15 @@ main#app {
     right: 0;
 }
 
+.recommend-recipes-row .card .card-image-container {
+    border-radius: 15px !important;
+}
 
 .recommend-recipes-row .card .card-image-container img {
     height: 100%;
     width: 100%;
     object-fit: cover;
+    border-radius: 15px !important;
 }
 
 
@@ -1559,7 +1564,10 @@ main#app {
 }
 
 @media screen and (display-mode: standalone) {
-    .navbar {
+
+    .navbar,
+    .allRecipes .header,
+    .offcanvas-header {
         padding-top: 40px !important;
     }
 }
