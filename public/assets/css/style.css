@@ -131,10 +131,10 @@ a:active {
 
 
 #deleteConfirmModal .modal-content {
-    background: rgb(41 41 41 / 83%);
+    background: rgb(76 76 76 / 81%);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    width: 70% !important;
+    width: 85% !important;
     padding: 10px;
     border-radius: 15px;
     color: var(--main-text-color);
@@ -191,8 +191,8 @@ a:active {
 
 .toast {
     position: fixed;
-    top: 15px !important;
-    right: 5px !important;
+    top: 15px;
+    right: 5px;
     width: -moz-fit-content;
     width: fit-content;
     color: white;
@@ -415,7 +415,7 @@ main#app {
 
 
 .recommend-recipes-row .card .card-body .card-title {
-    max-height: 39px;
+    max-height: 37px !important;
     max-width: 125px;
     font-size: 12px;
     color: white;
@@ -720,6 +720,7 @@ main#app {
     border-radius: 10px;
     overflow: hidden;
     background-color: var(--main-bg-element);
+    margin-bottom: 20px;
 
 }
 
@@ -952,6 +953,9 @@ main#app {
 }
 
 /* ******* offcanvas-body ******* */
+.top-recipe-offcanvas {
+    z-index: 98989898989899;
+}
 
 .top-recipe-offcanvas .offcanvas-body {
     z-index: 12;
@@ -1070,6 +1074,33 @@ main#app {
     font-size: 16px;
 }
 
+
+/************* main page  **********************/
+.main-page {
+    height: 100%;
+    width: 100%;
+    background-color: var(--main-bg-color);
+}
+
+.main-page .header {
+    max-width: 550px;
+    padding: 18px;
+    z-index: 999999999999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    color: var(--main-text-color);
+    background-color: var(--main-bg-color) !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-body {
+    padding-top: 100px;
+}
 
 
 /************* new recipe offcanvas  **********************/
@@ -1576,11 +1607,16 @@ main#app {
     .allRecipes .header,
     .offcanvas,
     .account-page,
-    .new-recipes-page .header {
+    .new-recipes-page .header,
+    .main-page .header {
         padding-top: 43px !important;
     }
 
     .offcanvas.login-register-modal {
         padding-top: unset !important;
+    }
+
+    .toast {
+        top: 30px !important;
     }
 }

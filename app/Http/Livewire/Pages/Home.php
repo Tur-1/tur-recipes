@@ -5,7 +5,6 @@ namespace App\Http\Livewire\Pages;
 use Carbon\Carbon;
 use App\Models\Recipe;
 use Livewire\Component;
-use App\services\SpoonacularApiService;
 
 class Home extends Component
 {
@@ -37,10 +36,10 @@ class Home extends Component
     public function render()
     {
 
-
+        $this->recommendRecipes = $this->getRecommendMeal();
         $this->recipes  = $this->getAllRecipes();
 
-        $this->recommendRecipes = $this->getRecommendMeal();
+
         $this->categories =  $this->getCategories();
 
         return view('livewire.pages.home')->extends('layouts.app')
@@ -60,7 +59,7 @@ class Home extends Component
             ['id' => 7, 'name' => 'pasta', 'imageUrl' => asset('assets/images/5-57766_pasta-png-spaghetti-png.png')],
             ['id' => 8, 'name' => 'Sandwiches', 'imageUrl' => asset('assets/images/sandow.jpg')],
             ['id' => 9, 'name' => 'Muffins', 'imageUrl' => asset('assets/images/Muffins.jpg')],
-            ['id' => 10, 'name' => 'Coolkies', 'imageUrl' => asset('assets/images/coolkie.jpg')],
+            ['id' => 10, 'name' => 'Cookies', 'imageUrl' => asset('assets/images/coolkie.jpg')],
         ];
     }
 

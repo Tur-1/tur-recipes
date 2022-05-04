@@ -71,7 +71,7 @@ class MyRecipes extends Component
     public function mount()
     {
 
-        $this->myRecipes =  auth()->user()->myRecipes;
+        $this->myRecipes =   auth()->user()->myRecipes;
     }
     public function render()
     {

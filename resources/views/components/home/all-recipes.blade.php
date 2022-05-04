@@ -1,4 +1,4 @@
- <div wire:ignore.self class="allRecipes allRecipes-end" id="allRecipes">
+ <div wire:ignore.self class="allRecipes allRecipes-end" id="allRecipes" data-bs-backdrop="true">
      <div class="header">
          <button type="button" id="closeAllRecipes">
              <i class="fas fa-arrow-left"></i>
@@ -7,7 +7,7 @@
          <div></div>
      </div>
      <div class="allRecipes-body">
-         <div class="row ">
+         <div class="row">
              @foreach ($recipes as $recipe)
                  <div class="col-6">
                      <a role="button" href="#" class="card recipe-card"
@@ -37,10 +37,7 @@
              @endforeach
          </div>
 
-
-
          <div class="row mt-3 d-flex justify-content-center">
-
              <div class="text-center">
                  <button class="btn btn-primary " id="loadMore" wire:click='loadMore'>
                      <span wire:loading wire:target='loadMore' class="spinner-border spinner-border-sm" role="status"
@@ -48,13 +45,6 @@
                      <span class=""> load more</span>
                  </button>
              </div>
-
-
-
-
          </div>
-
-
-
      </div>
  </div>
