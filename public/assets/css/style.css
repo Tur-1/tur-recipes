@@ -48,8 +48,7 @@ body {
 
 
 .form-control:focus,
-a:focus,
-button:focus,
+
 input:focus,
 .nav-link:focus {
     border-color: inherit;
@@ -74,8 +73,10 @@ i {
 
 a:active {
     transform: scale(1.2);
+    background-color: #939393;
 
 }
+
 
 .btn {
     outline: none !important;
@@ -414,7 +415,7 @@ main#app {
 
 
 .recommend-recipes-row .card .card-body .card-title {
-    max-height: 41px;
+    max-height: 39px;
     max-width: 125px;
     font-size: 12px;
     color: white;
@@ -1083,8 +1084,7 @@ main#app {
 
 .new-recipes-page .header {
     max-width: 550px;
-    padding: 15px;
-
+    padding: 18px;
     z-index: 999999999999;
     position: fixed;
     top: 0;
@@ -1115,7 +1115,7 @@ main#app {
 
 
 .new-recipe-body {
-    margin-top: 30px;
+    margin-top: 66px !important;
     padding: 0 !important;
     background-color: var(--main-bg-color);
 }
@@ -1124,12 +1124,13 @@ main#app {
 
 .new-recipe-body form {
     overflow-x: hidden !important;
+
 }
 
 
 
 .new-recipe-body form .card-body {
-    margin-top: 20px;
+
     background-color: var(--main-bg-element);
     padding: 25px;
     display: flex;
@@ -1161,10 +1162,14 @@ main#app {
 
 .imageContainer {
     position: relative;
-    height: 240px;
+
     height: 290px;
     margin: 15px;
     border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 
 .imageContainer label {
@@ -1172,6 +1177,10 @@ main#app {
     width: 100%;
     height: 100%;
     border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 
 .imageContainer img {
@@ -1183,15 +1192,7 @@ main#app {
 }
 
 
-.imageContainer label>i {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 80px;
-    opacity: 0.2;
-    color: #4b4b4b;
-}
+
 
 .imageContainer #image-spinner {
     position: absolute;
@@ -1283,7 +1284,7 @@ main#app {
 
 .login-page .login-page-body .container {
     position: absolute;
-    bottom: 15px;
+    bottom: 20px;
     left: 0;
     right: 0;
 
@@ -1574,7 +1575,7 @@ main#app {
     .offcanvas,
     .account-page,
     .new-recipes-page .header {
-        padding-top: 40px !important;
+        padding-top: 43px !important;
     }
 
     .offcanvas.login-register-modal {

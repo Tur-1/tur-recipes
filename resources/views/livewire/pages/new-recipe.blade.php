@@ -37,7 +37,7 @@
 
             <div class="card-body">
                 <span class="header-border"></span>
-                <div class="row">
+                <div class="row mt-4">
                     <div class="text-danger">
                         @error('image')
                             {{ $message }}

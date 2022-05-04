@@ -36,7 +36,7 @@ class NewRecipe extends Component
         'calories' => 'required',
         'meal_types' => 'required',
         'dish_types' => 'nullable',
-        'image' => ['required', 'file'],
+        'image' => ['required', 'file', 'mimes:png,jpg,jepg,pdf', 'max:102400'],
     ];
 
     public function submit()
