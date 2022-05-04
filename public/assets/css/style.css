@@ -1115,7 +1115,7 @@ main#app {
 
 
 .new-recipe-body {
-    margin-top: 66px !important;
+
     padding: 0 !important;
     background-color: var(--main-bg-color);
 }
@@ -1123,6 +1123,7 @@ main#app {
 
 
 .new-recipe-body form {
+    margin-top: 50px;
     overflow-x: hidden !important;
 
 }
@@ -1165,6 +1166,7 @@ main#app {
 
     height: 290px;
     margin: 15px;
+    margin-top: 75px;
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
@@ -1284,7 +1286,7 @@ main#app {
 
 .login-page .login-page-body .container {
     position: absolute;
-    bottom: 20px;
+    bottom: 25px;
     left: 0;
     right: 0;
 
