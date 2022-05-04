@@ -1,6 +1,6 @@
 <div class="recommend-recipes">
     <strong>Recommended recipes</strong>
-    <div wire:ignore class="recommend-recipes-row snaps-inline">
+    <div wire:ignore class="recommend-recipes-row ">
         @foreach ($recommendRecipes as $recipe)
             <a role="button" href="#" class="card recipe-card"
                 wire:click.prevent='openRecipeModal({{ $recipe['id'] }})'>

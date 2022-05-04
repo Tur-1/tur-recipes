@@ -1,7 +1,5 @@
 <div class="account-page ">
 
-
-
     @include('components.my-account.header')
 
     @include('components.my-account.body')

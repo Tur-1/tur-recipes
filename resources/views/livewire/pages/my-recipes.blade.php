@@ -51,11 +51,11 @@
 
 
 
-        @include('components.home.recipe-detail');
+        @include('components.home.recipe-detail')
 
         @include('components.layouts.livewire-loading', [
             'targetMethod' => 'deleteRecipe',
-        ]);
+        ])
         <!-- Modal -->
 
         <div wire:ignore.self class="modal fade deleteConfirmModal " id="deleteConfirmModal" tabindex="-1" role="dialog"

@@ -47,7 +47,7 @@
              @include('components.layouts.livewire-loading', [
                  'targetMethod' => 'openRecipeModal',
              ])
-             @include('components.home.recipe-detail');
+             @include('components.home.recipe-detail')
          </div>
      </div>
  </div>
