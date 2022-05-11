@@ -32,7 +32,7 @@ class Recipe extends Model
 
     ];
 
-    public function scopeSearchRecipe($query, $value)
+    public function scopeSearchRecipeBy($query, $value)
     {
         return $query->when(!is_null($value), function ($query) use ($value) {
             $query->where('title', 'like', '%' . $value . '%')

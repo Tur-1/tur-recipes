@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire\Pages;
 
-use Carbon\Carbon;
 use App\Models\Recipe;
+use App\services\HomePageService;
 use Livewire\Component;
 
 class Home extends Component
@@ -12,7 +12,7 @@ class Home extends Component
     public $category;
     public $amount = 10;
     public $recipe;
-
+    private $homePageService;
     public $recipes = [];
     public $topRecipes = [];
     public $recommendRecipes = [];
@@ -21,47 +21,35 @@ class Home extends Component
     public $recipeTitle, $recipeFat, $recipeCarbs, $recipeProtein, $recipeReadyInMinutes, $recipeImage,
         $recipeCalories,  $recipeInstructions, $recipeIngredients, $recipeId, $recipeDish_types;
 
-    public function updatedSearchValue()
+
+    public function __construct()
     {
-        $this->searchRecipes();
+        $this->homePageService = new HomePageService();
     }
 
-    public function searchRecipes()
+
+
+
+    public function mount()
+    {
+        $this->categories = $this->homePageService->getCategories();
+        $this->recommendRecipes = $this->homePageService->getRecommendMeals();
+        $this->recipes  = $this->homePageService->getRecipes($this->amount);
+        $this->topRecipes = $this->recipes->take(5);
+    }
+
+
+
+    public function updatedSearchValue()
     {
         if ($this->searchValue != "") {
-            $this->searchValue = $this->searchValue;
+
+            $this->recipes  = $this->homePageService->getRecipes($this->amount, $this->searchValue);
+            $this->topRecipes = $this->recipes->take(5);
         }
     }
 
-    public function render()
-    {
 
-        $this->recommendRecipes = $this->getRecommendMeal();
-        $this->recipes  = $this->getAllRecipes();
-
-
-        $this->categories =  $this->getCategories();
-
-        return view('livewire.pages.home')->extends('layouts.app')
-            ->section('body');
-    }
-
-
-
-    public function getCategories()
-    {
-        return [
-            ['id' => 1, 'name' => 'pizza', 'imageUrl' => asset('assets/images/pizza-clip-art-15.png')],
-            ['id' => 2, 'name' => 'burger ', 'imageUrl' => asset('assets/images/burgur.png')],
-            ['id' => 3, 'name' => 'dessert', 'imageUrl' => asset('assets/images/8-86854_food-dessert-cupcake-muffin-clipart-hd-png-download.png')],
-            ['id' => 4, 'name' => 'drinks', 'imageUrl' => asset('assets/images/drinks2.jpg')],
-            ['id' => 5, 'name' => 'steak', 'imageUrl' => asset('assets/images/steak.png')],
-            ['id' => 7, 'name' => 'pasta', 'imageUrl' => asset('assets/images/5-57766_pasta-png-spaghetti-png.png')],
-            ['id' => 8, 'name' => 'Sandwiches', 'imageUrl' => asset('assets/images/sandow.jpg')],
-            ['id' => 9, 'name' => 'Muffins', 'imageUrl' => asset('assets/images/Muffins.jpg')],
-            ['id' => 10, 'name' => 'Cookies', 'imageUrl' => asset('assets/images/coolkie.jpg')],
-        ];
-    }
 
 
     public function getRecipesByCategory($categoryId)
@@ -70,7 +58,9 @@ class Home extends Component
 
         if (!is_null($this->category) && $this->category['id'] == $categoryId) {
 
-            $this->searchValue = null;
+            $this->recipes  = $this->homePageService->getRecipes($this->amount);
+            $this->topRecipes = $this->recipes->take(5);
+            $this->category = null;
             return;
         }
 
@@ -79,53 +69,20 @@ class Home extends Component
         }
 
         if (!is_null($this->category)) {
-
-            $this->searchValue =  $this->category['name'];
+            $this->recipes  = $this->homePageService->getRecipes($this->amount, $this->category['name']);
+            $this->topRecipes = $this->recipes->take(5);
         }
     }
 
-    public function getAllRecipes()
-    {
 
-        $recipes =  Recipe::SearchRecipe($this->searchValue)->latest()->take($this->amount)->get();
-        $this->topRecipes =  $recipes->take(5);
-
-        return $recipes;
-    }
     public function loadMore()
     {
         $this->amount += 10;
+        $searchValue = $this->category['name'] ?? $this->searchValue;
+        $this->recipes  = $this->homePageService->getRecipes($this->amount,  $searchValue);
+        $this->topRecipes = $this->recipes->take(5);
     }
 
-    public function getRecommendMeal()
-    {
-        $startMorning = Carbon::createFromTime(0, 0, 0, 'GMT+3');
-        $endMorning = Carbon::createFromTime(12, 0, 0, 'GMT+3');
-
-        $startAfterNoon = Carbon::createFromTime(12, 1, 0, 'GMT+3');
-        $endAfterNoon = Carbon::createFromTime(18, 30, 0, 'GMT+3');
-
-        $startEvning = Carbon::createFromTime(18, 31, 0, 'GMT+3');
-        $endEvning = Carbon::createFromTime(23, 59, 0, 'GMT+3');
-
-
-
-        $timeNow = Carbon::now('GMT+3');
-
-        if ($timeNow->between($startMorning, $endMorning, true)) {
-            $recommendMeal = 'breakfast';
-        }
-
-        if ($timeNow->between($startAfterNoon, $endAfterNoon, true)) {
-            $recommendMeal = 'lunch';
-        }
-        if ($timeNow->between($startEvning, $endEvning, true)) {
-            $recommendMeal = 'dinner';
-        }
-
-        $recommendRecipes = Recipe::SearchRecipe($recommendMeal)->take(20)->get();
-        return $recommendRecipes;
-    }
 
 
     public function openRecipeModal($recipeId)
@@ -161,5 +118,14 @@ class Home extends Component
 
         $this->dispatchBrowserEvent('close-recipe-modal', ['recipeId' => $this->recipeId]);
         $this->showRecipeModal = false;
+    }
+
+    public function render()
+    {
+
+
+
+        return view('livewire.pages.home')->extends('layouts.app')
+            ->section('body');
     }
 }
